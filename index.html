@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResearchPulse — AI & Data Quality Digest</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f0f4f8;
+      --surface: #ffffff;
+      --surface2: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-2: #475569;
+      --text-3: #94a3b8;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --purple: #8b5cf6;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --nav-bg: #0f172a;
+      --nav-text: #e2e8f0;
+      --hero-from: #1e3a5f;
+      --hero-to: #312e81;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.07);
+      --transition: all 0.18s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      height: 56px;
+      gap: 20px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.3px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo span.pulse {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 0 0 rgba(34,211,238,0.6);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(34,211,238,0.6); }
+      70%  { box-shadow: 0 0 0 8px rgba(34,211,238,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,211,238,0); }
+    }
+
+    .nav-search {
+      flex: 1;
+      max-width: 440px;
+      position: relative;
+    }
+
+    .nav-search input {
+      width: 100%;
+      padding: 8px 14px 8px 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 13.5px;
+      font-family: inherit;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    .nav-search input:focus {
+      border-color: rgba(59,130,246,0.7);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .nav-search .search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.4);
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    .nav-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.07);
+      color: var(--nav-text);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .nav-btn:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.2); }
+    .nav-btn.primary {
+      background: #3b82f6;
+      border-color: transparent;
+      color: #fff;
+    }
+    .nav-btn.primary:hover { background: #2563eb; }
+
+    .bookmark-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 9px;
+      background: #ef4444;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 0 4px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--hero-from) 0%, var(--hero-to) 100%);
+      padding: 36px 28px 28px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; max-width: 1100px; margin: 0 auto; }
+
+    .hero h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      margin-top: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 6px 14px 6px 10px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .stat-pill .icon { font-size: 15px; }
+    .stat-pill strong { font-weight: 700; }
+
+    .last-refresh {
+      margin-top: 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      position: sticky;
+      top: 56px;
+      z-index: 90;
+    }
+
+    .filter-bar::-webkit-scrollbar { display: none; }
+
+    .filter-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-3);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      margin-right: 4px;
+    }
+
+    .filter-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text-2);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .filter-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-pill.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .filter-pill .count {
+      background: rgba(0,0,0,0.12);
+      border-radius: 100px;
+      padding: 1px 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .filter-pill.active .count { background: rgba(255,255,255,0.25); }
+
+    /* ── MAIN LAYOUT ── */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 28px 60px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .results-count {
+      font-size: 13px;
+      color: var(--text-3);
+    }
+
+    /* ── GAPS SECTION ── */
+    .gaps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 700px) { .gaps-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) and (min-width: 701px) { .gaps-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .gap-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gap-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .gap-card:nth-child(1)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+    .gap-card:nth-child(2)::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+    .gap-card:nth-child(3)::before { background: linear-gradient(90deg, #10b981, #34d399); }
+
+    .gap-card:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+
+    .gap-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .gap-num span {
+      background: var(--bg);
+      border-radius: 100px;
+      padding: 2px 8px;
+    }
+
+    .gap-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .gap-card p {
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    .gap-tag {
+      display: inline-block;
+      margin-top: 10px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ── PAPERS GRID ── */
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 16px;
+    }
+
+    .paper-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .paper-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .paper-card.hidden { display: none; }
+
+    .card-top {
+      padding: 16px 18px 12px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topic-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 100px;
+      padding: 4px 10px;
+      font-size: 11.5px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .bookmark-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 6px;
+      color: var(--text-3);
+      font-size: 16px;
+      transition: var(--transition);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .bookmark-btn:hover { color: var(--amber); background: #fffbeb; }
+    .bookmark-btn.saved { color: var(--amber); }
+
+    .new-badge {
+      background: #dcfce7;
+      color: #15803d;
+      border-radius: 100px;
+      padding: 2px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .card-body {
+      padding: 14px 18px;
+      flex: 1;
+    }
+
+    .paper-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+
+    .paper-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .paper-title a:hover { color: var(--accent); }
+
+    .paper-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .meta-venue {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+
+    .meta-date {
+      font-size: 11.5px;
+      color: var(--text-3);
+    }
+
+    .paper-summary {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    .card-footer {
+      padding: 12px 18px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 7px;
+      background: #eff6ff;
+      transition: var(--transition);
+    }
+
+    .card-link:hover { background: #dbeafe; }
+
+    .card-link-disabled {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-3);
+      padding: 5px 12px;
+    }
+
+    /* Topic badge colors */
+    .topic-data-centric   { background: #eff6ff; color: #1d4ed8; }
+    .topic-label-noise    { background: #fff7ed; color: #c2410c; }
+    .topic-data-quality   { background: #f0fdf4; color: #15803d; }
+    .topic-synthetic      { background: #faf5ff; color: #7c3aed; }
+    .topic-trustworthy    { background: #fff1f2; color: #be123c; }
+    .topic-dataset-quality{ background: #f0f9ff; color: #0369a1; }
+
+    /* ── TREND SECTION ── */
+    .trend-section {
+      margin-top: 32px;
+    }
+
+    .trend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .trend-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: var(--transition);
+    }
+
+    .trend-card:hover { box-shadow: var(--shadow); }
+
+    .trend-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .trend-card h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .trend-card p {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    .trend-heat {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--amber);
+      background: #fffbeb;
+      border-radius: 5px;
+      padding: 2px 7px;
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-3);
+      display: none;
+    }
+
+    .empty-state .emoji { font-size: 40px; margin-bottom: 12px; }
+    .empty-state p { font-size: 14px; }
+
+    /* ── READING LIST DRAWER ── */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 200;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .drawer-overlay.open { display: block; opacity: 1; }
+
+    .drawer {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: 380px;
+      max-width: 95vw;
+      background: var(--surface);
+      z-index: 201;
+      box-shadow: var(--shadow-lg);
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .drawer.open { transform: translateX(0); }
+
+    .drawer-header {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .drawer-close {
+      background: var(--bg);
+      border: none;
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      color: var(--text-2);
+    }
+
+    .drawer-close:hover { background: var(--border); }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+
+    .drawer-empty {
+      text-align: center;
+      color: var(--text-3);
+      padding: 40px 20px;
+      font-size: 13.5px;
+    }
+
+    .drawer-empty .emoji { font-size: 36px; margin-bottom: 10px; }
+
+    .saved-item {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: var(--transition);
+    }
+
+    .saved-item:hover { border-color: var(--accent); }
+
+    .saved-item-topic {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+
+    .saved-item-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .saved-item-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .saved-item-btn {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+
+    .saved-item-btn.read {
+      background: #eff6ff;
+      color: var(--accent);
+    }
+    .saved-item-btn.read:hover { background: #dbeafe; }
+    .saved-item-btn.remove {
+      background: var(--bg);
+      color: var(--text-3);
+    }
+    .saved-item-btn.remove:hover { background: #fee2e2; color: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--nav-bg);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 24px;
+      font-size: 12.5px;
+    }
+
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: white; }
+
+    footer .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    🔬 <span>Research<strong>Pulse</strong></span>
+    <span class="pulse"></span>
+  </a>
+  <div class="nav-search">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="search-input" placeholder="Search papers, topics, venues…" autocomplete="off" />
+  </div>
+  <div class="nav-right">
+    <a href="https://scholar.google.com" target="_blank" rel="noopener" class="nav-btn">
+      🎓 Google Scholar
+    </a>
+    <a href="https://arxiv.org/list/cs.LG/recent" target="_blank" rel="noopener" class="nav-btn">
+      📄 arXiv
+    </a>
+    <button class="nav-btn primary" onclick="openDrawer()">
+      🔖 Reading List <span class="bookmark-count" id="bookmark-count">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Your <em>Research Pulse</em> in AI &amp; Data Quality</h1>
+    <p class="hero-sub">Tracking the latest papers across 6 critical topics for your Fall 2027 research goal. Updated every Monday &amp; Thursday.</p>
+    <div class="hero-stats">
+      <div class="stat-pill"><span class="icon">📄</span> <strong id="total-papers">12</strong> Papers tracked</div>
+      <div class="stat-pill"><span class="icon">🗂️</span> <strong>6</strong> Research topics</div>
+      <div class="stat-pill"><span class="icon">🆕</span> <strong id="new-count">2</strong> New this week</div>
+      <div class="stat-pill"><span class="icon">🎯</span> <strong>3</strong> Research gaps identified</div>
+    </div>
+    <div class="last-refresh">
+      🕐 Last refreshed: <span id="refresh-date">June 19, 2026</span>
+      &nbsp;·&nbsp; Auto-refreshes Monday &amp; Thursday 8am
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Filter</span>
+  <button class="filter-pill active" data-filter="all" onclick="setFilter('all', this)">
+    All Topics <span class="count" id="count-all">12</span>
+  </button>
+  <button class="filter-pill" data-filter="data-centric-ai" onclick="setFilter('data-centric-ai', this)">
+    🏗️ Data-Centric AI <span class="count" id="count-data-centric-ai">2</span>
+  </button>
+  <button class="filter-pill" data-filter="label-noise" onclick="setFilter('label-noise', this)">
+    🏷️ Label Noise <span class="count" id="count-label-noise">2</span>
+  </button>
+  <button class="filter-pill" data-filter="data-quality" onclick="setFilter('data-quality', this)">
+    ✅ Data Quality <span class="count" id="count-data-quality">2</span>
+  </button>
+  <button class="filter-pill" data-filter="synthetic-data" onclick="setFilter('synthetic-data', this)">
+    🧬 Synthetic Data <span class="count" id="count-synthetic-data">2</span>
+  </button>
+  <button class="filter-pill" data-filter="trustworthy-ai" onclick="setFilter('trustworthy-ai', this)">
+    🛡️ Trustworthy AI <span class="count" id="count-trustworthy-ai">2</span>
+  </button>
+  <button class="filter-pill" data-filter="dataset-quality" onclick="setFilter('dataset-quality', this)">
+    📊 Dataset Quality <span class="count" id="count-dataset-quality">2</span>
+  </button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- RESEARCH GAPS -->
+  <div class="section-header">
+    <div class="section-title"><span class="dot"></span> 🎯 Highest-Opportunity Research Gaps</div>
+  </div>
+  <div class="gaps-grid" style="margin-bottom: 32px;">
+    <div class="gap-card">
+      <div class="gap-num"><span>Gap #1</span></div>
+      <h3>Instance-Dependent Label Noise</h3>
+      <p>Under-researched vs. class-dependent noise. Real-world noise depends on features, not just labels — the new frontier.</p>
+      <span class="gap-tag">Label Noise Learning</span>
+    </div>
+    <div class="gap-card">
+      <div class="gap-num"><span>Gap #2</span></div>
+      <h3>Scalable Dataset Quality Scoring</h3>
+      <p>Shapley-based methods are principled but computationally expensive at scale. An open and high-impact problem.</p>
+      <span class="gap-tag" style="background:#f5f3ff;color:#6d28d9;">Dataset Quality Assessment</span>
+    </div>
+    <div class="gap-card">
+      <div class="gap-num"><span>Gap #3</span></div>
+      <h3>Detecting Model Collapse from Synthetic Data</h3>
+      <p>Very new, very open. Models trained on too much AI-generated data degrade — no consensus solution yet.</p>
+      <span class="gap-tag" style="background:#f0fdf4;color:#15803d;">Synthetic Data Generation</span>
+    </div>
+  </div>
+
+  <!-- PAPERS -->
+  <div class="section-header">
+    <div class="section-title"><span class="dot"></span> 📚 Latest Papers</div>
+    <div class="results-count" id="results-count">12 papers</div>
+  </div>
+
+  <div class="papers-grid" id="papers-grid"></div>
+  <div class="empty-state" id="empty-state">
+    <div class="emoji">🔍</div>
+    <p>No papers found matching your search.<br>Try a different keyword or clear the filter.</p>
+  </div>
+
+  <!-- TRENDING TOPICS -->
+  <div class="trend-section">
+    <div class="section-header">
+      <div class="section-title"><span class="dot"></span> 🔥 Trending in the Community</div>
+    </div>
+    <div class="trend-grid">
+      <div class="trend-card">
+        <div class="trend-icon">🤖</div>
+        <div>
+          <h4>LLMs as Data Auditors</h4>
+          <p>Using language models to automatically detect and flag data quality issues.</p>
+          <div class="trend-heat">🔥 Very Hot</div>
+        </div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-icon">💀</div>
+        <div>
+          <h4>Model Collapse</h4>
+          <p>AI trained on AI-generated data degrades over generations — active area at all frontier labs.</p>
+          <div class="trend-heat">🔥 Very Hot</div>
+        </div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-icon">⚖️</div>
+        <div>
+          <h4>Data Shapley Values</h4>
+          <p>Principled way to score individual data points' contribution to model performance.</p>
+          <div class="trend-heat">🔥 Growing Fast</div>
+        </div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-icon">🧠</div>
+        <div>
+          <h4>Constitutional AI 2.0</h4>
+          <p>Debate-based scalable oversight framework for aligning AI behavior at scale.</p>
+          <div class="trend-heat">🔥 High Impact</div>
+        </div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-icon">🏭</div>
+        <div>
+          <h4>Data Quality in Production</h4>
+          <p>End-to-end frameworks that monitor and fix data quality in real-time ML pipelines.</p>
+          <div class="trend-heat">🔥 Emerging</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- READING LIST DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <h2>🔖 Reading List</h2>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-body" id="drawer-body">
+    <div class="drawer-empty" id="drawer-empty">
+      <div class="emoji">📋</div>
+      <p>No saved papers yet.<br>Bookmark papers to build your reading list.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>🔬 <strong style="color:rgba(255,255,255,0.7);">ResearchPulse</strong> — AI &amp; Data Quality Digest</div>
+    <div>
+      <a href="https://scholar.google.com" target="_blank">Google Scholar</a> &nbsp;·&nbsp;
+      <a href="https://arxiv.org/list/cs.LG/recent" target="_blank">arXiv cs.LG</a> &nbsp;·&nbsp;
+      <a href="https://paperswithcode.com" target="_blank">Papers With Code</a> &nbsp;·&nbsp;
+      <a href="https://www.semanticscholar.org" target="_blank">Semantic Scholar</a>
+    </div>
+    <div>Refreshed every Mon &amp; Thu · Built for Fall 2027 research readiness</div>
+  </div>
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+const PAPERS = [
+  {
+    id: 1,
+    topic: "data-centric-ai",
+    topicLabel: "Data-Centric AI",
+    topicIcon: "🏗️",
+    topicClass: "topic-data-centric",
+    isNew: false,
+    title: "Data-centric Artificial Intelligence: A Survey",
+    venue: "ACM Computing Surveys",
+    date: "Jan 2025",
+    url: "https://arxiv.org/abs/2303.10158",
+    summary: "The definitive overview of data-centric AI. Covers training data development, inference data development, and data maintenance as the three pillars of the field."
+  },
+  {
+    id: 2,
+    topic: "data-centric-ai",
+    topicLabel: "Data-Centric AI",
+    topicIcon: "🏗️",
+    topicClass: "topic-data-centric",
+    isNew: true,
+    title: "Data Understanding for Data-Centric AI – Framework Development and Review",
+    venue: "BISE Journal",
+    date: "2026",
+    url: "https://link.springer.com/article/10.1007/s12599-024-00857-8",
+    summary: "Introduces a framework for evaluating and understanding data systematically before model development — bridging the gap between data management and AI engineering."
+  },
+  {
+    id: 3,
+    topic: "label-noise",
+    topicLabel: "Label Noise Learning",
+    topicIcon: "🏷️",
+    topicClass: "topic-label-noise",
+    isNew: false,
+    title: "A Survey on Learning from Data with Label Noise via Deep Neural Networks",
+    venue: "Taylor & Francis",
+    date: "Apr 2025",
+    url: "https://www.tandfonline.com/doi/full/10.1080/21642583.2025.2488120",
+    summary: "Comprehensive categorization of state-of-the-art noise-handling approaches. Covers types, sources, and impacts of label noise across computer vision and NLP."
+  },
+  {
+    id: 4,
+    topic: "label-noise",
+    topicLabel: "Label Noise Learning",
+    topicIcon: "🏷️",
+    topicClass: "topic-label-noise",
+    isNew: false,
+    title: "CLIPCleaner: Cleaning Noisy Labels with CLIP",
+    venue: "arXiv",
+    date: "2025",
+    url: "https://arxiv.org/pdf/2408.10012",
+    summary: "Uses CLIP embeddings to detect and remove noisy labels without supervision. Gaining strong traction in vision tasks — a practical tool for real-world noisy datasets."
+  },
+  {
+    id: 5,
+    topic: "data-quality",
+    topicLabel: "Data Quality in ML",
+    topicIcon: "✅",
+    topicClass: "topic-data-quality",
+    isNew: false,
+    title: "End-to-End Data Quality-Driven Framework for ML in Production",
+    venue: "arXiv",
+    date: "Dec 2025",
+    url: "https://arxiv.org/abs/2512.19723",
+    summary: "Real-time data quality integration with deployed ML systems. Monitors and remediates quality issues at inference time without stopping the pipeline."
+  },
+  {
+    id: 6,
+    topic: "data-quality",
+    topicLabel: "Data Quality in ML",
+    topicIcon: "✅",
+    topicClass: "topic-data-quality",
+    isNew: true,
+    title: "Enhancing ML Performance through Intelligent Data Quality Assessment",
+    venue: "IASEAI 2026",
+    date: "2026",
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11908581/",
+    summary: "Unsupervised, data-centric framework for automated quality checks without needing pre-labeled quality data. Strong results on tabular ML benchmarks."
+  },
+  {
+    id: 7,
+    topic: "synthetic-data",
+    topicLabel: "Synthetic Data Generation",
+    topicIcon: "🧬",
+    topicClass: "topic-synthetic",
+    isNew: true,
+    title: "SynthAI@SIGMOD 2026: Workshop on Synthetic Data Generation and Management",
+    venue: "SIGMOD 2026",
+    date: "2026",
+    url: "https://synthetic-data-sigmod.github.io/syndata2026/",
+    summary: "The first major dedicated venue for synthetic data pipelines — bringing together data management and ML communities to define the next generation of synthetic data standards."
+  },
+  {
+    id: 8,
+    topic: "synthetic-data",
+    topicLabel: "Synthetic Data Generation",
+    topicIcon: "🧬",
+    topicClass: "topic-synthetic",
+    isNew: false,
+    title: "AI Training in 2026: Anchoring Synthetic Data in Human Truth",
+    venue: "Industry Report",
+    date: "2026",
+    url: "https://invisibletech.ai/blog/ai-training-in-2026-anchoring-synthetic-data-in-human-truth",
+    summary: "Analysis of how Anthropic, Google DeepMind, Meta, and OpenAI use synthetic data for alignment and reasoning — and why human-anchored data remains essential to prevent model collapse."
+  },
+  {
+    id: 9,
+    topic: "trustworthy-ai",
+    topicLabel: "Trustworthy AI",
+    topicIcon: "🛡️",
+    topicClass: "topic-trustworthy",
+    isNew: false,
+    title: "Mapping Trustworthiness in LLMs: A Bibliometric Analysis",
+    venue: "arXiv",
+    date: "Mar 2025",
+    url: "https://arxiv.org/pdf/2503.04785",
+    summary: "2,006 studies analyzed from 2019–2025. Publications on LLM trustworthiness grew from 3 articles (2019) to 1,434 (2024), showing explosive growth of the field."
+  },
+  {
+    id: 10,
+    topic: "trustworthy-ai",
+    topicLabel: "Trustworthy AI",
+    topicIcon: "🛡️",
+    topicClass: "topic-trustworthy",
+    isNew: false,
+    title: "Constitutional AI 2.0: Scalable Oversight Through Debate",
+    venue: "Anthropic",
+    date: "Mar 2025",
+    url: "https://www.anthropic.com",
+    summary: "Debate-based framework for ensuring AI systems behave as intended. Introduces a scalable oversight mechanism where AI systems critique each other's responses to surface failures."
+  },
+  {
+    id: 11,
+    topic: "dataset-quality",
+    topicLabel: "Dataset Quality Assessment",
+    topicIcon: "📊",
+    topicClass: "topic-dataset-quality",
+    isNew: false,
+    title: "Chunked Data Shapley: A Scalable Dataset Quality Assessment",
+    venue: "CIKM 2025",
+    date: "Nov 2025",
+    url: "https://arxiv.org/pdf/2508.16255",
+    summary: "Scores the contribution and quality of individual data chunks to model performance. Makes Shapley-based dataset valuation practical for large-scale ML datasets."
+  },
+  {
+    id: 12,
+    topic: "dataset-quality",
+    topicLabel: "Dataset Quality Assessment",
+    topicIcon: "📊",
+    topicClass: "topic-dataset-quality",
+    isNew: false,
+    title: "METRIC-framework for Assessing Data Quality for Trustworthy AI in Medicine",
+    venue: "npj Digital Medicine",
+    date: "2025",
+    url: "https://www.nature.com/articles/s41746-024-01196-4",
+    summary: "15-dimension quality checklist for medical ML datasets. Gaining adoption outside medicine as a general framework for comprehensive dataset quality evaluation."
+  }
+];
+
+// ── STATE ──────────────────────────────────────────────────────────────────
+let activeFilter = 'all';
+let searchQuery = '';
+let bookmarks = JSON.parse(localStorage.getItem('rp_bookmarks') || '[]');
+
+// ── RENDER PAPERS ──────────────────────────────────────────────────────────
+function renderPapers() {
+  const grid = document.getElementById('papers-grid');
+  const empty = document.getElementById('empty-state');
+  const resultsCount = document.getElementById('results-count');
+
+  const filtered = PAPERS.filter(p => {
+    const matchesTopic = activeFilter === 'all' || p.topic === activeFilter;
+    const q = searchQuery.toLowerCase();
+    const matchesSearch = !q ||
+      p.title.toLowerCase().includes(q) ||
+      p.summary.toLowerCase().includes(q) ||
+      p.topicLabel.toLowerCase().includes(q) ||
+      p.venue.toLowerCase().includes(q);
+    return matchesTopic && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    resultsCount.textContent = '0 papers';
+  } else {
+    empty.style.display = 'none';
+    resultsCount.textContent = `${filtered.length} paper${filtered.length !== 1 ? 's' : ''}`;
+    grid.innerHTML = filtered.map(p => renderCard(p)).join('');
+  }
+}
+
+function renderCard(p) {
+  const isSaved = bookmarks.includes(p.id);
+  const hasLink = p.url && !p.url.includes('www.anthropic.com');
+  return `
+    <div class="paper-card" id="card-${p.id}">
+      <div class="card-top">
+        <span class="topic-badge ${p.topicClass}">${p.topicIcon} ${p.topicLabel}</span>
+        <div style="display:flex;gap:6px;align-items:center;">
+          ${p.isNew ? '<span class="new-badge">New</span>' : ''}
+          <button class="bookmark-btn ${isSaved ? 'saved' : ''}" onclick="toggleBookmark(${p.id})" title="${isSaved ? 'Remove from reading list' : 'Save to reading list'}">
+            ${isSaved ? '★' : '☆'}
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="paper-title">
+          ${hasLink ? `<a href="${p.url}" target="_blank" rel="noopener">${p.title}</a>` : p.title}
+        </div>
+        <div class="paper-meta">
+          <span class="meta-venue">${p.venue}</span>
+          <span class="meta-date">📅 ${p.date}</span>
+        </div>
+        <p class="paper-summary">${p.summary}</p>
+      </div>
+      <div class="card-footer">
+        ${hasLink
+          ? `<a href="${p.url}" target="_blank" rel="noopener" class="card-link">Read Paper →</a>`
+          : `<span class="card-link-disabled">Paper (search online)</span>`
+        }
+        <button class="bookmark-btn ${isSaved ? 'saved' : ''}" onclick="toggleBookmark(${p.id})" style="font-size:14px;">
+          ${isSaved ? '★ Saved' : '☆ Save'}
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+// ── FILTERS ────────────────────────────────────────────────────────────────
+function setFilter(topic, btn) {
+  activeFilter = topic;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  renderPapers();
+}
+
+// ── SEARCH ─────────────────────────────────────────────────────────────────
+document.getElementById('search-input').addEventListener('input', e => {
+  searchQuery = e.target.value;
+  renderPapers();
+});
+
+// ── BOOKMARKS ──────────────────────────────────────────────────────────────
+function toggleBookmark(id) {
+  if (bookmarks.includes(id)) {
+    bookmarks = bookmarks.filter(b => b !== id);
+  } else {
+    bookmarks.push(id);
+  }
+  localStorage.setItem('rp_bookmarks', JSON.stringify(bookmarks));
+  updateBookmarkCount();
+  renderPapers();
+  renderDrawer();
+}
+
+function updateBookmarkCount() {
+  const el = document.getElementById('bookmark-count');
+  el.textContent = bookmarks.length;
+  el.style.display = bookmarks.length > 0 ? 'inline-flex' : 'none';
+}
+
+function renderDrawer() {
+  const body = document.getElementById('drawer-body');
+  const empty = document.getElementById('drawer-empty');
+  if (bookmarks.length === 0) {
+    empty.style.display = 'block';
+    const items = body.querySelectorAll('.saved-item');
+    items.forEach(i => i.remove());
+    return;
+  }
+  empty.style.display = 'none';
+  const existing = body.querySelectorAll('.saved-item');
+  existing.forEach(i => i.remove());
+
+  bookmarks.forEach(id => {
+    const p = PAPERS.find(p => p.id === id);
+    if (!p) return;
+    const div = document.createElement('div');
+    div.className = 'saved-item';
+    div.innerHTML = `
+      <div class="saved-item-topic">${p.topicIcon} ${p.topicLabel}</div>
+      <div class="saved-item-title">${p.title}</div>
+      <div class="paper-meta" style="margin-top:4px;">
+        <span class="meta-venue">${p.venue}</span>
+        <span class="meta-date">${p.date}</span>
+      </div>
+      <div class="saved-item-actions">
+        ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener"><button class="saved-item-btn read">Read Paper →</button></a>` : ''}
+        <button class="saved-item-btn remove" onclick="toggleBookmark(${id})">Remove</button>
+      </div>
+    `;
+    body.appendChild(div);
+  });
+}
+
+// ── DRAWER ─────────────────────────────────────────────────────────────────
+function openDrawer() {
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawer-overlay').classList.add('open');
+  renderDrawer();
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+(function init() {
+  // Update stats
+  document.getElementById('total-papers').textContent = PAPERS.length;
+  document.getElementById('new-count').textContent = PAPERS.filter(p => p.isNew).length;
+
+  // Update filter counts
+  document.getElementById('count-all').textContent = PAPERS.length;
+  const topics = ['data-centric-ai','label-noise','data-quality','synthetic-data','trustworthy-ai','dataset-quality'];
+  topics.forEach(t => {
+    const el = document.getElementById(`count-${t}`);
+    if (el) el.textContent = PAPERS.filter(p => p.topic === t).length;
+  });
+
+  updateBookmarkCount();
+  renderPapers();
+})();
+</script>
+</body>
+</html>
