@@ -1,1317 +1,1079 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ResearchPulse — AI & Data Quality Digest</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #f0f4f8;
-      --surface: #ffffff;
-      --surface2: #f8fafc;
-      --border: #e2e8f0;
-      --text: #0f172a;
-      --text-2: #475569;
-      --text-3: #94a3b8;
-      --accent: #3b82f6;
-      --accent-hover: #2563eb;
-      --purple: #8b5cf6;
-      --green: #10b981;
-      --amber: #f59e0b;
-      --red: #ef4444;
-      --nav-bg: #0f172a;
-      --nav-text: #e2e8f0;
-      --hero-from: #1e3a5f;
-      --hero-to: #312e81;
-      --radius: 12px;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-      --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
-      --shadow-lg: 0 10px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.07);
-      --transition: all 0.18s ease;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--nav-bg);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      padding: 0 28px;
-      height: 56px;
-      gap: 20px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 800;
-      font-size: 16px;
-      letter-spacing: -0.3px;
-      flex-shrink: 0;
-    }
-
-    .nav-logo span.pulse {
-      display: inline-block;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #22d3ee;
-      box-shadow: 0 0 0 0 rgba(34,211,238,0.6);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%   { box-shadow: 0 0 0 0 rgba(34,211,238,0.6); }
-      70%  { box-shadow: 0 0 0 8px rgba(34,211,238,0); }
-      100% { box-shadow: 0 0 0 0 rgba(34,211,238,0); }
-    }
-
-    .nav-search {
-      flex: 1;
-      max-width: 440px;
-      position: relative;
-    }
-
-    .nav-search input {
-      width: 100%;
-      padding: 8px 14px 8px 36px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      font-size: 13.5px;
-      font-family: inherit;
-      outline: none;
-      transition: var(--transition);
-    }
-
-    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
-    .nav-search input:focus {
-      border-color: rgba(59,130,246,0.7);
-      background: rgba(255,255,255,0.12);
-    }
-
-    .nav-search .search-icon {
-      position: absolute;
-      left: 11px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(255,255,255,0.4);
-      font-size: 14px;
-      pointer-events: none;
-    }
-
-    .nav-right {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.07);
-      color: var(--nav-text);
-      font-size: 13px;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      transition: var(--transition);
-      text-decoration: none;
-    }
-
-    .nav-btn:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.2); }
-    .nav-btn.primary {
-      background: #3b82f6;
-      border-color: transparent;
-      color: #fff;
-    }
-    .nav-btn.primary:hover { background: #2563eb; }
-
-    .bookmark-count {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 18px;
-      height: 18px;
-      border-radius: 9px;
-      background: #ef4444;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 0 4px;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, var(--hero-from) 0%, var(--hero-to) 100%);
-      padding: 36px 28px 28px;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-
-    .hero-inner { position: relative; max-width: 1100px; margin: 0 auto; }
-
-    .hero h1 {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-sub {
-      margin-top: 8px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.65);
-      max-width: 520px;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 24px;
-      margin-top: 24px;
-      flex-wrap: wrap;
-    }
-
-    .stat-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 100px;
-      padding: 6px 14px 6px 10px;
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .stat-pill .icon { font-size: 15px; }
-    .stat-pill strong { font-weight: 700; }
-
-    .last-refresh {
-      margin-top: 16px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.45);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* ── FILTER BAR ── */
-    .filter-bar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 28px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      position: sticky;
-      top: 56px;
-      z-index: 90;
-    }
-
-    .filter-bar::-webkit-scrollbar { display: none; }
-
-    .filter-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-3);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      flex-shrink: 0;
-      margin-right: 4px;
-    }
-
-    .filter-pill {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 100px;
-      border: 1.5px solid var(--border);
-      background: var(--surface);
-      color: var(--text-2);
-      font-size: 13px;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      transition: var(--transition);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .filter-pill:hover { border-color: var(--accent); color: var(--accent); }
-    .filter-pill.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
-    }
-
-    .filter-pill .count {
-      background: rgba(0,0,0,0.12);
-      border-radius: 100px;
-      padding: 1px 6px;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .filter-pill.active .count { background: rgba(255,255,255,0.25); }
-
-    /* ── MAIN LAYOUT ── */
-    .main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 28px 60px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-title .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .results-count {
-      font-size: 13px;
-      color: var(--text-3);
-    }
-
-    /* ── GAPS SECTION ── */
-    .gaps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-bottom: 32px;
-    }
-
-    @media (max-width: 700px) { .gaps-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 900px) and (min-width: 701px) { .gaps-grid { grid-template-columns: repeat(2, 1fr); } }
-
-    .gap-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .gap-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-    }
-
-    .gap-card:nth-child(1)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
-    .gap-card:nth-child(2)::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
-    .gap-card:nth-child(3)::before { background: linear-gradient(90deg, #10b981, #34d399); }
-
-    .gap-card:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
-
-    .gap-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-3);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .gap-num span {
-      background: var(--bg);
-      border-radius: 100px;
-      padding: 2px 8px;
-    }
-
-    .gap-card h3 {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-      line-height: 1.35;
-    }
-
-    .gap-card p {
-      font-size: 12.5px;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
-
-    .gap-tag {
-      display: inline-block;
-      margin-top: 10px;
-      background: #eff6ff;
-      color: #1d4ed8;
-      border-radius: 6px;
-      padding: 3px 8px;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    /* ── PAPERS GRID ── */
-    .papers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 16px;
-    }
-
-    .paper-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      transition: var(--transition);
-      overflow: hidden;
-    }
-
-    .paper-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
-    .paper-card.hidden { display: none; }
-
-    .card-top {
-      padding: 16px 18px 12px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .topic-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      border-radius: 100px;
-      padding: 4px 10px;
-      font-size: 11.5px;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-
-    .bookmark-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      border-radius: 6px;
-      color: var(--text-3);
-      font-size: 16px;
-      transition: var(--transition);
-      line-height: 1;
-      flex-shrink: 0;
-    }
-
-    .bookmark-btn:hover { color: var(--amber); background: #fffbeb; }
-    .bookmark-btn.saved { color: var(--amber); }
-
-    .new-badge {
-      background: #dcfce7;
-      color: #15803d;
-      border-radius: 100px;
-      padding: 2px 8px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .card-body {
-      padding: 14px 18px;
-      flex: 1;
-    }
-
-    .paper-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.45;
-      margin-bottom: 8px;
-    }
-
-    .paper-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .paper-title a:hover { color: var(--accent); }
-
-    .paper-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .meta-venue {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 2px 7px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-2);
-    }
-
-    .meta-date {
-      font-size: 11.5px;
-      color: var(--text-3);
-    }
-
-    .paper-summary {
-      font-size: 13px;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
-
-    .card-footer {
-      padding: 12px 18px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      padding: 5px 12px;
-      border-radius: 7px;
-      background: #eff6ff;
-      transition: var(--transition);
-    }
-
-    .card-link:hover { background: #dbeafe; }
-
-    .card-link-disabled {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-3);
-      padding: 5px 12px;
-    }
-
-    /* Topic badge colors */
-    .topic-data-centric   { background: #eff6ff; color: #1d4ed8; }
-    .topic-label-noise    { background: #fff7ed; color: #c2410c; }
-    .topic-data-quality   { background: #f0fdf4; color: #15803d; }
-    .topic-synthetic      { background: #faf5ff; color: #7c3aed; }
-    .topic-trustworthy    { background: #fff1f2; color: #be123c; }
-    .topic-dataset-quality{ background: #f0f9ff; color: #0369a1; }
-
-    /* ── TREND SECTION ── */
-    .trend-section {
-      margin-top: 32px;
-    }
-
-    .trend-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
-    }
-
-    .trend-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      transition: var(--transition);
-    }
-
-    .trend-card:hover { box-shadow: var(--shadow); }
-
-    .trend-icon {
-      font-size: 22px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .trend-card h4 {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .trend-card p {
-      font-size: 12px;
-      color: var(--text-2);
-      line-height: 1.5;
-    }
-
-    .trend-heat {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 8px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--amber);
-      background: #fffbeb;
-      border-radius: 5px;
-      padding: 2px 7px;
-    }
-
-    /* ── EMPTY STATE ── */
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-3);
-      display: none;
-    }
-
-    .empty-state .emoji { font-size: 40px; margin-bottom: 12px; }
-    .empty-state p { font-size: 14px; }
-
-    /* ── READING LIST DRAWER ── */
-    .drawer-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      z-index: 200;
-      display: none;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    .drawer-overlay.open { display: block; opacity: 1; }
-
-    .drawer {
-      position: fixed;
-      top: 0; right: 0; bottom: 0;
-      width: 380px;
-      max-width: 95vw;
-      background: var(--surface);
-      z-index: 201;
-      box-shadow: var(--shadow-lg);
-      transform: translateX(100%);
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .drawer.open { transform: translateX(0); }
-
-    .drawer-header {
-      padding: 20px 20px 16px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .drawer-header h2 {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .drawer-close {
-      background: var(--bg);
-      border: none;
-      width: 32px; height: 32px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-      color: var(--text-2);
-    }
-
-    .drawer-close:hover { background: var(--border); }
-
-    .drawer-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px;
-    }
-
-    .drawer-empty {
-      text-align: center;
-      color: var(--text-3);
-      padding: 40px 20px;
-      font-size: 13.5px;
-    }
-
-    .drawer-empty .emoji { font-size: 36px; margin-bottom: 10px; }
-
-    .saved-item {
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      margin-bottom: 10px;
-      transition: var(--transition);
-    }
-
-    .saved-item:hover { border-color: var(--accent); }
-
-    .saved-item-topic {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-3);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 5px;
-    }
-
-    .saved-item-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 4px;
-      line-height: 1.4;
-    }
-
-    .saved-item-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .saved-item-btn {
-      font-size: 12px;
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      font-family: inherit;
-    }
-
-    .saved-item-btn.read {
-      background: #eff6ff;
-      color: var(--accent);
-    }
-    .saved-item-btn.read:hover { background: #dbeafe; }
-    .saved-item-btn.remove {
-      background: var(--bg);
-      color: var(--text-3);
-    }
-    .saved-item-btn.remove:hover { background: #fee2e2; color: var(--red); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--nav-bg);
-      color: rgba(255,255,255,0.4);
-      text-align: center;
-      padding: 24px;
-      font-size: 12.5px;
-    }
-
-    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
-    footer a:hover { color: white; }
-
-    footer .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
-    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResearchPulse — PhD Research Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f0f2f8;
+  --surface: #ffffff;
+  --border: #e2e5ef;
+  --text: #1a1a2e;
+  --muted: #666;
+  --accent: #2d6a9f;
+  --accent-light: #e8f2fc;
+  --nav-bg: #0f2547;
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+
+nav {
+  background: var(--nav-bg);
+  color: white;
+  padding: 0 28px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.nav-logo { font-size: 17px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+.pulse-dot { width: 8px; height: 8px; background: #4CAF50; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(1.3)} }
+.nav-links { display: flex; gap: 4px; margin-left: 12px; }
+.nav-link { color: rgba(255,255,255,.7); font-size: 13px; font-weight: 500; text-decoration: none; padding: 6px 10px; border-radius: 6px; transition: all .15s; }
+.nav-link:hover { background: rgba(255,255,255,.1); color: white; }
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.search-input { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: white; padding: 6px 12px; border-radius: 20px; font-size: 13px; width: 210px; outline: none; }
+.search-input::placeholder { color: rgba(255,255,255,.45); }
+.search-input:focus { background: rgba(255,255,255,.18); }
+.list-btn { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.list-btn:hover { background: rgba(255,255,255,.2); }
+.count-badge { background: #ef4444; color: white; font-size: 10px; font-weight: 700; border-radius: 10px; padding: 1px 5px; display: none; }
+
+.hero { background: linear-gradient(135deg, #0f2547 0%, #1a4a8a 100%); color: white; padding: 40px 32px 36px; text-align: center; }
+.hero-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: 27px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 10px; }
+.hero p { font-size: 13.5px; opacity: .8; max-width: 580px; margin: 0 auto 20px; line-height: 1.65; }
+.hero-stats { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+.stat-pill { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; padding: 5px 16px; font-size: 13px; font-weight: 600; }
+.stat-pill span { opacity: .72; font-weight: 400; }
+
+.filter-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 11px 24px; position: sticky; top: 56px; z-index: 90; display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+.pill { border: 1.5px solid var(--border); background: var(--bg); color: var(--muted); padding: 5px 13px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all .15s; }
+.pill:hover { border-color: var(--accent); color: var(--accent); }
+.pill.active { background: var(--accent); color: white; border-color: var(--accent); }
+.pill-cnt { font-size: 10px; background: rgba(0,0,0,.12); border-radius: 8px; padding: 1px 5px; }
+.pill.active .pill-cnt { background: rgba(255,255,255,.25); }
+.results-note { margin-left: auto; font-size: 12px; color: var(--muted); }
+
+.main { max-width: 1000px; margin: 0 auto; padding: 24px 20px 60px; }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #999; margin: 28px 0 14px; }
+
+.topic-section { margin-bottom: 38px; }
+.topic-header { display: flex; align-items: center; gap: 13px; margin-bottom: 16px; padding-bottom: 13px; border-bottom: 2px solid var(--border); }
+.topic-icon-lg { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.topic-title { font-size: 18px; font-weight: 800; }
+.topic-desc { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+
+.paper-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; transition: box-shadow .15s; }
+.paper-card:hover { box-shadow: var(--shadow); }
+.card-head { padding: 15px 18px; cursor: pointer; display: flex; align-items: flex-start; gap: 14px; }
+.card-head:hover { background: #fafbff; }
+.card-main { flex: 1; }
+.title-row { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.paper-title { font-size: 14px; font-weight: 700; line-height: 1.45; }
+.new-badge { background: #dcfce7; color: #16a34a; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; flex-shrink: 0; margin-top: 2px; }
+.landmark { background: #fef3c7; color: #92400e; }
+.venue-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.venue-badge { background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 5px; }
+.paper-date { font-size: 11px; color: #999; }
+.paper-authors { font-size: 12px; color: var(--muted); }
+.paper-authors strong { color: var(--text); font-weight: 600; }
+.toggle-btn { width: 28px; height: 28px; border: 1.5px solid var(--border); border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; transition: all .15s; cursor: pointer; }
+.paper-card.open .toggle-btn { background: var(--accent); color: white; border-color: var(--accent); }
+
+.paper-detail { display: none; padding: 0 18px 18px; border-top: 1px solid var(--border); }
+.paper-card.open .paper-detail { display: block; }
+
+.author-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 2px; }
+.achip { background: var(--accent-light); border: 1px solid #c3d9ef; border-radius: 20px; padding: 3px 11px; font-size: 11.5px; color: var(--accent); }
+.achip small { opacity: .72; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+@media (max-width: 620px) { .detail-grid { grid-template-columns: 1fr; } }
+.dbox { background: #f7f8fc; border-radius: 8px; padding: 12px 14px; }
+.dbox h4 { font-size: 10.5px; font-weight: 700; letter-spacing: .9px; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+.dbox ul { padding-left: 15px; }
+.dbox li { font-size: 12.5px; color: #444; line-height: 1.6; margin-bottom: 4px; }
+.dbox p { font-size: 12.5px; color: #444; line-height: 1.6; }
+
+.phd-box { background: #fffbe8; border: 1.5px solid #f59e0b; border-radius: 8px; padding: 12px 14px; margin-top: 12px; }
+.phd-box h4 { font-size: 10.5px; font-weight: 700; letter-spacing: .9px; text-transform: uppercase; color: #92400e; margin-bottom: 6px; }
+.phd-box p { font-size: 12.5px; color: #78350f; line-height: 1.65; }
+
+.paper-links { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; align-items: center; }
+.link-btn { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 7px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all .15s; cursor: pointer; border: none; }
+.link-btn.primary { background: var(--accent); color: white; }
+.link-btn.primary:hover { background: #1e5a8e; }
+.link-btn.secondary { background: var(--bg); border: 1.5px solid var(--border); color: var(--muted); }
+.link-btn.secondary:hover { border-color: var(--accent); color: var(--accent); }
+.bmark-btn { margin-left: auto; background: none; border: 1.5px solid var(--border); border-radius: 7px; padding: 6px 11px; font-size: 12px; cursor: pointer; color: var(--muted); }
+.bmark-btn.saved { background: #fffbe8; border-color: #f59e0b; color: #92400e; }
+
+.gaps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.gap-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; border-top: 3px solid; }
+.gap-card.g1 { border-top-color: #ef4444; }
+.gap-card.g2 { border-top-color: #f59e0b; }
+.gap-card.g3 { border-top-color: #10b981; }
+.gap-card.g4 { border-top-color: #3b82f6; }
+.gap-card.g5 { border-top-color: #8b5cf6; }
+.gap-card.g6 { border-top-color: #ec4899; }
+.gap-num { font-size: 24px; font-weight: 800; opacity: .14; margin-bottom: 3px; }
+.gap-title { font-size: 13.5px; font-weight: 700; margin-bottom: 7px; }
+.gap-body { font-size: 12px; color: var(--muted); line-height: 1.65; }
+.gap-tag { display: inline-block; font-size: 10px; font-weight: 600; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; margin-top: 9px; color: var(--muted); }
+
+.researchers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+.rcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
+.ravatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; margin-bottom: 8px; }
+.rname { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.raffil { font-size: 11.5px; color: var(--muted); margin-bottom: 7px; }
+.rtags { display: flex; flex-wrap: wrap; gap: 4px; }
+.rtag { background: var(--accent-light); color: var(--accent); font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; }
+
+.empty-state { text-align: center; padding: 48px 20px; color: var(--muted); display: none; }
+
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 200; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.overlay.open { opacity: 1; pointer-events: all; }
+.drawer { position: fixed; right: -380px; top: 0; bottom: 0; width: 360px; background: var(--surface); z-index: 201; transition: right .25s ease; box-shadow: -4px 0 20px rgba(0,0,0,.15); display: flex; flex-direction: column; }
+.drawer.open { right: 0; }
+.drawer-head { padding: 18px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.drawer-head h3 { font-size: 15px; font-weight: 700; }
+.d-close { width: 30px; height: 30px; border: 1.5px solid var(--border); border-radius: 50%; background: none; cursor: pointer; font-size: 16px; }
+.drawer-body { flex: 1; overflow-y: auto; padding: 12px 16px; }
+.d-empty { padding: 32px; text-align: center; color: var(--muted); font-size: 13px; }
+.saved-item { background: #f7f8fc; border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; }
+.si-title { font-size: 12.5px; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
+.si-actions { display: flex; gap: 6px; }
+.si-btn { font-size: 11px; padding: 4px 10px; border-radius: 6px; border: 1.5px solid var(--border); background: var(--surface); cursor: pointer; font-weight: 600; }
+.si-btn.read { background: var(--accent); color: white; border-color: var(--accent); }
+.si-btn.remove { color: #ef4444; border-color: #fecaca; }
+
+footer { background: var(--nav-bg); color: rgba(255,255,255,.55); text-align: center; padding: 24px; font-size: 12px; line-height: 1.8; }
+footer a { color: rgba(255,255,255,.55); text-decoration: none; }
+footer a:hover { color: white; }
+</style>
 </head>
 <body>
 
-<!-- NAV -->
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>📚 Reading List</h3>
+    <button class="d-close" onclick="closeDrawer()">×</button>
+  </div>
+  <div class="drawer-body" id="drawer-body">
+    <div class="d-empty" id="d-empty">No papers saved yet.<br>Click ☆ on any paper to save it.</div>
+  </div>
+</div>
+
 <nav>
-  <a href="#" class="nav-logo">
-    🔬 <span>Research<strong>Pulse</strong></span>
-    <span class="pulse"></span>
-  </a>
-  <div class="nav-search">
-    <span class="search-icon">⌕</span>
-    <input type="text" id="search-input" placeholder="Search papers, topics, venues…" autocomplete="off" />
+  <div class="nav-logo"><div class="pulse-dot"></div>ResearchPulse</div>
+  <div class="nav-links">
+    <a href="#papers" class="nav-link">Papers</a>
+    <a href="#gaps" class="nav-link">Research Gaps</a>
+    <a href="#researchers" class="nav-link">Researchers</a>
   </div>
   <div class="nav-right">
-    <a href="https://scholar.google.com" target="_blank" rel="noopener" class="nav-btn">
-      🎓 Google Scholar
-    </a>
-    <a href="https://arxiv.org/list/cs.LG/recent" target="_blank" rel="noopener" class="nav-btn">
-      📄 arXiv
-    </a>
-    <button class="nav-btn primary" onclick="openDrawer()">
-      🔖 Reading List <span class="bookmark-count" id="bookmark-count">0</span>
-    </button>
+    <input type="text" class="search-input" id="search-input" placeholder="🔍 Search papers...">
+    <button class="list-btn" onclick="openDrawer()">📚 Reading List <span class="count-badge" id="bmark-count">0</span></button>
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-inner">
-    <h1>Your <em>Research Pulse</em> in AI &amp; Data Quality</h1>
-    <p class="hero-sub">Tracking the latest papers across 6 critical topics for your Fall 2027 research goal. Updated every Monday &amp; Thursday.</p>
-    <div class="hero-stats">
-      <div class="stat-pill"><span class="icon">📄</span> <strong id="total-papers">12</strong> Papers tracked</div>
-      <div class="stat-pill"><span class="icon">🗂️</span> <strong>6</strong> Research topics</div>
-      <div class="stat-pill"><span class="icon">🆕</span> <strong id="new-count">2</strong> New this week</div>
-      <div class="stat-pill"><span class="icon">🎯</span> <strong>3</strong> Research gaps identified</div>
-    </div>
-    <div class="last-refresh">
-      🕐 Last refreshed: <span id="refresh-date">June 19, 2026</span>
-      &nbsp;·&nbsp; Auto-refreshes Monday &amp; Thursday 8am
-    </div>
+  <div class="hero-tag">🎓 PhD Research Preparation Hub</div>
+  <h1>AI & Data Quality — Deep Research Guide</h1>
+  <p>Full author profiles, methodologies, key findings, and PhD research angles across 6 areas. Everything you need to study these fields and speak confidently about them in interviews and your research statement.</p>
+  <div class="hero-stats">
+    <div class="stat-pill"><strong>12</strong> <span>papers with full detail</span></div>
+    <div class="stat-pill"><strong>6</strong> <span>research gaps mapped</span></div>
+    <div class="stat-pill"><strong>8</strong> <span>key researchers</span></div>
+    <div class="stat-pill">🔄 <span>Mon &amp; Thu updates</span></div>
   </div>
 </div>
 
-<!-- FILTER BAR -->
 <div class="filter-bar">
-  <span class="filter-label">Filter</span>
-  <button class="filter-pill active" data-filter="all" onclick="setFilter('all', this)">
-    All Topics <span class="count" id="count-all">12</span>
-  </button>
-  <button class="filter-pill" data-filter="data-centric-ai" onclick="setFilter('data-centric-ai', this)">
-    🏗️ Data-Centric AI <span class="count" id="count-data-centric-ai">2</span>
-  </button>
-  <button class="filter-pill" data-filter="label-noise" onclick="setFilter('label-noise', this)">
-    🏷️ Label Noise <span class="count" id="count-label-noise">2</span>
-  </button>
-  <button class="filter-pill" data-filter="data-quality" onclick="setFilter('data-quality', this)">
-    ✅ Data Quality <span class="count" id="count-data-quality">2</span>
-  </button>
-  <button class="filter-pill" data-filter="synthetic-data" onclick="setFilter('synthetic-data', this)">
-    🧬 Synthetic Data <span class="count" id="count-synthetic-data">2</span>
-  </button>
-  <button class="filter-pill" data-filter="trustworthy-ai" onclick="setFilter('trustworthy-ai', this)">
-    🛡️ Trustworthy AI <span class="count" id="count-trustworthy-ai">2</span>
-  </button>
-  <button class="filter-pill" data-filter="dataset-quality" onclick="setFilter('dataset-quality', this)">
-    📊 Dataset Quality <span class="count" id="count-dataset-quality">2</span>
-  </button>
+  <button class="pill active" onclick="setFilter('all',this)">All <span class="pill-cnt" id="c-all">12</span></button>
+  <button class="pill" onclick="setFilter('dca',this)">🏗️ Data-Centric AI <span class="pill-cnt" id="c-dca">2</span></button>
+  <button class="pill" onclick="setFilter('ln',this)">🏷️ Label Noise <span class="pill-cnt" id="c-ln">2</span></button>
+  <button class="pill" onclick="setFilter('dq',this)">✅ Data Quality <span class="pill-cnt" id="c-dq">2</span></button>
+  <button class="pill" onclick="setFilter('sd',this)">🧬 Synthetic Data <span class="pill-cnt" id="c-sd">2</span></button>
+  <button class="pill" onclick="setFilter('tai',this)">🛡️ Trustworthy AI <span class="pill-cnt" id="c-tai">2</span></button>
+  <button class="pill" onclick="setFilter('dsq',this)">📊 Dataset Quality <span class="pill-cnt" id="c-dsq">2</span></button>
+  <span class="results-note" id="results-note">Showing all 12 papers</span>
 </div>
 
-<!-- MAIN -->
-<div class="main">
+<div class="main" id="papers">
 
-  <!-- RESEARCH GAPS -->
-  <div class="section-header">
-    <div class="section-title"><span class="dot"></span> 🎯 Highest-Opportunity Research Gaps</div>
-  </div>
-  <div class="gaps-grid" style="margin-bottom: 32px;">
-    <div class="gap-card">
-      <div class="gap-num"><span>Gap #1</span></div>
-      <h3>Instance-Dependent Label Noise</h3>
-      <p>Under-researched vs. class-dependent noise. Real-world noise depends on features, not just labels — the new frontier.</p>
-      <span class="gap-tag">Label Noise Learning</span>
-    </div>
-    <div class="gap-card">
-      <div class="gap-num"><span>Gap #2</span></div>
-      <h3>Scalable Dataset Quality Scoring</h3>
-      <p>Shapley-based methods are principled but computationally expensive at scale. An open and high-impact problem.</p>
-      <span class="gap-tag" style="background:#f5f3ff;color:#6d28d9;">Dataset Quality Assessment</span>
-    </div>
-    <div class="gap-card">
-      <div class="gap-num"><span>Gap #3</span></div>
-      <h3>Detecting Model Collapse from Synthetic Data</h3>
-      <p>Very new, very open. Models trained on too much AI-generated data degrade — no consensus solution yet.</p>
-      <span class="gap-tag" style="background:#f0fdf4;color:#15803d;">Synthetic Data Generation</span>
-    </div>
-  </div>
-
-  <!-- PAPERS -->
-  <div class="section-header">
-    <div class="section-title"><span class="dot"></span> 📚 Latest Papers</div>
-    <div class="results-count" id="results-count">12 papers</div>
-  </div>
-
-  <div class="papers-grid" id="papers-grid"></div>
-  <div class="empty-state" id="empty-state">
-    <div class="emoji">🔍</div>
-    <p>No papers found matching your search.<br>Try a different keyword or clear the filter.</p>
-  </div>
-
-  <!-- TRENDING TOPICS -->
-  <div class="trend-section">
-    <div class="section-header">
-      <div class="section-title"><span class="dot"></span> 🔥 Trending in the Community</div>
-    </div>
-    <div class="trend-grid">
-      <div class="trend-card">
-        <div class="trend-icon">🤖</div>
-        <div>
-          <h4>LLMs as Data Auditors</h4>
-          <p>Using language models to automatically detect and flag data quality issues.</p>
-          <div class="trend-heat">🔥 Very Hot</div>
-        </div>
-      </div>
-      <div class="trend-card">
-        <div class="trend-icon">💀</div>
-        <div>
-          <h4>Model Collapse</h4>
-          <p>AI trained on AI-generated data degrades over generations — active area at all frontier labs.</p>
-          <div class="trend-heat">🔥 Very Hot</div>
-        </div>
-      </div>
-      <div class="trend-card">
-        <div class="trend-icon">⚖️</div>
-        <div>
-          <h4>Data Shapley Values</h4>
-          <p>Principled way to score individual data points' contribution to model performance.</p>
-          <div class="trend-heat">🔥 Growing Fast</div>
-        </div>
-      </div>
-      <div class="trend-card">
-        <div class="trend-icon">🧠</div>
-        <div>
-          <h4>Constitutional AI 2.0</h4>
-          <p>Debate-based scalable oversight framework for aligning AI behavior at scale.</p>
-          <div class="trend-heat">🔥 High Impact</div>
-        </div>
-      </div>
-      <div class="trend-card">
-        <div class="trend-icon">🏭</div>
-        <div>
-          <h4>Data Quality in Production</h4>
-          <p>End-to-end frameworks that monitor and fix data quality in real-time ML pipelines.</p>
-          <div class="trend-heat">🔥 Emerging</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- READING LIST DRAWER -->
-<div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
-<div class="drawer" id="drawer">
-  <div class="drawer-header">
-    <h2>🔖 Reading List</h2>
-    <button class="drawer-close" onclick="closeDrawer()">✕</button>
-  </div>
-  <div class="drawer-body" id="drawer-body">
-    <div class="drawer-empty" id="drawer-empty">
-      <div class="emoji">📋</div>
-      <p>No saved papers yet.<br>Bookmark papers to build your reading list.</p>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div>🔬 <strong style="color:rgba(255,255,255,0.7);">ResearchPulse</strong> — AI &amp; Data Quality Digest</div>
+<!-- ═══ DATA-CENTRIC AI ═══ -->
+<div class="topic-section" data-topic="dca">
+  <div class="topic-header">
+    <div class="topic-icon-lg" style="background:#e8f4fd;">🏗️</div>
     <div>
-      <a href="https://scholar.google.com" target="_blank">Google Scholar</a> &nbsp;·&nbsp;
-      <a href="https://arxiv.org/list/cs.LG/recent" target="_blank">arXiv cs.LG</a> &nbsp;·&nbsp;
-      <a href="https://paperswithcode.com" target="_blank">Papers With Code</a> &nbsp;·&nbsp;
-      <a href="https://www.semanticscholar.org" target="_blank">Semantic Scholar</a>
+      <div class="topic-title">Data-Centric AI</div>
+      <div class="topic-desc">Shifting the focus from model architecture to data quality, quantity, and lifecycle management</div>
     </div>
-    <div>Refreshed every Mon &amp; Thu · Built for Fall 2027 research readiness</div>
   </div>
+
+  <div class="paper-card" id="p1">
+    <div class="card-head" onclick="toggleCard('p1')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">Data-centric Artificial Intelligence: A Survey</span><span class="new-badge landmark">Foundational</span></div>
+        <div class="venue-row"><span class="venue-badge">ACM Computing Surveys</span><span class="paper-date">📅 2025 · Vol 57(5), pp 1–42</span></div>
+        <div class="paper-authors"><strong>Daochen Zha</strong>, Zaid Pervaiz Bhat, Kwei-Herng Lai, Fan Yang, Zhimeng Jiang, Shaochen Zhong, <strong>Xia Hu</strong> · Rice University &amp; Texas A&amp;M</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="author-chips">
+        <span class="achip">Daochen Zha <small>· Rice University, Houston TX</small></span>
+        <span class="achip">Xia Hu <small>· Rice University</small></span>
+        <span class="achip">Zaid Pervaiz Bhat <small>· Texas A&amp;M</small></span>
+        <span class="achip">Kwei-Herng Lai <small>· Texas A&amp;M</small></span>
+        <span class="achip">Fan Yang <small>· Texas A&amp;M</small></span>
+      </div>
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology &amp; Framework</h4>
+          <ul>
+            <li>Systematic survey of the entire data-centric AI landscape across all modalities</li>
+            <li><strong>3-pillar framework:</strong> (1) Training Data Development, (2) Inference Data Development, (3) Data Maintenance</li>
+            <li>Training sub-categories: data collection, labeling, preparation, reduction, augmentation, pipeline search</li>
+            <li>Inference data: prompt engineering, context window optimization, in-context learning</li>
+            <li>Maintenance: data versioning, lineage tracking, continuous quality monitoring</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li>Model architecture improvements yield diminishing returns — data quality investments now dominate performance gains</li>
+            <li>Active labeling and automated data pipelines replace manual model tuning in production</li>
+            <li>Inference data development (prompting, context) is severely under-researched</li>
+            <li>Data maintenance is the least formalized pillar — significant open problems remain</li>
+            <li>Paper has become the go-to citation for positioning data-centric research</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p>This is the <strong>foundational citation</strong> for any data-centric thesis — cite it in your introduction to frame the broader paradigm shift. The "pipeline search" subcategory (AutoML for data pipelines) and "inference data development" (how data is structured at test time) both point to underexplored thesis directions. If you work in label noise, synthetic data, or dataset quality, you will position your thesis <em>within</em> the framework this paper establishes. Daochen Zha and Xia Hu at Rice University are strong contacts to reach out to for PhD inquiries.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2303.10158" target="_blank" class="link-btn primary">Read on arXiv →</a>
+        <a href="https://github.com/daochenzha/data-centric-ai" target="_blank" class="link-btn secondary">GitHub Resources</a>
+        <a href="https://dczha.com/" target="_blank" class="link-btn secondary">Author Website</a>
+        <button class="bmark-btn" onclick="toggleBmark(1);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p2">
+    <div class="card-head" onclick="toggleCard('p2')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">Data Understanding for Data-Centric AI</span><span class="new-badge">2026</span></div>
+        <div class="venue-row"><span class="venue-badge">Business &amp; Information Systems Engineering (BISE)</span><span class="paper-date">📅 2026</span></div>
+        <div class="paper-authors">Systematic framework for evaluating and understanding datasets before model development begins</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Pre-modeling data understanding framework: profiling, quality diagnosis, readiness assessment</li>
+            <li>Bridges gap between data engineering practices and ML model selection decisions</li>
+            <li>Proposes standardized vocabulary for dataset characterization across domains</li>
+            <li>Validated across several real-world datasets in enterprise settings</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li>Poor data understanding before modeling is a primary driver of failed ML projects (industry estimate: 85% failure rate traces to data)</li>
+            <li>Practitioners lack shared vocabulary for data quality — impedes collaboration between data teams and ML teams</li>
+            <li>Structured pre-model profiling reduces costly iteration cycles in practice</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p>This paper occupies the intersection of Information Systems and ML — underserved academically. If you are positioning in a CS or IS department with an applied data science focus, this bridges both communities. Good supporting citation for proposals about systematic data evaluation tools, especially in enterprise or regulated domains (finance, healthcare, law).</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://link.springer.com/journal/12599" target="_blank" class="link-btn primary">BISE Journal →</a>
+        <button class="bmark-btn" onclick="toggleBmark(2);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LABEL NOISE ═══ -->
+<div class="topic-section" data-topic="ln">
+  <div class="topic-header">
+    <div class="topic-icon-lg" style="background:#fef3e8;">🏷️</div>
+    <div>
+      <div class="topic-title">Label Noise Learning</div>
+      <div class="topic-desc">Training robust models when ground-truth annotations are corrupted, crowdsourced, or web-scraped</div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p3">
+    <div class="card-head" onclick="toggleCard('p3')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">A Survey on Learning from Data with Label Noise via Deep Neural Networks</span></div>
+        <div class="venue-row"><span class="venue-badge">Systems Science &amp; Control Engineering (Taylor &amp; Francis)</span><span class="paper-date">📅 April 2025 · Vol 13(1)</span></div>
+        <div class="paper-authors">Comprehensive taxonomy of noise types and DNN-based LLN approaches · Benchmarks: CIFAR-10N, Clothing1M, WebVision</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Taxonomy of Methods</h4>
+          <ul>
+            <li><strong>Noise types:</strong> symmetric, asymmetric, class-dependent (CDN), instance-dependent (IDN)</li>
+            <li><strong>Approach 1 — Robust loss:</strong> Mean Absolute Error (MAE), symmetric cross-entropy, generalized cross-entropy</li>
+            <li><strong>Approach 2 — Loss adjustment:</strong> Label smoothing, noise transition matrices, bootstrapping</li>
+            <li><strong>Approach 3 — Sample selection:</strong> Small-loss trick, GMM-based selection (DivideMix), co-training</li>
+            <li><strong>Approach 4 — Semi-supervised:</strong> MixMatch-style relabeling, MentorNet, curriculum learning</li>
+            <li><strong>Benchmarks:</strong> CIFAR-10N (real annotator noise), Clothing1M (1M web images, 38.5% noise), WebVision</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li><strong>IDN is the unsolved frontier</strong> — real-world noise depends on individual sample features, not just class</li>
+            <li>Sample selection (small-loss trick) remains most practical but suffers self-confirmation bias on high noise rates</li>
+            <li>Semi-supervised methods outperform pure supervised when noise exceeds 40%</li>
+            <li>NLP label noise is significantly less studied than vision — major gap</li>
+            <li>Multimodal label noise (image-text misalignment) is an emerging open problem</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p><strong>Instance-dependent noise is the realistic, unsolved case.</strong> CDN assumes all samples in a class have the same flip probability — but in medical imaging, a blurry X-ray is harder to label correctly than a clear one. IDN captures this. A PhD thesis on IDN estimation (especially for medical, scientific, or low-resource settings) addresses a genuine unsolved problem. Standard benchmarks CIFAR-10N and Clothing1M are your validation testbeds. NLP label noise is particularly sparse — a thesis bridging label noise and NLP/LLMs could be very high-impact.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://www.tandfonline.com/doi/full/10.1080/21642583.2025.2488120" target="_blank" class="link-btn primary">Read Paper →</a>
+        <button class="bmark-btn" onclick="toggleBmark(3);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p4">
+    <div class="card-head" onclick="toggleCard('p4')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">CLIPCleaner: Cleaning Noisy Labels with CLIP</span><span class="new-badge">High Impact</span></div>
+        <div class="venue-row"><span class="venue-badge">ACM Multimedia 2024 (ACM MM'24)</span><span class="paper-date">📅 2024 · ACM International Conference on Multimedia</span></div>
+        <div class="paper-authors"><strong>Chen Feng</strong>, <strong>Georgios Tzimiropoulos</strong>, <strong>Ioannis Patras</strong> · University College London (UCL) &amp; Queen Mary University of London</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="author-chips">
+        <span class="achip">Chen Feng <small>· UCL, London</small></span>
+        <span class="achip">Georgios Tzimiropoulos <small>· UCL / Samsung AI Centre London</small></span>
+        <span class="achip">Ioannis Patras <small>· Queen Mary University of London</small></span>
+      </div>
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Uses CLIP (OpenAI's vision-language model) as an <em>offline</em> zero-shot clean sample selector</li>
+            <li>Zero-shot classifier: CLIP image embeddings aligned against text descriptions of each class</li>
+            <li>Applied <strong>before</strong> training — eliminates "self-confirmation bias" of in-training confidence methods</li>
+            <li>Handles "hard noise" (mislabeling between visually similar classes) via rich semantic CLIP representations</li>
+            <li>Plug-in compatible: works as pre-filter for DivideMix, SOP, and other LLN frameworks</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li>Outperforms small-loss and GMM-based selection on CIFAR-10N and Clothing1M</li>
+            <li>Especially strong on hard noise — CLIP semantic space separates similar-looking classes better than pixel features</li>
+            <li>Zero-shot approach removes dependency on in-training model quality entirely</li>
+            <li>Efficient: CLIP inference is offline and fast vs. training-time methods</li>
+            <li>Published at ACM MM — top venue for multimedia + ML cross-over research</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p>This paper demonstrates a key 2025 trend: <strong>foundation models repurposed as data quality tools</strong>. Extensions to explore: (1) applying CLIP-style zero-shot selection to NLP noisy labels using text embedding models, (2) combining CLIPCleaner with active learning to minimally query humans for ambiguous samples, (3) extending to instance-dependent noise detection where noise correlates with CLIP uncertainty scores. The "offline pre-filter" idea also applies to large-scale dataset curation — highly relevant for LLM pretraining data quality.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/pdf/2408.10012" target="_blank" class="link-btn primary">Read Paper →</a>
+        <a href="https://github.com/MrChenFeng/CLIPCleaner_ACMMM2024" target="_blank" class="link-btn secondary">Code on GitHub</a>
+        <a href="https://dl.acm.org/doi/10.1145/3664647.3680664" target="_blank" class="link-btn secondary">ACM DL</a>
+        <button class="bmark-btn" onclick="toggleBmark(4);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DATA QUALITY IN ML ═══ -->
+<div class="topic-section" data-topic="dq">
+  <div class="topic-header">
+    <div class="topic-icon-lg" style="background:#f0fdf4;">✅</div>
+    <div>
+      <div class="topic-title">Data Quality in Machine Learning</div>
+      <div class="topic-desc">Measuring, monitoring, and correcting data quality across the full ML pipeline — from acquisition to production</div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p5">
+    <div class="card-head" onclick="toggleCard('p5')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">End-to-End Data Quality-Driven Framework for Machine Learning in Production</span><span class="new-badge">Dec 2025</span></div>
+        <div class="venue-row"><span class="venue-badge">arXiv Preprint</span><span class="paper-date">📅 December 2025 · arXiv:2512.19723</span></div>
+        <div class="paper-authors"><strong>Firas Bayram</strong>, <strong>Bestoun S. Ahmed</strong>, <strong>Erik Hallin</strong></div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="author-chips">
+        <span class="achip">Firas Bayram</span>
+        <span class="achip">Bestoun S. Ahmed</span>
+        <span class="achip">Erik Hallin</span>
+      </div>
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li><strong>3-component framework:</strong> (1) dynamic drift detection, (2) adaptive data quality metrics, (3) MLOps feedback loop</li>
+            <li>Real-time quality signals integrated into deployed ML model decision-making</li>
+            <li>Adaptive thresholds: quality gates adjust dynamically based on live data statistics</li>
+            <li>Designed for minimal overhead — sub-millisecond quality checks in the serving path</li>
+            <li>Validated on production-scale streaming datasets</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li>Quality-driven decision gates reduce model degradation by catching drift before accuracy drops</li>
+            <li>Adaptive metrics outperform static thresholds significantly on non-stationary data streams</li>
+            <li>LLMs are emerging as data quality auditors — validated for text data quality checking</li>
+            <li>Bridges gap between offline data quality research and online ML deployment reality</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p><strong>MLOps + data quality is a severely underexplored intersection.</strong> Most academic data quality research assumes static, offline datasets — but production models see shifting data every day. Research extensions: (1) federated learning quality monitoring (data quality across heterogeneous clients), (2) LLM fine-tuning data quality signals (can we detect quality issues before they harm fine-tuned models?), (3) causal approaches to identifying which quality dimensions caused a specific model failure. All are publishable at top ML/data venues (VLDB, SIGMOD, NeurIPS).</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2512.19723" target="_blank" class="link-btn primary">Read on arXiv →</a>
+        <a href="https://arxiv.org/html/2512.19723v1" target="_blank" class="link-btn secondary">HTML Version</a>
+        <button class="bmark-btn" onclick="toggleBmark(5);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p6">
+    <div class="card-head" onclick="toggleCard('p6')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">The Effects of Data Quality on Machine Learning Performance on Tabular Data</span></div>
+        <div class="venue-row"><span class="venue-badge">Information Systems (Elsevier)</span><span class="paper-date">📅 2025</span></div>
+        <div class="paper-authors">Controlled study: 7 data quality dimensions × 10 ML algorithms on real tabular benchmark datasets</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Controlled injection of 7 quality issues: missing values, label noise, outliers, inconsistencies, duplicates, class imbalance, feature irrelevance</li>
+            <li>10 ML algorithms: Logistic Regression, SVM, kNN, Decision Tree, Random Forest, XGBoost, and neural baselines</li>
+            <li>Severity levels varied systematically (0%, 10%, 20%, 40% contamination)</li>
+            <li>Evaluated across multiple real-world tabular benchmark datasets (UCI + Kaggle)</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li><strong>Most damaging:</strong> label noise and missing values — affect all algorithms at all severity levels</li>
+            <li>Tree-based methods (Random Forest, XGBoost) most robust to mild quality issues</li>
+            <li>Linear models (LR, SVM) most sensitive to outliers and feature irrelevance</li>
+            <li>No algorithm dominates across all quality scenarios — model selection should be quality-aware</li>
+            <li>Duplicates have minimal impact until extreme rates (&gt;30%) — counterintuitive finding</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p>This paper provides <strong>empirical grounding</strong> to motivate any data quality correction method. Use it as a baseline: "given that label noise at 20% degrades accuracy by X%, our method recovers Y%." The tabular domain is underserved vs. image/text — a thesis focused on tabular data quality (common in finance, healthcare, insurance) can make a strong contribution. The finding that model selection should be quality-aware opens a direction connecting data quality to AutoML.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://dl.acm.org/doi/10.1016/j.is.2025.102549" target="_blank" class="link-btn primary">Read Paper →</a>
+        <a href="https://arxiv.org/abs/2207.14529" target="_blank" class="link-btn secondary">arXiv Preprint</a>
+        <button class="bmark-btn" onclick="toggleBmark(6);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SYNTHETIC DATA ═══ -->
+<div class="topic-section" data-topic="sd">
+  <div class="topic-header">
+    <div class="topic-icon-lg" style="background:#fdf4ff;">🧬</div>
+    <div>
+      <div class="topic-title">Synthetic Data Generation</div>
+      <div class="topic-desc">AI-generated training data — scaling promises, model collapse pitfalls, and prevention strategies</div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p7">
+    <div class="card-head" onclick="toggleCard('p7')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">AI Models Collapse When Trained on Recursively Generated Data</span><span class="new-badge landmark">Landmark · Nature</span></div>
+        <div class="venue-row"><span class="venue-badge">Nature (2024) + ICLR 2025 Extensions</span><span class="paper-date">📅 2024–2025</span></div>
+        <div class="paper-authors"><strong>Ilia Shumailov</strong> et al. · University of Oxford &amp; Google DeepMind</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="author-chips">
+        <span class="achip">Ilia Shumailov <small>· Oxford / Google DeepMind</small></span>
+        <span class="achip">Oxford Computer Science</span>
+        <span class="achip">Google DeepMind Team</span>
+      </div>
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Empirical + theoretical analysis of iterative training on model-generated synthetic outputs</li>
+            <li>Three compounding error sources: statistical approximation, functional expressivity, functional approximation</li>
+            <li>Experiments across: GPT-family language models, GANs (vision), diffusion models (images)</li>
+            <li>Tracks tail-distribution coverage across training generations (Gen 0 → Gen 5+)</li>
+            <li>ICLR 2025 "Strong Model Collapse" paper extends with formal theoretical bounds</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li>Recursive training on unfiltered synthetic data causes <em>irreversible</em> distribution shift</li>
+            <li><strong>Rare phenomena forgotten by generation 3–4</strong> — catastrophic for medical AI, safety systems, and edge-case coverage</li>
+            <li>Prevention: (1) maintain real data fraction, (2) active curation of synthetic data (gap-filling), (3) entropy/MMD-based quality filtering</li>
+            <li>Watermarking + provenance tracking enables safe large-scale data curation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p><strong>Model collapse detection is a wide-open frontier.</strong> The original paper identifies the problem; reliable automatic detection metrics don't yet exist. Publishable PhD directions: (1) early-warning metrics for collapse in continuous training pipelines, (2) domain-specific collapse in medical/scientific AI where rare events are most critical, (3) optimal real/synthetic mixing ratios under distribution shift. This also connects to dataset quality assessment — collapsed models produce lower-quality synthetic data, creating a measurable feedback loop you can study. Published in <em>Nature</em> — very high citation impact for your literature review.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://www.nature.com/articles/s41586-024-07566-y" target="_blank" class="link-btn primary">Nature Paper →</a>
+        <a href="https://proceedings.iclr.cc/paper_files/paper/2025/file/284afdc2309f9667d2d4fb9290235b0c-Paper-Conference.pdf" target="_blank" class="link-btn secondary">ICLR 2025 Extension</a>
+        <button class="bmark-btn" onclick="toggleBmark(7);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p8">
+    <div class="card-head" onclick="toggleCard('p8')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">How to Synthesize Text Data without Model Collapse?</span><span class="new-badge">ICML 2025</span></div>
+        <div class="venue-row"><span class="venue-badge">ICML 2025</span><span class="paper-date">📅 2025 · Vancouver, BC</span></div>
+        <div class="paper-authors">Prevention-focused companion to the Shumailov collapse paper — actionable guidelines for safe synthetic data pipelines</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Systematic comparison of synthetic data strategies: random sampling vs. active curation vs. gap-filling</li>
+            <li>Real data anchoring: maintain a fixed fraction of human-generated data across generations</li>
+            <li>Quality metrics: Maximum Mean Discrepancy (MMD) and entropy to ensure synthetic data adds new information</li>
+            <li>Diversity preservation: reject synthetic outputs that near-duplicate real data</li>
+            <li>Text-focused evaluation on generation and reasoning tasks</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li>Regular real data injection prevents collapse even in multi-generation pipelines</li>
+            <li>Entropy-based filtering maintains tail-distribution coverage — preserves rare phenomena</li>
+            <li>Active curation (gap-filling) outperforms random synthetic sampling significantly</li>
+            <li>Watermarking enables safe provenance tracking at scale</li>
+            <li>Best practice: synthetic data fills distribution gaps, real data anchors rare events</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p>Together with the Shumailov paper, this completes a problem-solution arc. A PhD could specialize in <strong>domain-specific synthetic data pipelines</strong> — for scientific literature (where rare findings matter most), clinical notes, or low-resource languages where human data is scarce. The gap-filling idea also connects to active learning: which samples should you generate synthetically to maximally improve model coverage?</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/pdf/2412.14689" target="_blank" class="link-btn primary">Read on arXiv →</a>
+        <button class="bmark-btn" onclick="toggleBmark(8);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TRUSTWORTHY AI ═══ -->
+<div class="topic-section" data-topic="tai">
+  <div class="topic-header">
+    <div class="topic-icon-lg" style="background:#fff1f2;">🛡️</div>
+    <div>
+      <div class="topic-title">Trustworthy AI</div>
+      <div class="topic-desc">Hallucination, alignment, explainability, and robustness converging into one unified research challenge</div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p9">
+    <div class="card-head" onclick="toggleCard('p9')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">Mapping Trustworthiness in Large Language Models: A Bibliometric Analysis</span></div>
+        <div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 March 2025 · arXiv:2503.04785</span></div>
+        <div class="paper-authors"><strong>José Siqueira de Cerqueira</strong>, Kai-Kristian Kemell, Rebekah Rousi, Nannan Xi, Juho Hamari, <strong>Pekka Abrahamsson</strong> · Tampere University, Finland</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="author-chips">
+        <span class="achip">José Siqueira de Cerqueira <small>· Tampere University, Finland</small></span>
+        <span class="achip">Kai-Kristian Kemell <small>· Tampere University</small></span>
+        <span class="achip">Pekka Abrahamsson <small>· Tampere University</small></span>
+        <span class="achip">Nannan Xi <small>· Tampere University</small></span>
+        <span class="achip">Juho Hamari <small>· Tampere University</small></span>
+      </div>
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Bibliometric mapping of <strong>2,006 publications</strong> from Web of Science (2019–Feb 2025)</li>
+            <li>Bibliometrix R-package analysis + citation network mapping</li>
+            <li>7,901 researchers analyzed; avg. 8.9 citations/document; 96.6% multi-author studies</li>
+            <li>Manual deep review of 68 most-cited papers for qualitative synthesis</li>
+            <li>Keyword co-occurrence clusters: transparency, alignment, hallucination, robustness, explainability</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li><strong>Field exploded:</strong> 3 papers (2019) → 1,434 papers (2024) — 478× growth in 5 years</li>
+            <li><strong>18 competing definitions</strong> of "trustworthiness" — no consensus in the field</li>
+            <li>Top 3 dimensions studied: transparency, explainability, reliability</li>
+            <li>Top 2 enhancement strategies: fine-tuning (dominant) and RAG (rapidly growing)</li>
+            <li>Hallucination, alignment, and adversarial robustness now treated as one unified problem</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p>The <strong>18 competing definitions signal that the field lacks a unifying framework</strong> — a gap a PhD thesis could address. With 478× growth, this is a high-competition, high-impact field. Less saturated directions: (1) trustworthiness in agentic/multi-agent AI systems, (2) cross-cultural and cross-lingual trust dimensions (Western-centric research dominated), (3) trustworthiness under distribution shift and open-world conditions. Connecting trustworthiness to data quality (pretraining data determines intrinsic hallucination) is a novel cross-topic angle that few papers address systematically.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/pdf/2503.04785" target="_blank" class="link-btn primary">Read on arXiv →</a>
+        <button class="bmark-btn" onclick="toggleBmark(9);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p10">
+    <div class="card-head" onclick="toggleCard('p10')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">Large Language Models Hallucination: A Comprehensive Survey</span><span class="new-badge">Oct 2025</span></div>
+        <div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 October 2025 · arXiv:2510.06265</span></div>
+        <div class="paper-authors">Full taxonomy of LLM hallucination types across the development lifecycle with mitigation evaluation</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Novel hallucination taxonomy: intrinsic (factual errors), extrinsic (unverifiable claims), reasoning errors</li>
+            <li>Analysis across full LLM lifecycle: pretraining data → fine-tuning → inference → deployment</li>
+            <li>Empirical evaluation of mitigation strategies: CoT prompting, RAG, RLHF, fine-tuning, hybrid</li>
+            <li>Framework for attributing hallucination to prompting strategy vs. model behavior</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li><strong>Pretraining data quality is the root cause of intrinsic hallucination</strong> — directly connecting trustworthiness to data quality</li>
+            <li>RAG significantly reduces factual hallucination but introduces retrieval-quality dependency</li>
+            <li>CoT prompting reduces hallucination 15–30% vs. direct answering — prompt engineering matters</li>
+            <li>Hallucination rates compound in agentic chains — multi-step reasoning amplifies errors</li>
+            <li>No single mitigation dominates; hybrid approaches (RAG + CoT + fine-tuning) work best</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p>The finding that <strong>pretraining data quality drives intrinsic hallucination</strong> creates a powerful bridge between Trustworthy AI and Data-Centric AI. A thesis framed as "data-centric approaches to reducing LLM hallucination" is novel, timely, and spans both communities. Specific directions: (1) dataset quality metrics that predict downstream hallucination rate, (2) data curation strategies that specifically target hallucination-inducing training examples, (3) hallucination in agentic systems where errors compound.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2510.06265" target="_blank" class="link-btn primary">Read on arXiv →</a>
+        <button class="bmark-btn" onclick="toggleBmark(10);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DATASET QUALITY ═══ -->
+<div class="topic-section" data-topic="dsq">
+  <div class="topic-header">
+    <div class="topic-icon-lg" style="background:#f0f9ff;">📊</div>
+    <div>
+      <div class="topic-title">Dataset Quality Assessment</div>
+      <div class="topic-desc">Principled, scalable methods for scoring and evaluating the contribution and quality of training datasets</div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p11">
+    <div class="card-head" onclick="toggleCard('p11')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">Chunked Data Shapley: A Scalable Dataset Quality Assessment for Machine Learning</span><span class="new-badge">CIKM 2025</span></div>
+        <div class="venue-row"><span class="venue-badge">ACM CIKM 2025</span><span class="paper-date">📅 November 2025 · Seoul, Republic of Korea</span></div>
+        <div class="paper-authors"><strong>Andreas Loizou</strong>, <strong>Dimitrios Tsoumakos</strong></div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="author-chips">
+        <span class="achip">Andreas Loizou</span>
+        <span class="achip">Dimitrios Tsoumakos</span>
+      </div>
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Core idea: group data tuples into <em>chunks</em>, compute Shapley value per chunk instead of per individual datapoint</li>
+            <li>Standard Data Shapley: exponential in dataset size (NP-hard) — C-DaSh makes it polynomial</li>
+            <li>Chunk granularity is a tunable hyperparameter: coarser chunks = faster but less precise</li>
+            <li>Supports both classification and regression pipelines out of the box</li>
+            <li>Evaluated on large tabular datasets where standard Shapley is computationally infeasible</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li><strong>80×–2300× speedup</strong> over standard Data Shapley methods</li>
+            <li>Accurately identifies low-quality data regions on real benchmark datasets</li>
+            <li>Outperforms existing Shapley approximations in both efficiency and detection accuracy</li>
+            <li>Practical at scale: first Shapley-based method usable on industry-size tabular datasets</li>
+            <li>Published at CIKM 2025 — top-tier ACM venue for information and knowledge management</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p><strong>Scalable dataset valuation is one of the biggest open problems in data-centric AI.</strong> C-DaSh closes the computational gap but chunk-level attribution loses individual-sample resolution. Extensions: (1) adaptive chunk sizing based on local data density — smaller chunks in heterogeneous regions, (2) applying to LLM pretraining corpora (trillions of tokens — Shapley at any granularity is unsolved at this scale), (3) combining with active learning (acquire high-Shapley-value data first), (4) data valuation for data marketplaces and licensing — a growing commercial area with open research problems. Published at CIKM — your target venue if you work on this topic.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2508.16255" target="_blank" class="link-btn primary">Read on arXiv →</a>
+        <a href="https://dl.acm.org/doi/10.1145/3746252.3761305" target="_blank" class="link-btn secondary">ACM Digital Library</a>
+        <button class="bmark-btn" onclick="toggleBmark(11);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p12">
+    <div class="card-head" onclick="toggleCard('p12')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">The METRIC-Framework for Assessing Data Quality for Trustworthy AI in Medicine</span></div>
+        <div class="venue-row"><span class="venue-badge">npj Digital Medicine (Nature Portfolio)</span><span class="paper-date">📅 2024 · Vol 7, Article 203</span></div>
+        <div class="paper-authors"><strong>D. Schwabe</strong>, K. Becker, M. Seyferth, A. Klaß, <strong>T. Schaeffter</strong> · Charité – Universitätsmedizin Berlin, Germany</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="author-chips">
+        <span class="achip">D. Schwabe <small>· Charité – Universitätsmedizin Berlin</small></span>
+        <span class="achip">T. Schaeffter <small>· Charité Berlin / PTB</small></span>
+        <span class="achip">K. Becker</span>
+        <span class="achip">M. Seyferth</span>
+        <span class="achip">A. Klaß</span>
+      </div>
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>PRISMA systematic review: 5,408 studies screened → 120 eligible papers analyzed in depth</li>
+            <li>Synthesizes literature into <strong>15 data quality dimensions</strong> for medical ML datasets</li>
+            <li>Dimensions cover: completeness, consistency, accuracy, timeliness, representativeness, provenance, annotation quality, privacy compliance, and 7 more</li>
+            <li>Checklist format validated across imaging (CT/MRI), EHR, and genomics datasets</li>
+            <li>Developed in context of EU AI Act and FDA regulatory requirements for medical AI</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li>15 dimensions are necessary; current practice addresses only 4–6 on average</li>
+            <li><strong>Annotation quality and representativeness</strong> are the most-neglected in practice</li>
+            <li>Regulatory approval of medical AI is increasingly gated on data quality documentation</li>
+            <li>Framework adopted outside medicine as a general-purpose dataset QA template</li>
+            <li>Published in Nature Portfolio — high citation impact, strong for your bibliography</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p>The 15-dimension framework is <strong>gaining adoption outside medicine</strong> — which signals an opportunity to generalize and validate it across other regulated high-stakes domains: legal AI, financial AI, autonomous systems, and scientific AI. A PhD in medical informatics, health AI, or AI safety could build automated tools for each of the 15 dimensions (currently manual). The connection to EU AI Act compliance is also significant — regulatory-grade data quality assessment is a growing applied research area with both academic and industry funding opportunities. Charité Berlin and T. Schaeffter are strong contacts if you are interested in medical AI.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://www.nature.com/articles/s41746-024-01196-4" target="_blank" class="link-btn primary">Read in Nature →</a>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11297942/" target="_blank" class="link-btn secondary">PMC Full Text (Free)</a>
+        <button class="bmark-btn" onclick="toggleBmark(12);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="empty-state" id="empty-state">
+  <div style="font-size:32px;margin-bottom:12px">🔍</div>
+  <p>No papers match your search. Try different keywords.</p>
+</div>
+
+<!-- RESEARCH GAPS -->
+<div id="gaps">
+  <div class="sec-label">Highest-Opportunity Research Gaps for PhD (2026)</div>
+  <div class="gaps-grid">
+    <div class="gap-card g1">
+      <div class="gap-num">01</div>
+      <div class="gap-title">Instance-Dependent Label Noise at Scale</div>
+      <div class="gap-body">Class-dependent noise is well-studied. IDN — where noise depends on individual sample features — is the realistic unsolved case. Medical imaging, scientific datasets, and LLM annotation are natural application domains. Testbeds: CIFAR-10N, Clothing1M.</div>
+      <div class="gap-tag">🏷️ Label Noise</div>
+    </div>
+    <div class="gap-card g2">
+      <div class="gap-num">02</div>
+      <div class="gap-title">Scalable Dataset Valuation for LLM Corpora</div>
+      <div class="gap-body">C-DaSh handles tabular ML. Principled Shapley-based valuation of trillion-token pretraining corpora is unsolved — and commercially critical for data licensing, provenance tracking, and responsible AI. Connects to data marketplaces.</div>
+      <div class="gap-tag">📊 Dataset Quality</div>
+    </div>
+    <div class="gap-card g3">
+      <div class="gap-num">03</div>
+      <div class="gap-title">Automatic Model Collapse Detection</div>
+      <div class="gap-body">Shumailov et al. identified the problem; no reliable auto-detection metric exists yet. An early-warning system for collapse in continuous training pipelines is a concrete, publishable contribution — relevant to every lab training on synthetic data.</div>
+      <div class="gap-tag">🧬 Synthetic Data</div>
+    </div>
+    <div class="gap-card g4">
+      <div class="gap-num">04</div>
+      <div class="gap-title">Unified Trustworthiness Framework</div>
+      <div class="gap-body">18 competing definitions with no consensus (per the bibliometric study). A formal, measurable framework unifying hallucination, alignment, explainability, and robustness is a major open problem — and would be a highly-cited foundational contribution.</div>
+      <div class="gap-tag">🛡️ Trustworthy AI</div>
+    </div>
+    <div class="gap-card g5">
+      <div class="gap-num">05</div>
+      <div class="gap-title">Online Data Quality for Streaming ML</div>
+      <div class="gap-body">Most research assumes static datasets. Joint drift + quality monitoring for continuously-deployed models is early-stage. Extensions to federated learning (quality heterogeneity across clients) and LLM serving pipelines are largely open.</div>
+      <div class="gap-tag">✅ Data Quality in ML</div>
+    </div>
+    <div class="gap-card g6">
+      <div class="gap-num">06</div>
+      <div class="gap-title">Foundation Models as Data Auditors</div>
+      <div class="gap-body">CLIPCleaner hints at this for vision. Using LLMs/VLMs to audit, clean, and curate training data across modalities — text, tabular, multimodal — has no dominant approach in 2026. Connects data-centric AI to foundation model research.</div>
+      <div class="gap-tag">🏗️ Data-Centric AI</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY RESEARCHERS -->
+<div id="researchers">
+  <div class="sec-label">Key Researchers to Know &amp; Follow</div>
+  <div class="researchers-grid">
+    <div class="rcard">
+      <div class="ravatar" style="background:#e8f4fd">👨‍🔬</div>
+      <div class="rname">Daochen Zha</div>
+      <div class="raffil">Rice University, Houston TX</div>
+      <div class="rtags"><span class="rtag">Data-Centric AI</span><span class="rtag">AutoML</span></div>
+    </div>
+    <div class="rcard">
+      <div class="ravatar" style="background:#e8f4fd">👨‍🔬</div>
+      <div class="rname">Xia Hu</div>
+      <div class="raffil">Rice University, Houston TX</div>
+      <div class="rtags"><span class="rtag">Data-Centric AI</span><span class="rtag">Trustworthy AI</span></div>
+    </div>
+    <div class="rcard">
+      <div class="ravatar" style="background:#fef3e8">👨‍🔬</div>
+      <div class="rname">Chen Feng</div>
+      <div class="raffil">University College London</div>
+      <div class="rtags"><span class="rtag">Label Noise</span><span class="rtag">Vision-Language</span></div>
+    </div>
+    <div class="rcard">
+      <div class="ravatar" style="background:#fef3e8">👨‍🔬</div>
+      <div class="rname">Ioannis Patras</div>
+      <div class="raffil">Queen Mary University London</div>
+      <div class="rtags"><span class="rtag">Label Noise</span><span class="rtag">Computer Vision</span></div>
+    </div>
+    <div class="rcard">
+      <div class="ravatar" style="background:#fdf4ff">👨‍🔬</div>
+      <div class="rname">Ilia Shumailov</div>
+      <div class="raffil">Oxford / Google DeepMind</div>
+      <div class="rtags"><span class="rtag">Synthetic Data</span><span class="rtag">Model Collapse</span></div>
+    </div>
+    <div class="rcard">
+      <div class="ravatar" style="background:#fff1f2">👨‍🔬</div>
+      <div class="rname">Pekka Abrahamsson</div>
+      <div class="raffil">Tampere University, Finland</div>
+      <div class="rtags"><span class="rtag">Trustworthy AI</span><span class="rtag">SE for AI</span></div>
+    </div>
+    <div class="rcard">
+      <div class="ravatar" style="background:#f0f9ff">👨‍🔬</div>
+      <div class="rname">Dimitrios Tsoumakos</div>
+      <div class="raffil">Ionian University, Greece</div>
+      <div class="rtags"><span class="rtag">Dataset Quality</span><span class="rtag">Data Shapley</span></div>
+    </div>
+    <div class="rcard">
+      <div class="ravatar" style="background:#f0f9ff">👩‍🔬</div>
+      <div class="rname">Tobias Schaeffter</div>
+      <div class="raffil">Charité Berlin / PTB</div>
+      <div class="rtags"><span class="rtag">Medical AI</span><span class="rtag">Data Quality</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<footer>
+  ResearchPulse · PhD Research Hub · Updated every Monday &amp; Thursday<br>
+  <a href="https://arxiv.org" target="_blank">arXiv</a> ·
+  <a href="https://scholar.google.com" target="_blank">Google Scholar</a> ·
+  <a href="https://dl.acm.org" target="_blank">ACM Digital Library</a> ·
+  <a href="https://semanticscholar.org" target="_blank">Semantic Scholar</a>
 </footer>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────
-const PAPERS = [
-  {
-    id: 1,
-    topic: "data-centric-ai",
-    topicLabel: "Data-Centric AI",
-    topicIcon: "🏗️",
-    topicClass: "topic-data-centric",
-    isNew: false,
-    title: "Data-centric Artificial Intelligence: A Survey",
-    venue: "ACM Computing Surveys",
-    date: "Jan 2025",
-    url: "https://arxiv.org/abs/2303.10158",
-    summary: "The definitive overview of data-centric AI. Covers training data development, inference data development, and data maintenance as the three pillars of the field."
-  },
-  {
-    id: 2,
-    topic: "data-centric-ai",
-    topicLabel: "Data-Centric AI",
-    topicIcon: "🏗️",
-    topicClass: "topic-data-centric",
-    isNew: true,
-    title: "Data Understanding for Data-Centric AI – Framework Development and Review",
-    venue: "BISE Journal",
-    date: "2026",
-    url: "https://link.springer.com/article/10.1007/s12599-024-00857-8",
-    summary: "Introduces a framework for evaluating and understanding data systematically before model development — bridging the gap between data management and AI engineering."
-  },
-  {
-    id: 3,
-    topic: "label-noise",
-    topicLabel: "Label Noise Learning",
-    topicIcon: "🏷️",
-    topicClass: "topic-label-noise",
-    isNew: false,
-    title: "A Survey on Learning from Data with Label Noise via Deep Neural Networks",
-    venue: "Taylor & Francis",
-    date: "Apr 2025",
-    url: "https://www.tandfonline.com/doi/full/10.1080/21642583.2025.2488120",
-    summary: "Comprehensive categorization of state-of-the-art noise-handling approaches. Covers types, sources, and impacts of label noise across computer vision and NLP."
-  },
-  {
-    id: 4,
-    topic: "label-noise",
-    topicLabel: "Label Noise Learning",
-    topicIcon: "🏷️",
-    topicClass: "topic-label-noise",
-    isNew: false,
-    title: "CLIPCleaner: Cleaning Noisy Labels with CLIP",
-    venue: "arXiv",
-    date: "2025",
-    url: "https://arxiv.org/pdf/2408.10012",
-    summary: "Uses CLIP embeddings to detect and remove noisy labels without supervision. Gaining strong traction in vision tasks — a practical tool for real-world noisy datasets."
-  },
-  {
-    id: 5,
-    topic: "data-quality",
-    topicLabel: "Data Quality in ML",
-    topicIcon: "✅",
-    topicClass: "topic-data-quality",
-    isNew: false,
-    title: "End-to-End Data Quality-Driven Framework for ML in Production",
-    venue: "arXiv",
-    date: "Dec 2025",
-    url: "https://arxiv.org/abs/2512.19723",
-    summary: "Real-time data quality integration with deployed ML systems. Monitors and remediates quality issues at inference time without stopping the pipeline."
-  },
-  {
-    id: 6,
-    topic: "data-quality",
-    topicLabel: "Data Quality in ML",
-    topicIcon: "✅",
-    topicClass: "topic-data-quality",
-    isNew: true,
-    title: "Enhancing ML Performance through Intelligent Data Quality Assessment",
-    venue: "IASEAI 2026",
-    date: "2026",
-    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11908581/",
-    summary: "Unsupervised, data-centric framework for automated quality checks without needing pre-labeled quality data. Strong results on tabular ML benchmarks."
-  },
-  {
-    id: 7,
-    topic: "synthetic-data",
-    topicLabel: "Synthetic Data Generation",
-    topicIcon: "🧬",
-    topicClass: "topic-synthetic",
-    isNew: true,
-    title: "SynthAI@SIGMOD 2026: Workshop on Synthetic Data Generation and Management",
-    venue: "SIGMOD 2026",
-    date: "2026",
-    url: "https://synthetic-data-sigmod.github.io/syndata2026/",
-    summary: "The first major dedicated venue for synthetic data pipelines — bringing together data management and ML communities to define the next generation of synthetic data standards."
-  },
-  {
-    id: 8,
-    topic: "synthetic-data",
-    topicLabel: "Synthetic Data Generation",
-    topicIcon: "🧬",
-    topicClass: "topic-synthetic",
-    isNew: false,
-    title: "AI Training in 2026: Anchoring Synthetic Data in Human Truth",
-    venue: "Industry Report",
-    date: "2026",
-    url: "https://invisibletech.ai/blog/ai-training-in-2026-anchoring-synthetic-data-in-human-truth",
-    summary: "Analysis of how Anthropic, Google DeepMind, Meta, and OpenAI use synthetic data for alignment and reasoning — and why human-anchored data remains essential to prevent model collapse."
-  },
-  {
-    id: 9,
-    topic: "trustworthy-ai",
-    topicLabel: "Trustworthy AI",
-    topicIcon: "🛡️",
-    topicClass: "topic-trustworthy",
-    isNew: false,
-    title: "Mapping Trustworthiness in LLMs: A Bibliometric Analysis",
-    venue: "arXiv",
-    date: "Mar 2025",
-    url: "https://arxiv.org/pdf/2503.04785",
-    summary: "2,006 studies analyzed from 2019–2025. Publications on LLM trustworthiness grew from 3 articles (2019) to 1,434 (2024), showing explosive growth of the field."
-  },
-  {
-    id: 10,
-    topic: "trustworthy-ai",
-    topicLabel: "Trustworthy AI",
-    topicIcon: "🛡️",
-    topicClass: "topic-trustworthy",
-    isNew: false,
-    title: "Constitutional AI 2.0: Scalable Oversight Through Debate",
-    venue: "Anthropic",
-    date: "Mar 2025",
-    url: "https://www.anthropic.com",
-    summary: "Debate-based framework for ensuring AI systems behave as intended. Introduces a scalable oversight mechanism where AI systems critique each other's responses to surface failures."
-  },
-  {
-    id: 11,
-    topic: "dataset-quality",
-    topicLabel: "Dataset Quality Assessment",
-    topicIcon: "📊",
-    topicClass: "topic-dataset-quality",
-    isNew: false,
-    title: "Chunked Data Shapley: A Scalable Dataset Quality Assessment",
-    venue: "CIKM 2025",
-    date: "Nov 2025",
-    url: "https://arxiv.org/pdf/2508.16255",
-    summary: "Scores the contribution and quality of individual data chunks to model performance. Makes Shapley-based dataset valuation practical for large-scale ML datasets."
-  },
-  {
-    id: 12,
-    topic: "dataset-quality",
-    topicLabel: "Dataset Quality Assessment",
-    topicIcon: "📊",
-    topicClass: "topic-dataset-quality",
-    isNew: false,
-    title: "METRIC-framework for Assessing Data Quality for Trustworthy AI in Medicine",
-    venue: "npj Digital Medicine",
-    date: "2025",
-    url: "https://www.nature.com/articles/s41746-024-01196-4",
-    summary: "15-dimension quality checklist for medical ML datasets. Gaining adoption outside medicine as a general framework for comprehensive dataset quality evaluation."
-  }
-];
-
-// ── STATE ──────────────────────────────────────────────────────────────────
+const TOPICS = ['dca','ln','dq','sd','tai','dsq'];
 let activeFilter = 'all';
-let searchQuery = '';
-let bookmarks = JSON.parse(localStorage.getItem('rp_bookmarks') || '[]');
+let bookmarks = JSON.parse(localStorage.getItem('rp2_bmarks') || '[]');
 
-// ── RENDER PAPERS ──────────────────────────────────────────────────────────
-function renderPapers() {
-  const grid = document.getElementById('papers-grid');
-  const empty = document.getElementById('empty-state');
-  const resultsCount = document.getElementById('results-count');
+const TITLES = {
+  1:'Data-centric Artificial Intelligence: A Survey',
+  2:'Data Understanding for Data-Centric AI',
+  3:'Survey on Learning from Data with Label Noise via DNNs',
+  4:'CLIPCleaner: Cleaning Noisy Labels with CLIP',
+  5:'End-to-End Data Quality-Driven Framework for ML in Production',
+  6:'The Effects of Data Quality on ML Performance on Tabular Data',
+  7:'AI Models Collapse When Trained on Recursively Generated Data',
+  8:'How to Synthesize Text Data without Model Collapse?',
+  9:'Mapping Trustworthiness in LLMs: A Bibliometric Analysis',
+  10:'Large Language Models Hallucination: A Comprehensive Survey',
+  11:'Chunked Data Shapley: Scalable Dataset Quality Assessment',
+  12:'METRIC-Framework for Assessing Data Quality in Medicine'
+};
+const URLS = {
+  1:'https://arxiv.org/abs/2303.10158',
+  4:'https://arxiv.org/pdf/2408.10012',
+  5:'https://arxiv.org/abs/2512.19723',
+  7:'https://www.nature.com/articles/s41586-024-07566-y',
+  8:'https://arxiv.org/pdf/2412.14689',
+  9:'https://arxiv.org/pdf/2503.04785',
+  10:'https://arxiv.org/abs/2510.06265',
+  11:'https://arxiv.org/abs/2508.16255',
+  12:'https://www.nature.com/articles/s41746-024-01196-4'
+};
 
-  const filtered = PAPERS.filter(p => {
-    const matchesTopic = activeFilter === 'all' || p.topic === activeFilter;
-    const q = searchQuery.toLowerCase();
-    const matchesSearch = !q ||
-      p.title.toLowerCase().includes(q) ||
-      p.summary.toLowerCase().includes(q) ||
-      p.topicLabel.toLowerCase().includes(q) ||
-      p.venue.toLowerCase().includes(q);
-    return matchesTopic && matchesSearch;
-  });
-
-  if (filtered.length === 0) {
-    grid.innerHTML = '';
-    empty.style.display = 'block';
-    resultsCount.textContent = '0 papers';
-  } else {
-    empty.style.display = 'none';
-    resultsCount.textContent = `${filtered.length} paper${filtered.length !== 1 ? 's' : ''}`;
-    grid.innerHTML = filtered.map(p => renderCard(p)).join('');
-  }
-}
-
-function renderCard(p) {
-  const isSaved = bookmarks.includes(p.id);
-  const hasLink = p.url && !p.url.includes('www.anthropic.com');
-  return `
-    <div class="paper-card" id="card-${p.id}">
-      <div class="card-top">
-        <span class="topic-badge ${p.topicClass}">${p.topicIcon} ${p.topicLabel}</span>
-        <div style="display:flex;gap:6px;align-items:center;">
-          ${p.isNew ? '<span class="new-badge">New</span>' : ''}
-          <button class="bookmark-btn ${isSaved ? 'saved' : ''}" onclick="toggleBookmark(${p.id})" title="${isSaved ? 'Remove from reading list' : 'Save to reading list'}">
-            ${isSaved ? '★' : '☆'}
-          </button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="paper-title">
-          ${hasLink ? `<a href="${p.url}" target="_blank" rel="noopener">${p.title}</a>` : p.title}
-        </div>
-        <div class="paper-meta">
-          <span class="meta-venue">${p.venue}</span>
-          <span class="meta-date">📅 ${p.date}</span>
-        </div>
-        <p class="paper-summary">${p.summary}</p>
-      </div>
-      <div class="card-footer">
-        ${hasLink
-          ? `<a href="${p.url}" target="_blank" rel="noopener" class="card-link">Read Paper →</a>`
-          : `<span class="card-link-disabled">Paper (search online)</span>`
-        }
-        <button class="bookmark-btn ${isSaved ? 'saved' : ''}" onclick="toggleBookmark(${p.id})" style="font-size:14px;">
-          ${isSaved ? '★ Saved' : '☆ Save'}
-        </button>
-      </div>
-    </div>
-  `;
-}
-
-// ── FILTERS ────────────────────────────────────────────────────────────────
 function setFilter(topic, btn) {
   activeFilter = topic;
-  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
-  renderPapers();
+  document.querySelectorAll('.topic-section').forEach(sec => {
+    if (topic === 'all' || sec.dataset.topic === topic) {
+      sec.style.display = '';
+    } else {
+      sec.style.display = 'none';
+    }
+  });
+  applySearch();
 }
 
-// ── SEARCH ─────────────────────────────────────────────────────────────────
 document.getElementById('search-input').addEventListener('input', e => {
-  searchQuery = e.target.value;
-  renderPapers();
+  applySearch(e.target.value.toLowerCase());
 });
 
-// ── BOOKMARKS ──────────────────────────────────────────────────────────────
-function toggleBookmark(id) {
-  if (bookmarks.includes(id)) {
-    bookmarks = bookmarks.filter(b => b !== id);
-  } else {
-    bookmarks.push(id);
-  }
-  localStorage.setItem('rp_bookmarks', JSON.stringify(bookmarks));
-  updateBookmarkCount();
-  renderPapers();
+function applySearch(q) {
+  q = q || document.getElementById('search-input').value.toLowerCase();
+  let count = 0;
+  document.querySelectorAll('.paper-card').forEach(card => {
+    const sec = card.closest('.topic-section');
+    const secVisible = !sec || sec.style.display !== 'none';
+    const matches = !q || card.innerText.toLowerCase().includes(q);
+    if (secVisible && matches) { card.style.display = ''; count++; }
+    else card.style.display = 'none';
+  });
+  document.getElementById('empty-state').style.display = count === 0 ? 'block' : 'none';
+  document.getElementById('results-note').textContent = 'Showing ' + count + ' paper' + (count !== 1 ? 's' : '');
+}
+
+function toggleCard(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+  card.querySelector('.toggle-btn').textContent = card.classList.contains('open') ? '▲' : '▼';
+}
+
+function toggleBmark(id) {
+  if (bookmarks.includes(id)) bookmarks = bookmarks.filter(b => b !== id);
+  else bookmarks.push(id);
+  localStorage.setItem('rp2_bmarks', JSON.stringify(bookmarks));
+  updateBmarkUI();
   renderDrawer();
 }
 
-function updateBookmarkCount() {
-  const el = document.getElementById('bookmark-count');
+function updateBmarkUI() {
+  const el = document.getElementById('bmark-count');
   el.textContent = bookmarks.length;
   el.style.display = bookmarks.length > 0 ? 'inline-flex' : 'none';
+  document.querySelectorAll('.bmark-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/toggleBmark\((\d+)\)/);
+    if (m) {
+      const id = parseInt(m[1]);
+      btn.textContent = bookmarks.includes(id) ? '★ Saved' : '☆ Save';
+      btn.classList.toggle('saved', bookmarks.includes(id));
+    }
+  });
 }
 
+function openDrawer() {
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  renderDrawer();
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
 function renderDrawer() {
   const body = document.getElementById('drawer-body');
-  const empty = document.getElementById('drawer-empty');
-  if (bookmarks.length === 0) {
-    empty.style.display = 'block';
-    const items = body.querySelectorAll('.saved-item');
-    items.forEach(i => i.remove());
-    return;
-  }
+  body.querySelectorAll('.saved-item').forEach(i => i.remove());
+  const empty = document.getElementById('d-empty');
+  if (bookmarks.length === 0) { empty.style.display = 'block'; return; }
   empty.style.display = 'none';
-  const existing = body.querySelectorAll('.saved-item');
-  existing.forEach(i => i.remove());
-
   bookmarks.forEach(id => {
-    const p = PAPERS.find(p => p.id === id);
-    if (!p) return;
+    const title = TITLES[id];
+    if (!title) return;
+    const url = URLS[id];
     const div = document.createElement('div');
     div.className = 'saved-item';
-    div.innerHTML = `
-      <div class="saved-item-topic">${p.topicIcon} ${p.topicLabel}</div>
-      <div class="saved-item-title">${p.title}</div>
-      <div class="paper-meta" style="margin-top:4px;">
-        <span class="meta-venue">${p.venue}</span>
-        <span class="meta-date">${p.date}</span>
-      </div>
-      <div class="saved-item-actions">
-        ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener"><button class="saved-item-btn read">Read Paper →</button></a>` : ''}
-        <button class="saved-item-btn remove" onclick="toggleBookmark(${id})">Remove</button>
-      </div>
-    `;
+    div.innerHTML = '<div class="si-title">' + title + '</div><div class="si-actions">' +
+      (url ? '<a href="' + url + '" target="_blank"><button class="si-btn read">Read →</button></a>' : '') +
+      '<button class="si-btn remove" onclick="toggleBmark(' + id + ')">Remove</button></div>';
     body.appendChild(div);
   });
 }
 
-// ── DRAWER ─────────────────────────────────────────────────────────────────
-function openDrawer() {
-  document.getElementById('drawer').classList.add('open');
-  document.getElementById('drawer-overlay').classList.add('open');
-  renderDrawer();
-}
-
-function closeDrawer() {
-  document.getElementById('drawer').classList.remove('open');
-  document.getElementById('drawer-overlay').classList.remove('open');
-}
-
-// ── INIT ───────────────────────────────────────────────────────────────────
 (function init() {
-  // Update stats
-  document.getElementById('total-papers').textContent = PAPERS.length;
-  document.getElementById('new-count').textContent = PAPERS.filter(p => p.isNew).length;
-
-  // Update filter counts
-  document.getElementById('count-all').textContent = PAPERS.length;
-  const topics = ['data-centric-ai','label-noise','data-quality','synthetic-data','trustworthy-ai','dataset-quality'];
-  topics.forEach(t => {
-    const el = document.getElementById(`count-${t}`);
-    if (el) el.textContent = PAPERS.filter(p => p.topic === t).length;
-  });
-
-  updateBookmarkCount();
-  renderPapers();
+  document.querySelectorAll('.topic-section').forEach(s => s.style.display = '');
+  updateBmarkUI();
+  applySearch('');
 })();
 </script>
 </body>
