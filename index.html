@@ -160,6 +160,120 @@ nav {
 footer { background: var(--nav-bg); color: rgba(255,255,255,.55); text-align: center; padding: 24px; font-size: 12px; line-height: 1.8; }
 footer a { color: rgba(255,255,255,.55); text-decoration: none; }
 footer a:hover { color: white; }
+
+/* ── SITE OVERVIEW BANNER ── */
+.site-overview {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 22px 32px;
+}
+.site-overview-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 700px) { .site-overview-inner { grid-template-columns: 1fr; } }
+.overview-box {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.overview-box h3 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.overview-box p {
+  font-size: 12.5px;
+  color: #444;
+  line-height: 1.7;
+}
+.how-to-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.how-to-list li {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.6;
+  padding: 3px 0;
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+}
+.how-to-list li span.step-icon { flex-shrink: 0; }
+
+/* ── PLAIN ENGLISH INTRO ── */
+.plain-intro {
+  background: linear-gradient(135deg, #f0f7ff 0%, #f9f5ff 100%);
+  border: 1px solid #dde8f8;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 32px;
+}
+.plain-intro-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.plain-intro-header h2 {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+}
+.plain-intro-header .pi-tag {
+  background: #e0ecff;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: .5px;
+}
+.topic-intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+.ti-card {
+  background: white;
+  border-radius: 8px;
+  padding: 12px 14px;
+  border-left: 3px solid;
+}
+.ti-card.c1 { border-left-color: #3b82f6; }
+.ti-card.c2 { border-left-color: #f59e0b; }
+.ti-card.c3 { border-left-color: #10b981; }
+.ti-card.c4 { border-left-color: #8b5cf6; }
+.ti-card.c5 { border-left-color: #ef4444; }
+.ti-card.c6 { border-left-color: #ec4899; }
+.ti-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: #888;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.ti-text {
+  font-size: 12.5px;
+  color: #333;
+  line-height: 1.65;
+}
 </style>
 </head>
 <body>
@@ -200,6 +314,26 @@ footer a:hover { color: white; }
   </div>
 </div>
 
+<!-- ══ SITE OVERVIEW BANNER ══ -->
+<div class="site-overview">
+  <div class="site-overview-inner">
+    <div class="overview-box">
+      <h3>📋 What is ResearchPulse?</h3>
+      <p>ResearchPulse is your personal PhD preparation hub for <strong>AI & Data Quality research</strong>. It compiles 12 landmark and recent papers across 6 active research areas, with full author profiles, methodology breakdowns, key findings, and — most importantly — a dedicated <strong>PhD Research Angle</strong> for each paper showing how it connects to potential thesis directions. Use this site to study the field, prepare for PhD interviews, and sharpen your research statement.</p>
+    </div>
+    <div class="overview-box">
+      <h3>🧭 How to Use This Site</h3>
+      <ul class="how-to-list">
+        <li><span class="step-icon">🔘</span><span>Use the <strong>topic filter pills</strong> below to focus on one research area at a time.</span></li>
+        <li><span class="step-icon">▼</span><span>Click any <strong>paper card</strong> to expand it — you'll see authors, methodology, key findings, and your PhD angle.</span></li>
+        <li><span class="step-icon">⭐</span><span>Hit <strong>☆ Save</strong> on papers you want to revisit — they appear in your Reading List (top right).</span></li>
+        <li><span class="step-icon">🔍</span><span>Use the <strong>search bar</strong> to find papers by keyword (e.g. "label noise", "hallucination", "Shapley").</span></li>
+        <li><span class="step-icon">📊</span><span>Scroll down past the papers to find <strong>Research Gaps</strong> (open problems) and <strong>Key Researchers</strong> to contact.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div class="filter-bar">
   <button class="pill active" onclick="setFilter('all',this)">All <span class="pill-cnt" id="c-all">12</span></button>
   <button class="pill" onclick="setFilter('dca',this)">🏗️ Data-Centric AI <span class="pill-cnt" id="c-dca">2</span></button>
@@ -212,6 +346,40 @@ footer a:hover { color: white; }
 </div>
 
 <div class="main" id="papers">
+
+<!-- ══ PLAIN ENGLISH RESEARCH INTRO ══ -->
+<div class="plain-intro">
+  <div class="plain-intro-header">
+    <h2>🧠 What is this research actually about?</h2>
+    <span class="pi-tag">PLAIN ENGLISH</span>
+  </div>
+  <div class="topic-intro-grid">
+    <div class="ti-card c1">
+      <div class="ti-label">🏗️ Data-Centric AI</div>
+      <div class="ti-text">For years, AI researchers focused on building better <em>models</em> (bigger networks, smarter algorithms). Data-Centric AI flips this — it argues that for most real-world problems, <strong>improving your data gives bigger gains than improving your model</strong>. Think of it as: instead of building a better sieve, make sure the sand going in is clean to begin with. This is now a major trend in industry and academia.</div>
+    </div>
+    <div class="ti-card c2">
+      <div class="ti-label">🏷️ Label Noise Learning</div>
+      <div class="ti-text">When you train an AI, every data point needs a label (e.g. "this is a cat"). But labels are often wrong — human annotators make mistakes, or shortcuts are used. <strong>Label noise</strong> is the study of how to train models that still work well even when some labels in your dataset are incorrect. It's like learning to read a book that has some words misprinted — can you still understand the meaning?</div>
+    </div>
+    <div class="ti-card c3">
+      <div class="ti-label">✅ Data Quality in ML</div>
+      <div class="ti-text">Bad data silently kills ML projects. This area asks: <strong>how do we measure, detect, and fix data quality problems</strong> before or during model training? Problems include: missing values, duplicates, inconsistent formats, outliers, and distributional drift. This research builds tools for production ML pipelines — the "quality control" layer between raw data and your trained model.</div>
+    </div>
+    <div class="ti-card c4">
+      <div class="ti-label">🧬 Synthetic Data Generation</div>
+      <div class="ti-text">Sometimes you don't have enough real data — it's expensive, private, or rare. Synthetic data is <strong>artificially generated data</strong> that mimics real data. Recent work (like large language models trained on AI-generated text) has revealed a scary problem called <em>model collapse</em>: models trained on synthetic data over many rounds start getting worse and worse. Researchers are now trying to figure out when synthetic data helps vs. hurts.</div>
+    </div>
+    <div class="ti-card c5">
+      <div class="ti-label">🛡️ Trustworthy AI</div>
+      <div class="ti-text">As AI systems are deployed in healthcare, law, and finance, the question of <strong>whether we can trust them</strong> becomes critical. Trustworthy AI covers: reducing hallucinations (AI confidently saying false things), making decisions explainable, ensuring fairness across groups, and maintaining robustness when inputs are unusual. There are currently 18+ competing definitions of "trustworthy AI" — unifying them is itself an open research problem.</div>
+    </div>
+    <div class="ti-card c6">
+      <div class="ti-label">📊 Dataset Quality Assessment</div>
+      <div class="ti-text">Even if individual data points are clean, a whole dataset can be poorly structured — unbalanced, redundant, or sampled badly. This field builds <strong>formal mathematical tools</strong> (like Data Shapley, which borrows from game theory) to measure <em>how much each data point contributes</em> to a model's performance. This helps you decide what data to keep, what to throw away, and what to collect more of — without retraining from scratch every time.</div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══ DATA-CENTRIC AI ═══ -->
 <div class="topic-section" data-topic="dca">
@@ -434,6 +602,58 @@ footer a:hover { color: white; }
   <div class="paper-card" id="p5">
     <div class="card-head" onclick="toggleCard('p5')">
       <div class="card-main">
+        <div class="title-row"><span class="paper-title">End-to-End Data Quality-Driven Framework for MaLondon</small></span>
+        <span class="achip">Ioannis Patras <small>· Queen Mary University of London</small></span>
+      </div>
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Uses CLIP (OpenAI's vision-language model) as an <em>offline</em> zero-shot clean sample selector</li>
+            <li>Zero-shot classifier: CLIP image embeddings aligned against text descriptions of each class</li>
+            <li>Applied <strong>before</strong> training — eliminates "self-confirmation bias" of in-training confidence methods</li>
+            <li>Handles "hard noise" (mislabeling between visually similar classes) via rich semantic CLIP representations</li>
+            <li>Plug-in compatible: works as pre-filter for DivideMix, SOP, and other LLN frameworks</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li>Outperforms small-loss and GMM-based selection on CIFAR-10N and Clothing1M</li>
+            <li>Especially strong on hard noise — CLIP semantic space separates similar-looking classes better than pixel features</li>
+            <li>Zero-shot approach removes dependency on in-training model quality entirely</li>
+            <li>Efficient: CLIP inference is offline and fast vs. training-time methods</li>
+            <li>Published at ACM MM — top venue for multimedia + ML cross-over research</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p>This paper demonstrates a key 2025 trend: <strong>foundation models repurposed as data quality tools</strong>. Extensions to explore: (1) applying CLIP-style zero-shot selection to NLP noisy labels using text embedding models, (2) combining CLIPCleaner with active learning to minimally query humans for ambiguous samples, (3) extending to instance-dependent noise detection where noise correlates with CLIP uncertainty scores. The "offline pre-filter" idea also applies to large-scale dataset curation — highly relevant for LLM pretraining data quality.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/pdf/2408.10012" target="_blank" class="link-btn primary">Read Paper →</a>
+        <a href="https://github.com/MrChenFeng/CLIPCleaner_ACMMM2024" target="_blank" class="link-btn secondary">Code on GitHub</a>
+        <a href="https://dl.acm.org/doi/10.1145/3664647.3680664" target="_blank" class="link-btn secondary">ACM DL</a>
+        <button class="bmark-btn" onclick="toggleBmark(4);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DATA QUALITY IN ML ═══ -->
+<div class="topic-section" data-topic="dq">
+  <div class="topic-header">
+    <div class="topic-icon-lg" style="background:#f0fdf4;">✅</div>
+    <div>
+      <div class="topic-title">Data Quality in Machine Learning</div>
+      <div class="topic-desc">Measuring, monitoring, and correcting data quality across the full ML pipeline — from acquisition to production</div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p5">
+    <div class="card-head" onclick="toggleCard('p5')">
+      <div class="card-main">
         <div class="title-row"><span class="paper-title">End-to-End Data Quality-Driven Framework for Machine Learning in Production</span><span class="new-badge">Dec 2025</span></div>
         <div class="venue-row"><span class="venue-badge">arXiv Preprint</span><span class="paper-date">📅 December 2025 · arXiv:2512.19723</span></div>
         <div class="paper-authors"><strong>Firas Bayram</strong>, <strong>Bestoun S. Ahmed</strong>, <strong>Erik Hallin</strong></div>
@@ -537,54 +757,7 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p7')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">AI Models Collapse When Trained on Recursively Generated Data</span><span class="new-badge landmark">Landmark · Nature</span></div>
-        <div class="venue-row"><span class="venue-badge">Nature (2024) + ICLR 2025 Extensions</span><span class="paper-date">📅 2024–2025</span></div>
-        <div class="paper-authors"><strong>Ilia Shumailov</strong> et al. · University of Oxford &amp; Google DeepMind</div>
-      </div>
-      <div class="toggle-btn">▼</div>
-    </div>
-    <div class="paper-detail">
-      <div class="author-chips">
-        <span class="achip">Ilia Shumailov <small>· Oxford / Google DeepMind</small></span>
-        <span class="achip">Oxford Computer Science</span>
-        <span class="achip">Google DeepMind Team</span>
-      </div>
-      <div class="detail-grid">
-        <div class="dbox">
-          <h4>📐 Methodology</h4>
-          <ul>
-            <li>Empirical + theoretical analysis of iterative training on model-generated synthetic outputs</li>
-            <li>Three compounding error sources: statistical approximation, functional expressivity, functional approximation</li>
-            <li>Experiments across: GPT-family language models, GANs (vision), diffusion models (images)</li>
-            <li>Tracks tail-distribution coverage across training generations (Gen 0 → Gen 5+)</li>
-            <li>ICLR 2025 "Strong Model Collapse" paper extends with formal theoretical bounds</li>
-          </ul>
-        </div>
-        <div class="dbox">
-          <h4>💡 Key Findings</h4>
-          <ul>
-            <li>Recursive training on unfiltered synthetic data causes <em>irreversible</em> distribution shift</li>
-            <li><strong>Rare phenomena forgotten by generation 3–4</strong> — catastrophic for medical AI, safety systems, and edge-case coverage</li>
-            <li>Prevention: (1) maintain real data fraction, (2) active curation of synthetic data (gap-filling), (3) entropy/MMD-based quality filtering</li>
-            <li>Watermarking + provenance tracking enables safe large-scale data curation</li>
-          </ul>
-        </div>
-      </div>
-      <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p><strong>Model collapse detection is a wide-open frontier.</strong> The original paper identifies the problem; reliable automatic detection metrics don't yet exist. Publishable PhD directions: (1) early-warning metrics for collapse in continuous training pipelines, (2) domain-specific collapse in medical/scientific AI where rare events are most critical, (3) optimal real/synthetic mixing ratios under distribution shift. This also connects to dataset quality assessment — collapsed models produce lower-quality synthetic data, creating a measurable feedback loop you can study. Published in <em>Nature</em> — very high citation impact for your literature review.</p>
-      </div>
-      <div class="paper-links">
-        <a href="https://www.nature.com/articles/s41586-024-07566-y" target="_blank" class="link-btn primary">Nature Paper →</a>
-        <a href="https://proceedings.iclr.cc/paper_files/paper/2025/file/284afdc2309f9667d2d4fb9290235b0c-Paper-Conference.pdf" target="_blank" class="link-btn secondary">ICLR 2025 Extension</a>
-        <button class="bmark-btn" onclick="toggleBmark(7);event.stopPropagation()">☆ Save</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="paper-card" id="p8">
-    <div class="card-head" onclick="toggleCard('p8')">
-      <div class="card-main">
-        <div class="title-row"><span class="paper-title">How to Synthesize Text Data without Model Collapse?</span><span class="new-badge">ICML 2025</span></div>
+        <div class="venue-row"><span class="venue-badge">Nature (2024) + ICLR 2025 Extensions</span><spass="new-badge">ICML 2025</span></div>
         <div class="venue-row"><span class="venue-badge">ICML 2025</span><span class="paper-date">📅 2025 · Vancouver, BC</span></div>
         <div class="paper-authors">Prevention-focused companion to the Shumailov collapse paper — actionable guidelines for safe synthetic data pipelines</div>
       </div>
