@@ -314,25 +314,6 @@ footer a:hover { color: white; }
   </div>
 </div>
 
-<!-- ══ SITE OVERVIEW BANNER ══ -->
-<div class="site-overview">
-  <div class="site-overview-inner">
-    <div class="overview-box">
-      <h3>📋 What is ResearchPulse?</h3>
-      <p>ResearchPulse is your personal PhD preparation hub for <strong>AI & Data Quality research</strong>. It compiles 12 landmark and recent papers across 6 active research areas, with full author profiles, methodology breakdowns, key findings, and — most importantly — a dedicated <strong>PhD Research Angle</strong> for each paper showing how it connects to potential thesis directions. Use this site to study the field, prepare for PhD interviews, and sharpen your research statement.</p>
-    </div>
-    <div class="overview-box">
-      <h3>🧭 How to Use This Site</h3>
-      <ul class="how-to-list">
-        <li><span class="step-icon">🔘</span><span>Use the <strong>topic filter pills</strong> below to focus on one research area at a time.</span></li>
-        <li><span class="step-icon">▼</span><span>Click any <strong>paper card</strong> to expand it — you'll see authors, methodology, key findings, and your PhD angle.</span></li>
-        <li><span class="step-icon">⭐</span><span>Hit <strong>☆ Save</strong> on papers you want to revisit — they appear in your Reading List (top right).</span></li>
-        <li><span class="step-icon">🔍</span><span>Use the <strong>search bar</strong> to find papers by keyword (e.g. "label noise", "hallucination", "Shapley").</span></li>
-        <li><span class="step-icon">🍊</span><span>Scroll down past the papers to find <strong>Research Gaps</strong> (open problems) and <strong>Key Researchers</strong> to contact.</span></li>
-      </ul>
-    </div>
-  </div>
-</div>
 
 <div class="filter-bar">
   <button class="pill active" onclick="setFilter('all',this)">All <span class="pill-cnt" id="c-all">12</span></button>
@@ -347,39 +328,6 @@ footer a:hover { color: white; }
 
 <div class="main" id="papers">
 
-<!-- ══ PLAIN ENGLISH RESEARCH INTRO ══ -->
-<div class="plain-intro">
-  <div class="plain-intro-header">
-    <h2>🧠 What is this research actually about?</h2>
-    <span class="pi-tag">PLAIN ENGLISH</span>
-  </div>
-  <div class="topic-intro-grid">
-    <div class="ti-card c1">
-      <div class="ti-label">🏗️ Data-Centric AI</div>
-      <div class="ti-text">For years, AI researchers focused on building better <em>models</em> (bigger networks, smarter algorithms). Data-Centric AI flips this — it argues that for most real-world problems, <strong>improving your data gives bigger gains than improving your model</strong>. Think of it as: instead of building a better sieve, make sure the sand going in is clean to begin with. This is now a major trend in industry and academia.</div>
-    </div>
-    <div class="ti-card c2">
-      <div class="ti-label">🏷️ Label Noise Learning</div>
-      <div class="ti-text">When you train an AI, every data point needs a label (e.g. "this is a cat"). But labels are often wrong — human annotators make mistakes, or shortcuts are used. <strong>Label noise</strong> is the study of how to train models that still work well even when some labels in your dataset are incorrect. It's like learning to read a book that has some words misprinted — can you still understand the meaning?</div>
-    </div>
-    <div class="ti-card c3">
-      <div class="ti-label">✅ Data Quality in ML</div>
-      <div class="ti-text">Bad data silently kills ML projects. This area asks: <strong>how do we measure, detect, and fix data quality problems</strong> before or during model training? Problems include: missing values, duplicates, inconsistent formats, outliers, and distributional drift. This research builds tools for production ML pipelines — the "quality control" layer between raw data and your trained model.</div>
-    </div>
-    <div class="ti-card c4">
-      <div class="ti-label">🧬 Synthetic Data Generation</div>
-      <div class="ti-text">Sometimes you don't have enough real data — it's expensive, private, or rare. Synthetic data is <strong>artificially generated data</strong> that mimics real data. Recent work (like large language models trained on AI-generated text) has revealed a scary problem called <em>model collapse</em>: models trained on synthetic data over many rounds start getting worse and worse. Researchers are now trying to figure out when synthetic data helps vs. hurts.</div>
-    </div>
-    <div class="ti-card c5">
-      <div class="ti-label">🛡️ Trustworthy AI</div>
-      <div class="ti-text">As AI systems are deployed in healthcare, law, and finance, the question of <strong>whether we can trust them</strong> becomes critical. Trustworthy AI covers: reducing hallucinations (AI confidently saying false things), making decisions explainable, ensuring fairness across groups, and maintaining robustness when inputs are unusual. There are currently 18+ competing definitions of "trustworthy AI" — unifying them is itself an open research problem.</div>
-    </div>
-    <div class="ti-card c6">
-      <div class="ti-label">📊 Dataset Quality Assessment</div>
-      <div class="ti-text">Even if individual data points are clean, a whole dataset can be poorly structured — unbalanced, redundant, or sampled badly. This field builds <strong>formal mathematical tools</strong> (like Data Shapley, which borrows from game theory) to measure <em>how much each data point contributes</em> to a model's performance. This helps you decide what data to keep, what to throw away, and what to collect more of — without retraining from scratch every time.</div>
-    </div>
-  </div>
-</div>
 
 <!-- ═══ DATA-CENTRIC AI ═══ -->
 <div class="topic-section" data-topic="dca">
@@ -879,14 +827,14 @@ footer a:hover { color: white; }
             <li><strong>Pretraining data quality is the root cause of intrinsic hallucination</strong> — directly connecting trustworthiness to data quality</li>
             <li>RAG significantly reduces factual hallucination but introduces retrieval-quality dependency</li>
             <li>CoT prompting reduces hallucination 15–30% vs. direct answering — prompt engineering matters</li>
-            <li>Hallucination rates compound in agentic chains — multi-step reasoning amplifies errors</li>
+            <li>Hallucination rates compound in agentic chains — amplifies errors</li>
             <li>No single mitigation dominates; hybrid approaches (RAG + CoT + fine-tuning) work best</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
         <h4>🎓 PhD Research Angle</h4>
-        <p>The finding that <strong>pretraining data quality drives intrinsic hallucination</strong> creates a powerful bridge between Trustworthy AI and Data-Centric AI. A thesis framed as "data-centric approaches to reducing LLM hallucination" is novel, timely, and spans both communities. Specific directions: (1) dataset quality metrics that predict downstream hallucination rate, (2) data curation strategies that specifically target hallucination-inducing training examples, (3) hallucination in agentic systems where errors compound.</p>
+        <p>The finding that <strong>pretraining data quality drives intrinsic hallucination</strong> creates a powerful bridge between Trustworthy AI and Data-Centric AI. A thesis framed as "data-centric med as "data-centric approaches to reducing LLM hallucination" is novel, timely, and spans both communities. Specific directions: (1) dataset quality metrics that predict downstream hallucination rate, (2) data curation strategies that specifically target hallucination-inducing training examples, (3) hallucination in agentic systems where errors compound.</p>
       </div>
       <div class="paper-links">
         <a href="https://arxiv.org/abs/2510.06265" target="_blank" class="link-btn primary">Read on arXiv →</a>
@@ -1120,16 +1068,15 @@ footer a:hover { color: white; }
 </footer>
 
 <script>
-const TOPBC = ['dca','ln%,'dq','sd','tai','dsq'];
+const TOPICS = ['dca','ln','dq','sd','tai','dsq'];
 let activeFilter = 'all';
 let bookmarks = JSON.parse(localStorage.getItem('rp2_bmarks') || '[]');
 
 const TITLES = {
   1:'Data-centric Artificial Intelligence: A Survey',
   2:'Data Understanding for Data-Centric AI',
-  3:'Survey on Learning from Data with Label Noise via DNSs',
-  4
-:'CLIPCleaner: Cleaning Noisy Labels with CLIP',
+  3:'Survey on Learning from Data with Label Noise via DNNs',
+  4:'CLIPCleaner: Cleaning Noisy Labels with CLIP',
   5:'End-to-End Data Quality-Driven Framework for ML in Production',
   6:'The Effects of Data Quality on ML Performance on Tabular Data',
   7:'AI Models Collapse When Trained on Recursively Generated Data',
