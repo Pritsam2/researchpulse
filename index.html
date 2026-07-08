@@ -328,7 +328,7 @@ footer a:hover { color: white; }
         <li><span class="step-icon">▼</span><span>Click any <strong>paper card</strong> to expand it — you'll see authors, methodology, key findings, and your PhD angle.</span></li>
         <li><span class="step-icon">⭐</span><span>Hit <strong>☆ Save</strong> on papers you want to revisit — they appear in your Reading List (top right).</span></li>
         <li><span class="step-icon">🔍</span><span>Use the <strong>search bar</strong> to find papers by keyword (e.g. "label noise", "hallucination", "Shapley").</span></li>
-        <li><span class="step-icon">📊</span><span>Scroll down past the papers to find <strong>Research Gaps</strong> (open problems) and <strong>Key Researchers</strong> to contact.</span></li>
+        <li><span class="step-icon">🍊</span><span>Scroll down past the papers to find <strong>Research Gaps</strong> (open problems) and <strong>Key Researchers</strong> to contact.</span></li>
       </ul>
     </div>
   </div>
@@ -602,58 +602,6 @@ footer a:hover { color: white; }
   <div class="paper-card" id="p5">
     <div class="card-head" onclick="toggleCard('p5')">
       <div class="card-main">
-        <div class="title-row"><span class="paper-title">End-to-End Data Quality-Driven Framework for MaLondon</small></span>
-        <span class="achip">Ioannis Patras <small>· Queen Mary University of London</small></span>
-      </div>
-      <div class="detail-grid">
-        <div class="dbox">
-          <h4>📐 Methodology</h4>
-          <ul>
-            <li>Uses CLIP (OpenAI's vision-language model) as an <em>offline</em> zero-shot clean sample selector</li>
-            <li>Zero-shot classifier: CLIP image embeddings aligned against text descriptions of each class</li>
-            <li>Applied <strong>before</strong> training — eliminates "self-confirmation bias" of in-training confidence methods</li>
-            <li>Handles "hard noise" (mislabeling between visually similar classes) via rich semantic CLIP representations</li>
-            <li>Plug-in compatible: works as pre-filter for DivideMix, SOP, and other LLN frameworks</li>
-          </ul>
-        </div>
-        <div class="dbox">
-          <h4>💡 Key Findings</h4>
-          <ul>
-            <li>Outperforms small-loss and GMM-based selection on CIFAR-10N and Clothing1M</li>
-            <li>Especially strong on hard noise — CLIP semantic space separates similar-looking classes better than pixel features</li>
-            <li>Zero-shot approach removes dependency on in-training model quality entirely</li>
-            <li>Efficient: CLIP inference is offline and fast vs. training-time methods</li>
-            <li>Published at ACM MM — top venue for multimedia + ML cross-over research</li>
-          </ul>
-        </div>
-      </div>
-      <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p>This paper demonstrates a key 2025 trend: <strong>foundation models repurposed as data quality tools</strong>. Extensions to explore: (1) applying CLIP-style zero-shot selection to NLP noisy labels using text embedding models, (2) combining CLIPCleaner with active learning to minimally query humans for ambiguous samples, (3) extending to instance-dependent noise detection where noise correlates with CLIP uncertainty scores. The "offline pre-filter" idea also applies to large-scale dataset curation — highly relevant for LLM pretraining data quality.</p>
-      </div>
-      <div class="paper-links">
-        <a href="https://arxiv.org/pdf/2408.10012" target="_blank" class="link-btn primary">Read Paper →</a>
-        <a href="https://github.com/MrChenFeng/CLIPCleaner_ACMMM2024" target="_blank" class="link-btn secondary">Code on GitHub</a>
-        <a href="https://dl.acm.org/doi/10.1145/3664647.3680664" target="_blank" class="link-btn secondary">ACM DL</a>
-        <button class="bmark-btn" onclick="toggleBmark(4);event.stopPropagation()">☆ Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ DATA QUALITY IN ML ═══ -->
-<div class="topic-section" data-topic="dq">
-  <div class="topic-header">
-    <div class="topic-icon-lg" style="background:#f0fdf4;">✅</div>
-    <div>
-      <div class="topic-title">Data Quality in Machine Learning</div>
-      <div class="topic-desc">Measuring, monitoring, and correcting data quality across the full ML pipeline — from acquisition to production</div>
-    </div>
-  </div>
-
-  <div class="paper-card" id="p5">
-    <div class="card-head" onclick="toggleCard('p5')">
-      <div class="card-main">
         <div class="title-row"><span class="paper-title">End-to-End Data Quality-Driven Framework for Machine Learning in Production</span><span class="new-badge">Dec 2025</span></div>
         <div class="venue-row"><span class="venue-badge">arXiv Preprint</span><span class="paper-date">📅 December 2025 · arXiv:2512.19723</span></div>
         <div class="paper-authors"><strong>Firas Bayram</strong>, <strong>Bestoun S. Ahmed</strong>, <strong>Erik Hallin</strong></div>
@@ -757,7 +705,54 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p7')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">AI Models Collapse When Trained on Recursively Generated Data</span><span class="new-badge landmark">Landmark · Nature</span></div>
-        <div class="venue-row"><span class="venue-badge">Nature (2024) + ICLR 2025 Extensions</span><spass="new-badge">ICML 2025</span></div>
+        <div class="venue-row"><span class="venue-badge">Nature (2024) + ICLR 2025 Extensions</span><span class="paper-date">📅 2024–2025</span></div>
+        <div class="paper-authors"><strong>Ilia Shumailov</strong> et al. · University of Oxford &amp; Google DeepMind</div>
+      </div>
+      <div class="toggle-btn">▼</div>
+    </div>
+    <div class="paper-detail">
+      <div class="author-chips">
+        <span class="achip">Ilia Shumailov <small>· Oxford / Google DeepMind</small></span>
+        <span class="achip">Oxford Computer Science</span>
+        <span class="achip">Google DeepMind Team</span>
+      </div>
+      <div class="detail-grid">
+        <div class="dbox">
+          <h4>📐 Methodology</h4>
+          <ul>
+            <li>Empirical + theoretical analysis of iterative training on model-generated synthetic outputs</li>
+            <li>Three compounding error sources: statistical approximation, functional expressivity, functional approximation</li>
+            <li>Experiments across: GPT-family language models, GANs (vision), diffusion models (images)</li>
+            <li>Tracks tail-distribution coverage across training generations (Gen 0 → Gen 5+)</li>
+            <li>ICLR 2025 "Strong Model Collapse" paper extends with formal theoretical bounds</li>
+          </ul>
+        </div>
+        <div class="dbox">
+          <h4>💡 Key Findings</h4>
+          <ul>
+            <li>Recursive training on unfiltered synthetic data causes <em>irreversible</em> distribution shift</li>
+            <li><strong>Rare phenomena forgotten by generation 3–4</strong> — catastrophic for medical AI, safety systems, and edge-case coverage</li>
+            <li>Prevention: (1) maintain real data fraction, (2) active curation of synthetic data (gap-filling), (3) entropy/MMD-based quality filtering</li>
+            <li>Watermarking + provenance tracking enables safe large-scale data curation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phd-box">
+        <h4>🎓 PhD Research Angle</h4>
+        <p><strong>Model collapse detection is a wide-open frontier.</strong> The original paper identifies the problem; reliable automatic detection metrics don't yet exist. Publishable PhD directions: (1) early-warning metrics for collapse in continuous training pipelines, (2) domain-specific collapse in medical/scientific AI where rare events are most critical, (3) optimal real/synthetic mixing ratios under distribution shift. This also connects to dataset quality assessment — collapsed models produce lower-quality synthetic data, creating a measurable feedback loop you can study. Published in <em>Nature</em> — very high citation impact for your literature review.</p>
+      </div>
+      <div class="paper-links">
+        <a href="https://www.nature.com/articles/s41586-024-07566-y" target="_blank" class="link-btn primary">Nature Paper →</a>
+        <a href="https://proceedings.iclr.cc/paper_files/paper/2025/file/284afdc2309f9667d2d4fb9290235b0c-Paper-Conference.pdf" target="_blank" class="link-btn secondary">ICLR 2025 Extension</a>
+        <button class="bmark-btn" onclick="toggleBmark(7);event.stopPropagation()">☆ Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paper-card" id="p8">
+    <div class="card-head" onclick="toggleCard('p8')">
+      <div class="card-main">
+        <div class="title-row"><span class="paper-title">How to Synthesize Text Data without Model Collapse?</span><span class="new-badge">ICML 2025</span></div>
         <div class="venue-row"><span class="venue-badge">ICML 2025</span><span class="paper-date">📅 2025 · Vancouver, BC</span></div>
         <div class="paper-authors">Prevention-focused companion to the Shumailov collapse paper — actionable guidelines for safe synthetic data pipelines</div>
       </div>
@@ -1125,15 +1120,16 @@ footer a:hover { color: white; }
 </footer>
 
 <script>
-const TOPICS = ['dca','ln','dq','sd','tai','dsq'];
+const TOPBC = ['dca','ln%,'dq','sd','tai','dsq'];
 let activeFilter = 'all';
 let bookmarks = JSON.parse(localStorage.getItem('rp2_bmarks') || '[]');
 
 const TITLES = {
   1:'Data-centric Artificial Intelligence: A Survey',
   2:'Data Understanding for Data-Centric AI',
-  3:'Survey on Learning from Data with Label Noise via DNNs',
-  4:'CLIPCleaner: Cleaning Noisy Labels with CLIP',
+  3:'Survey on Learning from Data with Label Noise via DNSs',
+  4
+:'CLIPCleaner: Cleaning Noisy Labels with CLIP',
   5:'End-to-End Data Quality-Driven Framework for ML in Production',
   6:'The Effects of Data Quality on ML Performance on Tabular Data',
   7:'AI Models Collapse When Trained on Recursively Generated Data',
