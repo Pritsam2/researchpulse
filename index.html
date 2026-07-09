@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ResearchPulse — PhD Research Hub</title>
+<title>ResearchPulse â PhD Research Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -104,6 +104,9 @@ nav {
 .dbox ul { padding-left: 15px; }
 .dbox li { font-size: 12.5px; color: #444; line-height: 1.6; margin-bottom: 4px; }
 .dbox p { font-size: 12.5px; color: #444; line-height: 1.6; }
+.sum-box { background: #eef6ff; border-left: 3px solid #2d6a9f; border-radius: 8px; padding: 11px 15px; margin-top: 12px; }
+.sum-box h4 { font-size: 10.5px; font-weight: 700; letter-spacing: .9px; text-transform: uppercase; color: #2d6a9f; margin-bottom: 7px; }
+.sum-box p { font-size: 13px; color: #1a3a5c; line-height: 1.7; }
 
 .phd-box { background: #fffbe8; border: 1.5px solid #f59e0b; border-radius: 8px; padding: 12px 14px; margin-top: 12px; }
 .phd-box h4 { font-size: 10.5px; font-weight: 700; letter-spacing: .9px; text-transform: uppercase; color: #92400e; margin-bottom: 6px; }
@@ -161,7 +164,7 @@ footer { background: var(--nav-bg); color: rgba(255,255,255,.55); text-align: ce
 footer a { color: rgba(255,255,255,.55); text-decoration: none; }
 footer a:hover { color: white; }
 
-/* ── SITE OVERVIEW BANNER ── */
+/* ââ SITE OVERVIEW BANNER ââ */
 .site-overview {
   background: #fff;
   border-bottom: 1px solid var(--border);
@@ -213,7 +216,7 @@ footer a:hover { color: white; }
 }
 .how-to-list li span.step-icon { flex-shrink: 0; }
 
-/* ── PLAIN ENGLISH INTRO ── */
+/* ââ PLAIN ENGLISH INTRO ââ */
 .plain-intro {
   background: linear-gradient(135deg, #f0f7ff 0%, #f9f5ff 100%);
   border: 1px solid #dde8f8;
@@ -281,11 +284,11 @@ footer a:hover { color: white; }
 <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-head">
-    <h3>📚 Reading List</h3>
-    <button class="d-close" onclick="closeDrawer()">×</button>
+    <h3>ð Reading List</h3>
+    <button class="d-close" onclick="closeDrawer()">Ã</button>
   </div>
   <div class="drawer-body" id="drawer-body">
-    <div class="d-empty" id="d-empty">No papers saved yet.<br>Click ☆ on any paper to save it.</div>
+    <div class="d-empty" id="d-empty">No papers saved yet.<br>Click â on any paper to save it.</div>
   </div>
 </div>
 
@@ -297,42 +300,42 @@ footer a:hover { color: white; }
     <a href="#researchers" class="nav-link">Researchers</a>
   </div>
   <div class="nav-right">
-    <input type="text" class="search-input" id="search-input" placeholder="🔍 Search papers...">
-    <button class="list-btn" onclick="openDrawer()">📚 Reading List <span class="count-badge" id="bmark-count">0</span></button>
+    <input type="text" class="search-input" id="search-input" placeholder="ð Search papers...">
+    <button class="list-btn" onclick="openDrawer()">ð Reading List <span class="count-badge" id="bmark-count">0</span></button>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="hero-tag">🎓 PhD Research Preparation Hub</div>
-  <h1>AI & Data Quality — Deep Research Guide</h1>
+  <div class="hero-tag">ð PhD Research Preparation Hub</div>
+  <h1>AI & Data Quality â Deep Research Guide</h1>
   <p>Full author profiles, methodologies, key findings, and PhD research angles across 6 areas. Everything you need to study these fields and speak confidently about them in interviews and your research statement.</p>
   <div class="hero-stats">
     <div class="stat-pill"><strong>12</strong> <span>papers with full detail</span></div>
     <div class="stat-pill"><strong>6</strong> <span>research gaps mapped</span></div>
     <div class="stat-pill"><strong>8</strong> <span>key researchers</span></div>
-    <div class="stat-pill">🔄 <span>Mon &amp; Thu updates</span></div>
+    <div class="stat-pill">ð <span>Mon &amp; Thu updates</span></div>
   </div>
 </div>
 
 
 <div class="filter-bar">
   <button class="pill active" onclick="setFilter('all',this)">All <span class="pill-cnt" id="c-all">12</span></button>
-  <button class="pill" onclick="setFilter('dca',this)">🏗️ Data-Centric AI <span class="pill-cnt" id="c-dca">2</span></button>
-  <button class="pill" onclick="setFilter('ln',this)">🏷️ Label Noise <span class="pill-cnt" id="c-ln">2</span></button>
-  <button class="pill" onclick="setFilter('dq',this)">✅ Data Quality <span class="pill-cnt" id="c-dq">2</span></button>
-  <button class="pill" onclick="setFilter('sd',this)">🧬 Synthetic Data <span class="pill-cnt" id="c-sd">2</span></button>
-  <button class="pill" onclick="setFilter('tai',this)">🛡️ Trustworthy AI <span class="pill-cnt" id="c-tai">2</span></button>
-  <button class="pill" onclick="setFilter('dsq',this)">📊 Dataset Quality <span class="pill-cnt" id="c-dsq">2</span></button>
+  <button class="pill" onclick="setFilter('dca',this)">ðï¸ Data-Centric AI <span class="pill-cnt" id="c-dca">2</span></button>
+  <button class="pill" onclick="setFilter('ln',this)">ð·ï¸ Label Noise <span class="pill-cnt" id="c-ln">2</span></button>
+  <button class="pill" onclick="setFilter('dq',this)">â Data Quality <span class="pill-cnt" id="c-dq">2</span></button>
+  <button class="pill" onclick="setFilter('sd',this)">ð§¬ Synthetic Data <span class="pill-cnt" id="c-sd">2</span></button>
+  <button class="pill" onclick="setFilter('tai',this)">ð¡ï¸ Trustworthy AI <span class="pill-cnt" id="c-tai">2</span></button>
+  <button class="pill" onclick="setFilter('dsq',this)">ð Dataset Quality <span class="pill-cnt" id="c-dsq">2</span></button>
   <span class="results-note" id="results-note">Showing all 12 papers</span>
 </div>
 
 <div class="main" id="papers">
 
 
-<!-- ═══ DATA-CENTRIC AI ═══ -->
+<!-- âââ DATA-CENTRIC AI âââ -->
 <div class="topic-section" data-topic="dca">
   <div class="topic-header">
-    <div class="topic-icon-lg" style="background:#e8f4fd;">🏗️</div>
+    <div class="topic-icon-lg" style="background:#e8f4fd;">ðï¸</div>
     <div>
       <div class="topic-title">Data-Centric AI</div>
       <div class="topic-desc">Shifting the focus from model architecture to data quality, quantity, and lifecycle management</div>
@@ -343,22 +346,23 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p1')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">Data-centric Artificial Intelligence: A Survey</span><span class="new-badge landmark">Foundational</span></div>
-        <div class="venue-row"><span class="venue-badge">ACM Computing Surveys</span><span class="paper-date">📅 2025 · Vol 57(5), pp 1–42</span></div>
-        <div class="paper-authors"><strong>Daochen Zha</strong>, Zaid Pervaiz Bhat, Kwei-Herng Lai, Fan Yang, Zhimeng Jiang, Shaochen Zhong, <strong>Xia Hu</strong> · Rice University &amp; Texas A&amp;M</div>
+        <div class="venue-row"><span class="venue-badge">ACM Computing Surveys</span><span class="paper-date">ð 2025 Â· Vol 57(5), pp 1â42</span></div>
+        <div class="paper-authors"><strong>Daochen Zha</strong>, Zaid Pervaiz Bhat, Kwei-Herng Lai, Fan Yang, Zhimeng Jiang, Shaochen Zhong, <strong>Xia Hu</strong> Â· Rice University &amp; Texas A&amp;M</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
       <div class="author-chips">
-        <span class="achip">Daochen Zha <small>· Rice University, Houston TX</small></span>
-        <span class="achip">Xia Hu <small>· Rice University</small></span>
-        <span class="achip">Zaid Pervaiz Bhat <small>· Texas A&amp;M</small></span>
-        <span class="achip">Kwei-Herng Lai <small>· Texas A&amp;M</small></span>
-        <span class="achip">Fan Yang <small>· Texas A&amp;M</small></span>
+        <span class="achip">Daochen Zha <small>Â· Rice University, Houston TX</small></span>
+        <span class="achip">Xia Hu <small>Â· Rice University</small></span>
+        <span class="achip">Zaid Pervaiz Bhat <small>Â· Texas A&amp;M</small></span>
+        <span class="achip">Kwei-Herng Lai <small>Â· Texas A&amp;M</small></span>
+        <span class="achip">Fan Yang <small>Â· Texas A&amp;M</small></span>
       </div>
+      <div class="sum-box"><h4>📋 Summary</h4><p>The foundational reference that defined "data-centric AI" as a field. This 2025 ACM Computing Surveys paper maps the full landscape into three pillars — training data development, inference data development, and data maintenance — making the empirical case that improving data quality now yields more performance gain than improving model architecture.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology &amp; Framework</h4>
+          <h4>ð Methodology &amp; Framework</h4>
           <ul>
             <li>Systematic survey of the entire data-centric AI landscape across all modalities</li>
             <li><strong>3-pillar framework:</strong> (1) Training Data Development, (2) Inference Data Development, (3) Data Maintenance</li>
@@ -368,25 +372,25 @@ footer a:hover { color: white; }
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
-            <li>Model architecture improvements yield diminishing returns — data quality investments now dominate performance gains</li>
+            <li>Model architecture improvements yield diminishing returns â data quality investments now dominate performance gains</li>
             <li>Active labeling and automated data pipelines replace manual model tuning in production</li>
             <li>Inference data development (prompting, context) is severely under-researched</li>
-            <li>Data maintenance is the least formalized pillar — significant open problems remain</li>
+            <li>Data maintenance is the least formalized pillar â significant open problems remain</li>
             <li>Paper has become the go-to citation for positioning data-centric research</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p>This is the <strong>foundational citation</strong> for any data-centric thesis — cite it in your introduction to frame the broader paradigm shift. The "pipeline search" subcategory (AutoML for data pipelines) and "inference data development" (how data is structured at test time) both point to underexplored thesis directions. If you work in label noise, synthetic data, or dataset quality, you will position your thesis <em>within</em> the framework this paper establishes. Daochen Zha and Xia Hu at Rice University are strong contacts to reach out to for PhD inquiries.</p>
+        <h4>ð PhD Research Angle</h4>
+        <p>This is the <strong>foundational citation</strong> for any data-centric thesis â cite it in your introduction to frame the broader paradigm shift. The "pipeline search" subcategory (AutoML for data pipelines) and "inference data development" (how data is structured at test time) both point to underexplored thesis directions. If you work in label noise, synthetic data, or dataset quality, you will position your thesis <em>within</em> the framework this paper establishes. Daochen Zha and Xia Hu at Rice University are strong contacts to reach out to for PhD inquiries.</p>
       </div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2303.10158" target="_blank" class="link-btn primary">Read on arXiv →</a>
+        <a href="https://arxiv.org/abs/2303.10158" target="_blank" class="link-btn primary">Read on arXiv â</a>
         <a href="https://github.com/daochenzha/data-centric-ai" target="_blank" class="link-btn secondary">GitHub Resources</a>
         <a href="https://dczha.com/" target="_blank" class="link-btn secondary">Author Website</a>
-        <button class="bmark-btn" onclick="toggleBmark(1);event.stopPropagation()">☆ Save</button>
+        <button class="bmark-btn" onclick="toggleBmark(1);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
@@ -395,15 +399,16 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p2')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">Data Understanding for Data-Centric AI</span><span class="new-badge">2026</span></div>
-        <div class="venue-row"><span class="venue-badge">Business &amp; Information Systems Engineering (BISE)</span><span class="paper-date">📅 2026</span></div>
+        <div class="venue-row"><span class="venue-badge">Business &amp; Information Systems Engineering (BISE)</span><span class="paper-date">ð 2026</span></div>
         <div class="paper-authors">Systematic framework for evaluating and understanding datasets before model development begins</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
+      <div class="sum-box"><h4>📋 Summary</h4><p>Before any model gets built, this 2026 paper argues you need to truly understand your dataset first. It introduces a structured pre-modeling framework covering profiling, quality diagnosis, and readiness scoring — giving data teams and ML engineers a shared vocabulary to catch data problems early rather than after costly training iterations.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
             <li>Pre-modeling data understanding framework: profiling, quality diagnosis, readiness assessment</li>
             <li>Bridges gap between data engineering practices and ML model selection decisions</li>
@@ -412,30 +417,30 @@ footer a:hover { color: white; }
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
             <li>Poor data understanding before modeling is a primary driver of failed ML projects (industry estimate: 85% failure rate traces to data)</li>
-            <li>Practitioners lack shared vocabulary for data quality — impedes collaboration between data teams and ML teams</li>
+            <li>Practitioners lack shared vocabulary for data quality â impedes collaboration between data teams and ML teams</li>
             <li>Structured pre-model profiling reduces costly iteration cycles in practice</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p>This paper occupies the intersection of Information Systems and ML — underserved academically. If you are positioning in a CS or IS department with an applied data science focus, this bridges both communities. Good supporting citation for proposals about systematic data evaluation tools, especially in enterprise or regulated domains (finance, healthcare, law).</p>
+        <h4>ð PhD Research Angle</h4>
+        <p>This paper occupies the intersection of Information Systems and ML â underserved academically. If you are positioning in a CS or IS department with an applied data science focus, this bridges both communities. Good supporting citation for proposals about systematic data evaluation tools, especially in enterprise or regulated domains (finance, healthcare, law).</p>
       </div>
       <div class="paper-links">
-        <a href="https://link.springer.com/journal/12599" target="_blank" class="link-btn primary">BISE Journal →</a>
-        <button class="bmark-btn" onclick="toggleBmark(2);event.stopPropagation()">☆ Save</button>
+        <a href="https://link.springer.com/journal/12599" target="_blank" class="link-btn primary">BISE Journal â</a>
+        <button class="bmark-btn" onclick="toggleBmark(2);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ LABEL NOISE ═══ -->
+<!-- âââ LABEL NOISE âââ -->
 <div class="topic-section" data-topic="ln">
   <div class="topic-header">
-    <div class="topic-icon-lg" style="background:#fef3e8;">🏷️</div>
+    <div class="topic-icon-lg" style="background:#fef3e8;">ð·ï¸</div>
     <div>
       <div class="topic-title">Label Noise Learning</div>
       <div class="topic-desc">Training robust models when ground-truth annotations are corrupted, crowdsourced, or web-scraped</div>
@@ -446,42 +451,43 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p3')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">A Survey on Learning from Data with Label Noise via Deep Neural Networks</span></div>
-        <div class="venue-row"><span class="venue-badge">Systems Science &amp; Control Engineering (Taylor &amp; Francis)</span><span class="paper-date">📅 April 2025 · Vol 13(1)</span></div>
-        <div class="paper-authors">Comprehensive taxonomy of noise types and DNN-based LLN approaches · Benchmarks: CIFAR-10N, Clothing1M, WebVision</div>
+        <div class="venue-row"><span class="venue-badge">Systems Science &amp; Control Engineering (Taylor &amp; Francis)</span><span class="paper-date">ð April 2025 Â· Vol 13(1)</span></div>
+        <div class="paper-authors">Comprehensive taxonomy of noise types and DNN-based LLN approaches Â· Benchmarks: CIFAR-10N, Clothing1M, WebVision</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
+      <div class="sum-box"><h4>📋 Summary</h4><p>A comprehensive 2025 map of techniques for training deep networks when your labels are wrong. It covers four main solution families (robust losses, label adjustment, sample selection, semi-supervised learning), benchmarks them on standardized noisy datasets, and identifies "instance-dependent noise" — where error probability varies by individual sample — as the hardest unsolved frontier.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Taxonomy of Methods</h4>
+          <h4>ð Taxonomy of Methods</h4>
           <ul>
             <li><strong>Noise types:</strong> symmetric, asymmetric, class-dependent (CDN), instance-dependent (IDN)</li>
-            <li><strong>Approach 1 — Robust loss:</strong> Mean Absolute Error (MAE), symmetric cross-entropy, generalized cross-entropy</li>
-            <li><strong>Approach 2 — Loss adjustment:</strong> Label smoothing, noise transition matrices, bootstrapping</li>
-            <li><strong>Approach 3 — Sample selection:</strong> Small-loss trick, GMM-based selection (DivideMix), co-training</li>
-            <li><strong>Approach 4 — Semi-supervised:</strong> MixMatch-style relabeling, MentorNet, curriculum learning</li>
+            <li><strong>Approach 1 â Robust loss:</strong> Mean Absolute Error (MAE), symmetric cross-entropy, generalized cross-entropy</li>
+            <li><strong>Approach 2 â Loss adjustment:</strong> Label smoothing, noise transition matrices, bootstrapping</li>
+            <li><strong>Approach 3 â Sample selection:</strong> Small-loss trick, GMM-based selection (DivideMix), co-training</li>
+            <li><strong>Approach 4 â Semi-supervised:</strong> MixMatch-style relabeling, MentorNet, curriculum learning</li>
             <li><strong>Benchmarks:</strong> CIFAR-10N (real annotator noise), Clothing1M (1M web images, 38.5% noise), WebVision</li>
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
-            <li><strong>IDN is the unsolved frontier</strong> — real-world noise depends on individual sample features, not just class</li>
+            <li><strong>IDN is the unsolved frontier</strong> â real-world noise depends on individual sample features, not just class</li>
             <li>Sample selection (small-loss trick) remains most practical but suffers self-confirmation bias on high noise rates</li>
             <li>Semi-supervised methods outperform pure supervised when noise exceeds 40%</li>
-            <li>NLP label noise is significantly less studied than vision — major gap</li>
+            <li>NLP label noise is significantly less studied than vision â major gap</li>
             <li>Multimodal label noise (image-text misalignment) is an emerging open problem</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p><strong>Instance-dependent noise is the realistic, unsolved case.</strong> CDN assumes all samples in a class have the same flip probability — but in medical imaging, a blurry X-ray is harder to label correctly than a clear one. IDN captures this. A PhD thesis on IDN estimation (especially for medical, scientific, or low-resource settings) addresses a genuine unsolved problem. Standard benchmarks CIFAR-10N and Clothing1M are your validation testbeds. NLP label noise is particularly sparse — a thesis bridging label noise and NLP/LLMs could be very high-impact.</p>
+        <h4>ð PhD Research Angle</h4>
+        <p><strong>Instance-dependent noise is the realistic, unsolved case.</strong> CDN assumes all samples in a class have the same flip probability â but in medical imaging, a blurry X-ray is harder to label correctly than a clear one. IDN captures this. A PhD thesis on IDN estimation (especially for medical, scientific, or low-resource settings) addresses a genuine unsolved problem. Standard benchmarks CIFAR-10N and Clothing1M are your validation testbeds. NLP label noise is particularly sparse â a thesis bridging label noise and NLP/LLMs could be very high-impact.</p>
       </div>
       <div class="paper-links">
-        <a href="https://www.tandfonline.com/doi/full/10.1080/21642583.2025.2488120" target="_blank" class="link-btn primary">Read Paper →</a>
-        <button class="bmark-btn" onclick="toggleBmark(3);event.stopPropagation()">☆ Save</button>
+        <a href="https://www.tandfonline.com/doi/full/10.1080/21642583.2025.2488120" target="_blank" class="link-btn primary">Read Paper â</a>
+        <button class="bmark-btn" onclick="toggleBmark(3);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
@@ -490,60 +496,61 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p4')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">CLIPCleaner: Cleaning Noisy Labels with CLIP</span><span class="new-badge">High Impact</span></div>
-        <div class="venue-row"><span class="venue-badge">ACM Multimedia 2024 (ACM MM'24)</span><span class="paper-date">📅 2024 · ACM International Conference on Multimedia</span></div>
-        <div class="paper-authors"><strong>Chen Feng</strong>, <strong>Georgios Tzimiropoulos</strong>, <strong>Ioannis Patras</strong> · University College London (UCL) &amp; Queen Mary University of London</div>
+        <div class="venue-row"><span class="venue-badge">ACM Multimedia 2024 (ACM MM'24)</span><span class="paper-date">ð 2024 Â· ACM International Conference on Multimedia</span></div>
+        <div class="paper-authors"><strong>Chen Feng</strong>, <strong>Georgios Tzimiropoulos</strong>, <strong>Ioannis Patras</strong> Â· University College London (UCL) &amp; Queen Mary University of London</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
       <div class="author-chips">
-        <span class="achip">Chen Feng <small>· UCL, London</small></span>
-        <span class="achip">Georgios Tzimiropoulos <small>· UCL / Samsung AI Centre London</small></span>
-        <span class="achip">Ioannis Patras <small>· Queen Mary University of London</small></span>
+        <span class="achip">Chen Feng <small>Â· UCL, London</small></span>
+        <span class="achip">Georgios Tzimiropoulos <small>Â· UCL / Samsung AI Centre London</small></span>
+        <span class="achip">Ioannis Patras <small>Â· Queen Mary University of London</small></span>
       </div>
+      <div class="sum-box"><h4>📋 Summary</h4><p>Instead of relying on the model being trained to spot its own noisy labels — which creates circular self-confirmation bias — CLIPCleaner runs OpenAI's CLIP as an offline auditor before training begins. CLIP catches mislabeled samples that confidence-based methods miss, especially when similar-looking classes get confused, and plugs in as a pre-filter to any existing label-noise framework.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
             <li>Uses CLIP (OpenAI's vision-language model) as an <em>offline</em> zero-shot clean sample selector</li>
             <li>Zero-shot classifier: CLIP image embeddings aligned against text descriptions of each class</li>
-            <li>Applied <strong>before</strong> training — eliminates "self-confirmation bias" of in-training confidence methods</li>
+            <li>Applied <strong>before</strong> training â eliminates "self-confirmation bias" of in-training confidence methods</li>
             <li>Handles "hard noise" (mislabeling between visually similar classes) via rich semantic CLIP representations</li>
             <li>Plug-in compatible: works as pre-filter for DivideMix, SOP, and other LLN frameworks</li>
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
             <li>Outperforms small-loss and GMM-based selection on CIFAR-10N and Clothing1M</li>
-            <li>Especially strong on hard noise — CLIP semantic space separates similar-looking classes better than pixel features</li>
+            <li>Especially strong on hard noise â CLIP semantic space separates similar-looking classes better than pixel features</li>
             <li>Zero-shot approach removes dependency on in-training model quality entirely</li>
             <li>Efficient: CLIP inference is offline and fast vs. training-time methods</li>
-            <li>Published at ACM MM — top venue for multimedia + ML cross-over research</li>
+            <li>Published at ACM MM â top venue for multimedia + ML cross-over research</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p>This paper demonstrates a key 2025 trend: <strong>foundation models repurposed as data quality tools</strong>. Extensions to explore: (1) applying CLIP-style zero-shot selection to NLP noisy labels using text embedding models, (2) combining CLIPCleaner with active learning to minimally query humans for ambiguous samples, (3) extending to instance-dependent noise detection where noise correlates with CLIP uncertainty scores. The "offline pre-filter" idea also applies to large-scale dataset curation — highly relevant for LLM pretraining data quality.</p>
+        <h4>ð PhD Research Angle</h4>
+        <p>This paper demonstrates a key 2025 trend: <strong>foundation models repurposed as data quality tools</strong>. Extensions to explore: (1) applying CLIP-style zero-shot selection to NLP noisy labels using text embedding models, (2) combining CLIPCleaner with active learning to minimally query humans for ambiguous samples, (3) extending to instance-dependent noise detection where noise correlates with CLIP uncertainty scores. The "offline pre-filter" idea also applies to large-scale dataset curation â highly relevant for LLM pretraining data quality.</p>
       </div>
       <div class="paper-links">
-        <a href="https://arxiv.org/pdf/2408.10012" target="_blank" class="link-btn primary">Read Paper →</a>
+        <a href="https://arxiv.org/pdf/2408.10012" target="_blank" class="link-btn primary">Read Paper â</a>
         <a href="https://github.com/MrChenFeng/CLIPCleaner_ACMMM2024" target="_blank" class="link-btn secondary">Code on GitHub</a>
         <a href="https://dl.acm.org/doi/10.1145/3664647.3680664" target="_blank" class="link-btn secondary">ACM DL</a>
-        <button class="bmark-btn" onclick="toggleBmark(4);event.stopPropagation()">☆ Save</button>
+        <button class="bmark-btn" onclick="toggleBmark(4);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ DATA QUALITY IN ML ═══ -->
+<!-- âââ DATA QUALITY IN ML âââ -->
 <div class="topic-section" data-topic="dq">
   <div class="topic-header">
-    <div class="topic-icon-lg" style="background:#f0fdf4;">✅</div>
+    <div class="topic-icon-lg" style="background:#f0fdf4;">â</div>
     <div>
       <div class="topic-title">Data Quality in Machine Learning</div>
-      <div class="topic-desc">Measuring, monitoring, and correcting data quality across the full ML pipeline — from acquisition to production</div>
+      <div class="topic-desc">Measuring, monitoring, and correcting data quality across the full ML pipeline â from acquisition to production</div>
     </div>
   </div>
 
@@ -551,10 +558,10 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p5')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">End-to-End Data Quality-Driven Framework for Machine Learning in Production</span><span class="new-badge">Dec 2025</span></div>
-        <div class="venue-row"><span class="venue-badge">arXiv Preprint</span><span class="paper-date">📅 December 2025 · arXiv:2512.19723</span></div>
+        <div class="venue-row"><span class="venue-badge">arXiv Preprint</span><span class="paper-date">ð December 2025 Â· arXiv:2512.19723</span></div>
         <div class="paper-authors"><strong>Firas Bayram</strong>, <strong>Bestoun S. Ahmed</strong>, <strong>Erik Hallin</strong></div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
       <div class="author-chips">
@@ -562,35 +569,36 @@ footer a:hover { color: white; }
         <span class="achip">Bestoun S. Ahmed</span>
         <span class="achip">Erik Hallin</span>
       </div>
+      <div class="sum-box"><h4>📋 Summary</h4><p>A December 2025 paper that takes data quality beyond the training set and into live production. It builds a three-component pipeline that detects data drift in real-time, adapts quality thresholds dynamically as distributions shift, and routes quality signals back into deployed model decisions — catching degradation before accuracy drops rather than after the damage is done.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
             <li><strong>3-component framework:</strong> (1) dynamic drift detection, (2) adaptive data quality metrics, (3) MLOps feedback loop</li>
             <li>Real-time quality signals integrated into deployed ML model decision-making</li>
             <li>Adaptive thresholds: quality gates adjust dynamically based on live data statistics</li>
-            <li>Designed for minimal overhead — sub-millisecond quality checks in the serving path</li>
+            <li>Designed for minimal overhead â sub-millisecond quality checks in the serving path</li>
             <li>Validated on production-scale streaming datasets</li>
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
             <li>Quality-driven decision gates reduce model degradation by catching drift before accuracy drops</li>
             <li>Adaptive metrics outperform static thresholds significantly on non-stationary data streams</li>
-            <li>LLMs are emerging as data quality auditors — validated for text data quality checking</li>
+            <li>LLMs are emerging as data quality auditors â validated for text data quality checking</li>
             <li>Bridges gap between offline data quality research and online ML deployment reality</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p><strong>MLOps + data quality is a severely underexplored intersection.</strong> Most academic data quality research assumes static, offline datasets — but production models see shifting data every day. Research extensions: (1) federated learning quality monitoring (data quality across heterogeneous clients), (2) LLM fine-tuning data quality signals (can we detect quality issues before they harm fine-tuned models?), (3) causal approaches to identifying which quality dimensions caused a specific model failure. All are publishable at top ML/data venues (VLDB, SIGMOD, NeurIPS).</p>
+        <h4>ð PhD Research Angle</h4>
+        <p><strong>MLOps + data quality is a severely underexplored intersection.</strong> Most academic data quality research assumes static, offline datasets â but production models see shifting data every day. Research extensions: (1) federated learning quality monitoring (data quality across heterogeneous clients), (2) LLM fine-tuning data quality signals (can we detect quality issues before they harm fine-tuned models?), (3) causal approaches to identifying which quality dimensions caused a specific model failure. All are publishable at top ML/data venues (VLDB, SIGMOD, NeurIPS).</p>
       </div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2512.19723" target="_blank" class="link-btn primary">Read on arXiv →</a>
+        <a href="https://arxiv.org/abs/2512.19723" target="_blank" class="link-btn primary">Read on arXiv â</a>
         <a href="https://arxiv.org/html/2512.19723v1" target="_blank" class="link-btn secondary">HTML Version</a>
-        <button class="bmark-btn" onclick="toggleBmark(5);event.stopPropagation()">☆ Save</button>
+        <button class="bmark-btn" onclick="toggleBmark(5);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
@@ -599,15 +607,16 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p6')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">The Effects of Data Quality on Machine Learning Performance on Tabular Data</span></div>
-        <div class="venue-row"><span class="venue-badge">Information Systems (Elsevier)</span><span class="paper-date">📅 2025</span></div>
-        <div class="paper-authors">Controlled study: 7 data quality dimensions × 10 ML algorithms on real tabular benchmark datasets</div>
+        <div class="venue-row"><span class="venue-badge">Information Systems (Elsevier)</span><span class="paper-date">ð 2025</span></div>
+        <div class="paper-authors">Controlled study: 7 data quality dimensions Ã 10 ML algorithms on real tabular benchmark datasets</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
+      <div class="sum-box"><h4>📋 Summary</h4><p>Provides hard empirical numbers on a critical question: how much does each type of data problem actually hurt your model? Using controlled injection of 7 quality defects across 10 ML algorithms at 4 severity levels, it finds that label noise is the most universally destructive issue, tree-based models are the most resilient, and data quality should actively inform model selection.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
             <li>Controlled injection of 7 quality issues: missing values, label noise, outliers, inconsistencies, duplicates, class imbalance, feature irrelevance</li>
             <li>10 ML algorithms: Logistic Regression, SVM, kNN, Decision Tree, Random Forest, XGBoost, and neural baselines</li>
@@ -616,83 +625,84 @@ footer a:hover { color: white; }
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
-            <li><strong>Most damaging:</strong> label noise and missing values — affect all algorithms at all severity levels</li>
+            <li><strong>Most damaging:</strong> label noise and missing values â affect all algorithms at all severity levels</li>
             <li>Tree-based methods (Random Forest, XGBoost) most robust to mild quality issues</li>
             <li>Linear models (LR, SVM) most sensitive to outliers and feature irrelevance</li>
-            <li>No algorithm dominates across all quality scenarios — model selection should be quality-aware</li>
-            <li>Duplicates have minimal impact until extreme rates (&gt;30%) — counterintuitive finding</li>
+            <li>No algorithm dominates across all quality scenarios â model selection should be quality-aware</li>
+            <li>Duplicates have minimal impact until extreme rates (&gt;30%) â counterintuitive finding</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p>This paper provides <strong>empirical grounding</strong> to motivate any data quality correction method. Use it as a baseline: "given that label noise at 20% degrades accuracy by X%, our method recovers Y%." The tabular domain is underserved vs. image/text — a thesis focused on tabular data quality (common in finance, healthcare, insurance) can make a strong contribution. The finding that model selection should be quality-aware opens a direction connecting data quality to AutoML.</p>
+        <h4>ð PhD Research Angle</h4>
+        <p>This paper provides <strong>empirical grounding</strong> to motivate any data quality correction method. Use it as a baseline: "given that label noise at 20% degrades accuracy by X%, our method recovers Y%." The tabular domain is underserved vs. image/text â a thesis focused on tabular data quality (common in finance, healthcare, insurance) can make a strong contribution. The finding that model selection should be quality-aware opens a direction connecting data quality to AutoML.</p>
       </div>
       <div class="paper-links">
-        <a href="https://dl.acm.org/doi/10.1016/j.is.2025.102549" target="_blank" class="link-btn primary">Read Paper →</a>
+        <a href="https://dl.acm.org/doi/10.1016/j.is.2025.102549" target="_blank" class="link-btn primary">Read Paper â</a>
         <a href="https://arxiv.org/abs/2207.14529" target="_blank" class="link-btn secondary">arXiv Preprint</a>
-        <button class="bmark-btn" onclick="toggleBmark(6);event.stopPropagation()">☆ Save</button>
+        <button class="bmark-btn" onclick="toggleBmark(6);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ SYNTHETIC DATA ═══ -->
+<!-- âââ SYNTHETIC DATA âââ -->
 <div class="topic-section" data-topic="sd">
   <div class="topic-header">
-    <div class="topic-icon-lg" style="background:#fdf4ff;">🧬</div>
+    <div class="topic-icon-lg" style="background:#fdf4ff;">ð§¬</div>
     <div>
       <div class="topic-title">Synthetic Data Generation</div>
-      <div class="topic-desc">AI-generated training data — scaling promises, model collapse pitfalls, and prevention strategies</div>
+      <div class="topic-desc">AI-generated training data â scaling promises, model collapse pitfalls, and prevention strategies</div>
     </div>
   </div>
 
   <div class="paper-card" id="p7">
     <div class="card-head" onclick="toggleCard('p7')">
       <div class="card-main">
-        <div class="title-row"><span class="paper-title">AI Models Collapse When Trained on Recursively Generated Data</span><span class="new-badge landmark">Landmark · Nature</span></div>
-        <div class="venue-row"><span class="venue-badge">Nature (2024) + ICLR 2025 Extensions</span><span class="paper-date">📅 2024–2025</span></div>
-        <div class="paper-authors"><strong>Ilia Shumailov</strong> et al. · University of Oxford &amp; Google DeepMind</div>
+        <div class="title-row"><span class="paper-title">AI Models Collapse When Trained on Recursively Generated Data</span><span class="new-badge landmark">Landmark Â· Nature</span></div>
+        <div class="venue-row"><span class="venue-badge">Nature (2024) + ICLR 2025 Extensions</span><span class="paper-date">ð 2024â2025</span></div>
+        <div class="paper-authors"><strong>Ilia Shumailov</strong> et al. Â· University of Oxford &amp; Google DeepMind</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
       <div class="author-chips">
-        <span class="achip">Ilia Shumailov <small>· Oxford / Google DeepMind</small></span>
+        <span class="achip">Ilia Shumailov <small>Â· Oxford / Google DeepMind</small></span>
         <span class="achip">Oxford Computer Science</span>
         <span class="achip">Google DeepMind Team</span>
       </div>
+      <div class="sum-box"><h4>📋 Summary</h4><p>A landmark Nature paper proving a fundamental danger of AI-generated training data. When models are trained repeatedly on their own outputs, they progressively forget rare patterns across generations until the model collapses into homogeneous outputs. The fix: always anchor training with real human-generated data and curate synthetic data to fill gaps rather than replicate what already exists.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
             <li>Empirical + theoretical analysis of iterative training on model-generated synthetic outputs</li>
             <li>Three compounding error sources: statistical approximation, functional expressivity, functional approximation</li>
             <li>Experiments across: GPT-family language models, GANs (vision), diffusion models (images)</li>
-            <li>Tracks tail-distribution coverage across training generations (Gen 0 → Gen 5+)</li>
+            <li>Tracks tail-distribution coverage across training generations (Gen 0 â Gen 5+)</li>
             <li>ICLR 2025 "Strong Model Collapse" paper extends with formal theoretical bounds</li>
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
             <li>Recursive training on unfiltered synthetic data causes <em>irreversible</em> distribution shift</li>
-            <li><strong>Rare phenomena forgotten by generation 3–4</strong> — catastrophic for medical AI, safety systems, and edge-case coverage</li>
+            <li><strong>Rare phenomena forgotten by generation 3â4</strong> â catastrophic for medical AI, safety systems, and edge-case coverage</li>
             <li>Prevention: (1) maintain real data fraction, (2) active curation of synthetic data (gap-filling), (3) entropy/MMD-based quality filtering</li>
             <li>Watermarking + provenance tracking enables safe large-scale data curation</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p><strong>Model collapse detection is a wide-open frontier.</strong> The original paper identifies the problem; reliable automatic detection metrics don't yet exist. Publishable PhD directions: (1) early-warning metrics for collapse in continuous training pipelines, (2) domain-specific collapse in medical/scientific AI where rare events are most critical, (3) optimal real/synthetic mixing ratios under distribution shift. This also connects to dataset quality assessment — collapsed models produce lower-quality synthetic data, creating a measurable feedback loop you can study. Published in <em>Nature</em> — very high citation impact for your literature review.</p>
+        <h4>ð PhD Research Angle</h4>
+        <p><strong>Model collapse detection is a wide-open frontier.</strong> The original paper identifies the problem; reliable automatic detection metrics don't yet exist. Publishable PhD directions: (1) early-warning metrics for collapse in continuous training pipelines, (2) domain-specific collapse in medical/scientific AI where rare events are most critical, (3) optimal real/synthetic mixing ratios under distribution shift. This also connects to dataset quality assessment â collapsed models produce lower-quality synthetic data, creating a measurable feedback loop you can study. Published in <em>Nature</em> â very high citation impact for your literature review.</p>
       </div>
       <div class="paper-links">
-        <a href="https://www.nature.com/articles/s41586-024-07566-y" target="_blank" class="link-btn primary">Nature Paper →</a>
+        <a href="https://www.nature.com/articles/s41586-024-07566-y" target="_blank" class="link-btn primary">Nature Paper â</a>
         <a href="https://proceedings.iclr.cc/paper_files/paper/2025/file/284afdc2309f9667d2d4fb9290235b0c-Paper-Conference.pdf" target="_blank" class="link-btn secondary">ICLR 2025 Extension</a>
-        <button class="bmark-btn" onclick="toggleBmark(7);event.stopPropagation()">☆ Save</button>
+        <button class="bmark-btn" onclick="toggleBmark(7);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
@@ -701,15 +711,16 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p8')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">How to Synthesize Text Data without Model Collapse?</span><span class="new-badge">ICML 2025</span></div>
-        <div class="venue-row"><span class="venue-badge">ICML 2025</span><span class="paper-date">📅 2025 · Vancouver, BC</span></div>
-        <div class="paper-authors">Prevention-focused companion to the Shumailov collapse paper — actionable guidelines for safe synthetic data pipelines</div>
+        <div class="venue-row"><span class="venue-badge">ICML 2025</span><span class="paper-date">ð 2025 Â· Vancouver, BC</span></div>
+        <div class="paper-authors">Prevention-focused companion to the Shumailov collapse paper â actionable guidelines for safe synthetic data pipelines</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
+      <div class="sum-box"><h4>📋 Summary</h4><p>The practical companion to the model collapse paper — showing how to build safe multi-generation text synthesis pipelines. Using MMD and entropy as diversity metrics, it proves collapse is avoidable when synthetic data actively fills distribution gaps rather than near-duplicating existing content, with periodic real-data injection as the stability anchor.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
             <li>Systematic comparison of synthetic data strategies: random sampling vs. active curation vs. gap-filling</li>
             <li>Real data anchoring: maintain a fixed fraction of human-generated data across generations</li>
@@ -719,10 +730,10 @@ footer a:hover { color: white; }
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
             <li>Regular real data injection prevents collapse even in multi-generation pipelines</li>
-            <li>Entropy-based filtering maintains tail-distribution coverage — preserves rare phenomena</li>
+            <li>Entropy-based filtering maintains tail-distribution coverage â preserves rare phenomena</li>
             <li>Active curation (gap-filling) outperforms random synthetic sampling significantly</li>
             <li>Watermarking enables safe provenance tracking at scale</li>
             <li>Best practice: synthetic data fills distribution gaps, real data anchors rare events</li>
@@ -730,21 +741,21 @@ footer a:hover { color: white; }
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p>Together with the Shumailov paper, this completes a problem-solution arc. A PhD could specialize in <strong>domain-specific synthetic data pipelines</strong> — for scientific literature (where rare findings matter most), clinical notes, or low-resource languages where human data is scarce. The gap-filling idea also connects to active learning: which samples should you generate synthetically to maximally improve model coverage?</p>
+        <h4>ð PhD Research Angle</h4>
+        <p>Together with the Shumailov paper, this completes a problem-solution arc. A PhD could specialize in <strong>domain-specific synthetic data pipelines</strong> â for scientific literature (where rare findings matter most), clinical notes, or low-resource languages where human data is scarce. The gap-filling idea also connects to active learning: which samples should you generate synthetically to maximally improve model coverage?</p>
       </div>
       <div class="paper-links">
-        <a href="https://arxiv.org/pdf/2412.14689" target="_blank" class="link-btn primary">Read on arXiv →</a>
-        <button class="bmark-btn" onclick="toggleBmark(8);event.stopPropagation()">☆ Save</button>
+        <a href="https://arxiv.org/pdf/2412.14689" target="_blank" class="link-btn primary">Read on arXiv â</a>
+        <button class="bmark-btn" onclick="toggleBmark(8);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ TRUSTWORTHY AI ═══ -->
+<!-- âââ TRUSTWORTHY AI âââ -->
 <div class="topic-section" data-topic="tai">
   <div class="topic-header">
-    <div class="topic-icon-lg" style="background:#fff1f2;">🛡️</div>
+    <div class="topic-icon-lg" style="background:#fff1f2;">ð¡ï¸</div>
     <div>
       <div class="topic-title">Trustworthy AI</div>
       <div class="topic-desc">Hallucination, alignment, explainability, and robustness converging into one unified research challenge</div>
@@ -755,24 +766,25 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p9')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">Mapping Trustworthiness in Large Language Models: A Bibliometric Analysis</span></div>
-        <div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 March 2025 · arXiv:2503.04785</span></div>
-        <div class="paper-authors"><strong>José Siqueira de Cerqueira</strong>, Kai-Kristian Kemell, Rebekah Rousi, Nannan Xi, Juho Hamari, <strong>Pekka Abrahamsson</strong> · Tampere University, Finland</div>
+        <div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">ð March 2025 Â· arXiv:2503.04785</span></div>
+        <div class="paper-authors"><strong>JosÃ© Siqueira de Cerqueira</strong>, Kai-Kristian Kemell, Rebekah Rousi, Nannan Xi, Juho Hamari, <strong>Pekka Abrahamsson</strong> Â· Tampere University, Finland</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
       <div class="author-chips">
-        <span class="achip">José Siqueira de Cerqueira <small>· Tampere University, Finland</small></span>
-        <span class="achip">Kai-Kristian Kemell <small>· Tampere University</small></span>
-        <span class="achip">Pekka Abrahamsson <small>· Tampere University</small></span>
-        <span class="achip">Nannan Xi <small>· Tampere University</small></span>
-        <span class="achip">Juho Hamari <small>· Tampere University</small></span>
+        <span class="achip">JosÃ© Siqueira de Cerqueira <small>Â· Tampere University, Finland</small></span>
+        <span class="achip">Kai-Kristian Kemell <small>Â· Tampere University</small></span>
+        <span class="achip">Pekka Abrahamsson <small>Â· Tampere University</small></span>
+        <span class="achip">Nannan Xi <small>Â· Tampere University</small></span>
+        <span class="achip">Juho Hamari <small>Â· Tampere University</small></span>
       </div>
+      <div class="sum-box"><h4>📋 Summary</h4><p>A bibliometric study of 2,006 papers on LLM trustworthiness revealing explosive growth (478× since 2019) and deep fragmentation: researchers use 18 incompatible definitions of "trustworthiness." It maps which dimensions are over-studied (transparency, explainability) and surfaces genuine research gaps in agentic systems, cross-cultural trust, and unified formal frameworks.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
-            <li>Bibliometric mapping of <strong>2,006 publications</strong> from Web of Science (2019–Feb 2025)</li>
+            <li>Bibliometric mapping of <strong>2,006 publications</strong> from Web of Science (2019âFeb 2025)</li>
             <li>Bibliometrix R-package analysis + citation network mapping</li>
             <li>7,901 researchers analyzed; avg. 8.9 citations/document; 96.6% multi-author studies</li>
             <li>Manual deep review of 68 most-cited papers for qualitative synthesis</li>
@@ -780,10 +792,10 @@ footer a:hover { color: white; }
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
-            <li><strong>Field exploded:</strong> 3 papers (2019) → 1,434 papers (2024) — 478× growth in 5 years</li>
-            <li><strong>18 competing definitions</strong> of "trustworthiness" — no consensus in the field</li>
+            <li><strong>Field exploded:</strong> 3 papers (2019) â 1,434 papers (2024) â 478Ã growth in 5 years</li>
+            <li><strong>18 competing definitions</strong> of "trustworthiness" â no consensus in the field</li>
             <li>Top 3 dimensions studied: transparency, explainability, reliability</li>
             <li>Top 2 enhancement strategies: fine-tuning (dominant) and RAG (rapidly growing)</li>
             <li>Hallucination, alignment, and adversarial robustness now treated as one unified problem</li>
@@ -791,12 +803,12 @@ footer a:hover { color: white; }
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p>The <strong>18 competing definitions signal that the field lacks a unifying framework</strong> — a gap a PhD thesis could address. With 478× growth, this is a high-competition, high-impact field. Less saturated directions: (1) trustworthiness in agentic/multi-agent AI systems, (2) cross-cultural and cross-lingual trust dimensions (Western-centric research dominated), (3) trustworthiness under distribution shift and open-world conditions. Connecting trustworthiness to data quality (pretraining data determines intrinsic hallucination) is a novel cross-topic angle that few papers address systematically.</p>
+        <h4>ð PhD Research Angle</h4>
+        <p>The <strong>18 competing definitions signal that the field lacks a unifying framework</strong> â a gap a PhD thesis could address. With 478Ã growth, this is a high-competition, high-impact field. Less saturated directions: (1) trustworthiness in agentic/multi-agent AI systems, (2) cross-cultural and cross-lingual trust dimensions (Western-centric research dominated), (3) trustworthiness under distribution shift and open-world conditions. Connecting trustworthiness to data quality (pretraining data determines intrinsic hallucination) is a novel cross-topic angle that few papers address systematically.</p>
       </div>
       <div class="paper-links">
-        <a href="https://arxiv.org/pdf/2503.04785" target="_blank" class="link-btn primary">Read on arXiv →</a>
-        <button class="bmark-btn" onclick="toggleBmark(9);event.stopPropagation()">☆ Save</button>
+        <a href="https://arxiv.org/pdf/2503.04785" target="_blank" class="link-btn primary">Read on arXiv â</a>
+        <button class="bmark-btn" onclick="toggleBmark(9);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
@@ -805,49 +817,50 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p10')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">Large Language Models Hallucination: A Comprehensive Survey</span><span class="new-badge">Oct 2025</span></div>
-        <div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 October 2025 · arXiv:2510.06265</span></div>
+        <div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">ð October 2025 Â· arXiv:2510.06265</span></div>
         <div class="paper-authors">Full taxonomy of LLM hallucination types across the development lifecycle with mitigation evaluation</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
+      <div class="sum-box"><h4>📋 Summary</h4><p>The most comprehensive 2025 survey of why LLMs confidently assert false information. It introduces a three-type taxonomy (intrinsic factual errors, unverifiable extrinsic claims, reasoning errors) across the full development lifecycle, evaluates every major mitigation strategy, and establishes a critical link: root-cause intrinsic hallucination traces directly back to pretraining data quality problems.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
             <li>Novel hallucination taxonomy: intrinsic (factual errors), extrinsic (unverifiable claims), reasoning errors</li>
-            <li>Analysis across full LLM lifecycle: pretraining data → fine-tuning → inference → deployment</li>
+            <li>Analysis across full LLM lifecycle: pretraining data â fine-tuning â inference â deployment</li>
             <li>Empirical evaluation of mitigation strategies: CoT prompting, RAG, RLHF, fine-tuning, hybrid</li>
             <li>Framework for attributing hallucination to prompting strategy vs. model behavior</li>
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
-            <li><strong>Pretraining data quality is the root cause of intrinsic hallucination</strong> — directly connecting trustworthiness to data quality</li>
+            <li><strong>Pretraining data quality is the root cause of intrinsic hallucination</strong> â directly connecting trustworthiness to data quality</li>
             <li>RAG significantly reduces factual hallucination but introduces retrieval-quality dependency</li>
-            <li>CoT prompting reduces hallucination 15–30% vs. direct answering — prompt engineering matters</li>
-            <li>Hallucination rates compound in agentic chains — amplifies errors</li>
+            <li>CoT prompting reduces hallucination 15â30% vs. direct answering â prompt engineering matters</li>
+            <li>Hallucination rates compound in agentic chains â amplifies errors</li>
             <li>No single mitigation dominates; hybrid approaches (RAG + CoT + fine-tuning) work best</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
+        <h4>ð PhD Research Angle</h4>
         <p>The finding that <strong>pretraining data quality drives intrinsic hallucination</strong> creates a powerful bridge between Trustworthy AI and Data-Centric AI. A thesis framed as "data-centric med as "data-centric approaches to reducing LLM hallucination" is novel, timely, and spans both communities. Specific directions: (1) dataset quality metrics that predict downstream hallucination rate, (2) data curation strategies that specifically target hallucination-inducing training examples, (3) hallucination in agentic systems where errors compound.</p>
       </div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2510.06265" target="_blank" class="link-btn primary">Read on arXiv →</a>
-        <button class="bmark-btn" onclick="toggleBmark(10);event.stopPropagation()">☆ Save</button>
+        <a href="https://arxiv.org/abs/2510.06265" target="_blank" class="link-btn primary">Read on arXiv â</a>
+        <button class="bmark-btn" onclick="toggleBmark(10);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ DATASET QUALITY ═══ -->
+<!-- âââ DATASET QUALITY âââ -->
 <div class="topic-section" data-topic="dsq">
   <div class="topic-header">
-    <div class="topic-icon-lg" style="background:#f0f9ff;">📊</div>
+    <div class="topic-icon-lg" style="background:#f0f9ff;">ð</div>
     <div>
       <div class="topic-title">Dataset Quality Assessment</div>
       <div class="topic-desc">Principled, scalable methods for scoring and evaluating the contribution and quality of training datasets</div>
@@ -858,46 +871,47 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p11')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">Chunked Data Shapley: A Scalable Dataset Quality Assessment for Machine Learning</span><span class="new-badge">CIKM 2025</span></div>
-        <div class="venue-row"><span class="venue-badge">ACM CIKM 2025</span><span class="paper-date">📅 November 2025 · Seoul, Republic of Korea</span></div>
+        <div class="venue-row"><span class="venue-badge">ACM CIKM 2025</span><span class="paper-date">ð November 2025 Â· Seoul, Republic of Korea</span></div>
         <div class="paper-authors"><strong>Andreas Loizou</strong>, <strong>Dimitrios Tsoumakos</strong></div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
       <div class="author-chips">
         <span class="achip">Andreas Loizou</span>
         <span class="achip">Dimitrios Tsoumakos</span>
       </div>
+      <div class="sum-box"><h4>📋 Summary</h4><p>Data Shapley values measure how much each training sample contributes to model performance — powerful for dataset quality assessment, but computing them exactly is NP-hard. C-DaSh groups data into chunks and computes per-chunk Shapley values instead, delivering an 80–2300× speedup while accurately identifying low-quality regions — making principled dataset valuation practically feasible at industry scale.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
             <li>Core idea: group data tuples into <em>chunks</em>, compute Shapley value per chunk instead of per individual datapoint</li>
-            <li>Standard Data Shapley: exponential in dataset size (NP-hard) — C-DaSh makes it polynomial</li>
+            <li>Standard Data Shapley: exponential in dataset size (NP-hard) â C-DaSh makes it polynomial</li>
             <li>Chunk granularity is a tunable hyperparameter: coarser chunks = faster but less precise</li>
             <li>Supports both classification and regression pipelines out of the box</li>
             <li>Evaluated on large tabular datasets where standard Shapley is computationally infeasible</li>
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
-            <li><strong>80×–2300× speedup</strong> over standard Data Shapley methods</li>
+            <li><strong>80Ãâ2300Ã speedup</strong> over standard Data Shapley methods</li>
             <li>Accurately identifies low-quality data regions on real benchmark datasets</li>
             <li>Outperforms existing Shapley approximations in both efficiency and detection accuracy</li>
             <li>Practical at scale: first Shapley-based method usable on industry-size tabular datasets</li>
-            <li>Published at CIKM 2025 — top-tier ACM venue for information and knowledge management</li>
+            <li>Published at CIKM 2025 â top-tier ACM venue for information and knowledge management</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p><strong>Scalable dataset valuation is one of the biggest open problems in data-centric AI.</strong> C-DaSh closes the computational gap but chunk-level attribution loses individual-sample resolution. Extensions: (1) adaptive chunk sizing based on local data density — smaller chunks in heterogeneous regions, (2) applying to LLM pretraining corpora (trillions of tokens — Shapley at any granularity is unsolved at this scale), (3) combining with active learning (acquire high-Shapley-value data first), (4) data valuation for data marketplaces and licensing — a growing commercial area with open research problems. Published at CIKM — your target venue if you work on this topic.</p>
+        <h4>ð PhD Research Angle</h4>
+        <p><strong>Scalable dataset valuation is one of the biggest open problems in data-centric AI.</strong> C-DaSh closes the computational gap but chunk-level attribution loses individual-sample resolution. Extensions: (1) adaptive chunk sizing based on local data density â smaller chunks in heterogeneous regions, (2) applying to LLM pretraining corpora (trillions of tokens â Shapley at any granularity is unsolved at this scale), (3) combining with active learning (acquire high-Shapley-value data first), (4) data valuation for data marketplaces and licensing â a growing commercial area with open research problems. Published at CIKM â your target venue if you work on this topic.</p>
       </div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2508.16255" target="_blank" class="link-btn primary">Read on arXiv →</a>
+        <a href="https://arxiv.org/abs/2508.16255" target="_blank" class="link-btn primary">Read on arXiv â</a>
         <a href="https://dl.acm.org/doi/10.1145/3746252.3761305" target="_blank" class="link-btn secondary">ACM Digital Library</a>
-        <button class="bmark-btn" onclick="toggleBmark(11);event.stopPropagation()">☆ Save</button>
+        <button class="bmark-btn" onclick="toggleBmark(11);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
@@ -906,24 +920,25 @@ footer a:hover { color: white; }
     <div class="card-head" onclick="toggleCard('p12')">
       <div class="card-main">
         <div class="title-row"><span class="paper-title">The METRIC-Framework for Assessing Data Quality for Trustworthy AI in Medicine</span></div>
-        <div class="venue-row"><span class="venue-badge">npj Digital Medicine (Nature Portfolio)</span><span class="paper-date">📅 2024 · Vol 7, Article 203</span></div>
-        <div class="paper-authors"><strong>D. Schwabe</strong>, K. Becker, M. Seyferth, A. Klaß, <strong>T. Schaeffter</strong> · Charité – Universitätsmedizin Berlin, Germany</div>
+        <div class="venue-row"><span class="venue-badge">npj Digital Medicine (Nature Portfolio)</span><span class="paper-date">ð 2024 Â· Vol 7, Article 203</span></div>
+        <div class="paper-authors"><strong>D. Schwabe</strong>, K. Becker, M. Seyferth, A. KlaÃ, <strong>T. Schaeffter</strong> Â· CharitÃ© â UniversitÃ¤tsmedizin Berlin, Germany</div>
       </div>
-      <div class="toggle-btn">▼</div>
+      <div class="toggle-btn">â¼</div>
     </div>
     <div class="paper-detail">
       <div class="author-chips">
-        <span class="achip">D. Schwabe <small>· Charité – Universitätsmedizin Berlin</small></span>
-        <span class="achip">T. Schaeffter <small>· Charité Berlin / PTB</small></span>
+        <span class="achip">D. Schwabe <small>Â· CharitÃ© â UniversitÃ¤tsmedizin Berlin</small></span>
+        <span class="achip">T. Schaeffter <small>Â· CharitÃ© Berlin / PTB</small></span>
         <span class="achip">K. Becker</span>
         <span class="achip">M. Seyferth</span>
-        <span class="achip">A. Klaß</span>
+        <span class="achip">A. KlaÃ</span>
       </div>
+      <div class="sum-box"><h4>📋 Summary</h4><p>A systematic review of 120 medical AI papers that distills 15 essential data quality dimensions — from annotation accuracy to privacy compliance — needed for trustworthy healthcare models. The alarming finding: current practice addresses only 4–6 of these 15 dimensions on average. Published in Nature Portfolio, the framework is now being adopted beyond medicine as EU AI Act scrutiny intensifies.</p></div>
       <div class="detail-grid">
         <div class="dbox">
-          <h4>📐 Methodology</h4>
+          <h4>ð Methodology</h4>
           <ul>
-            <li>PRISMA systematic review: 5,408 studies screened → 120 eligible papers analyzed in depth</li>
+            <li>PRISMA systematic review: 5,408 studies screened â 120 eligible papers analyzed in depth</li>
             <li>Synthesizes literature into <strong>15 data quality dimensions</strong> for medical ML datasets</li>
             <li>Dimensions cover: completeness, consistency, accuracy, timeliness, representativeness, provenance, annotation quality, privacy compliance, and 7 more</li>
             <li>Checklist format validated across imaging (CT/MRI), EHR, and genomics datasets</li>
@@ -931,31 +946,31 @@ footer a:hover { color: white; }
           </ul>
         </div>
         <div class="dbox">
-          <h4>💡 Key Findings</h4>
+          <h4>ð¡ Key Findings</h4>
           <ul>
-            <li>15 dimensions are necessary; current practice addresses only 4–6 on average</li>
+            <li>15 dimensions are necessary; current practice addresses only 4â6 on average</li>
             <li><strong>Annotation quality and representativeness</strong> are the most-neglected in practice</li>
             <li>Regulatory approval of medical AI is increasingly gated on data quality documentation</li>
             <li>Framework adopted outside medicine as a general-purpose dataset QA template</li>
-            <li>Published in Nature Portfolio — high citation impact, strong for your bibliography</li>
+            <li>Published in Nature Portfolio â high citation impact, strong for your bibliography</li>
           </ul>
         </div>
       </div>
       <div class="phd-box">
-        <h4>🎓 PhD Research Angle</h4>
-        <p>The 15-dimension framework is <strong>gaining adoption outside medicine</strong> — which signals an opportunity to generalize and validate it across other regulated high-stakes domains: legal AI, financial AI, autonomous systems, and scientific AI. A PhD in medical informatics, health AI, or AI safety could build automated tools for each of the 15 dimensions (currently manual). The connection to EU AI Act compliance is also significant — regulatory-grade data quality assessment is a growing applied research area with both academic and industry funding opportunities. Charité Berlin and T. Schaeffter are strong contacts if you are interested in medical AI.</p>
+        <h4>ð PhD Research Angle</h4>
+        <p>The 15-dimension framework is <strong>gaining adoption outside medicine</strong> â which signals an opportunity to generalize and validate it across other regulated high-stakes domains: legal AI, financial AI, autonomous systems, and scientific AI. A PhD in medical informatics, health AI, or AI safety could build automated tools for each of the 15 dimensions (currently manual). The connection to EU AI Act compliance is also significant â regulatory-grade data quality assessment is a growing applied research area with both academic and industry funding opportunities. CharitÃ© Berlin and T. Schaeffter are strong contacts if you are interested in medical AI.</p>
       </div>
       <div class="paper-links">
-        <a href="https://www.nature.com/articles/s41746-024-01196-4" target="_blank" class="link-btn primary">Read in Nature →</a>
+        <a href="https://www.nature.com/articles/s41746-024-01196-4" target="_blank" class="link-btn primary">Read in Nature â</a>
         <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11297942/" target="_blank" class="link-btn secondary">PMC Full Text (Free)</a>
-        <button class="bmark-btn" onclick="toggleBmark(12);event.stopPropagation()">☆ Save</button>
+        <button class="bmark-btn" onclick="toggleBmark(12);event.stopPropagation()">â Save</button>
       </div>
     </div>
   </div>
 </div>
 
 <div class="empty-state" id="empty-state">
-  <div style="font-size:32px;margin-bottom:12px">🔍</div>
+  <div style="font-size:32px;margin-bottom:12px">ð</div>
   <p>No papers match your search. Try different keywords.</p>
 </div>
 
@@ -966,38 +981,38 @@ footer a:hover { color: white; }
     <div class="gap-card g1">
       <div class="gap-num">01</div>
       <div class="gap-title">Instance-Dependent Label Noise at Scale</div>
-      <div class="gap-body">Class-dependent noise is well-studied. IDN — where noise depends on individual sample features — is the realistic unsolved case. Medical imaging, scientific datasets, and LLM annotation are natural application domains. Testbeds: CIFAR-10N, Clothing1M.</div>
-      <div class="gap-tag">🏷️ Label Noise</div>
+      <div class="gap-body">Class-dependent noise is well-studied. IDN â where noise depends on individual sample features â is the realistic unsolved case. Medical imaging, scientific datasets, and LLM annotation are natural application domains. Testbeds: CIFAR-10N, Clothing1M.</div>
+      <div class="gap-tag">ð·ï¸ Label Noise</div>
     </div>
     <div class="gap-card g2">
       <div class="gap-num">02</div>
       <div class="gap-title">Scalable Dataset Valuation for LLM Corpora</div>
-      <div class="gap-body">C-DaSh handles tabular ML. Principled Shapley-based valuation of trillion-token pretraining corpora is unsolved — and commercially critical for data licensing, provenance tracking, and responsible AI. Connects to data marketplaces.</div>
-      <div class="gap-tag">📊 Dataset Quality</div>
+      <div class="gap-body">C-DaSh handles tabular ML. Principled Shapley-based valuation of trillion-token pretraining corpora is unsolved â and commercially critical for data licensing, provenance tracking, and responsible AI. Connects to data marketplaces.</div>
+      <div class="gap-tag">ð Dataset Quality</div>
     </div>
     <div class="gap-card g3">
       <div class="gap-num">03</div>
       <div class="gap-title">Automatic Model Collapse Detection</div>
-      <div class="gap-body">Shumailov et al. identified the problem; no reliable auto-detection metric exists yet. An early-warning system for collapse in continuous training pipelines is a concrete, publishable contribution — relevant to every lab training on synthetic data.</div>
-      <div class="gap-tag">🧬 Synthetic Data</div>
+      <div class="gap-body">Shumailov et al. identified the problem; no reliable auto-detection metric exists yet. An early-warning system for collapse in continuous training pipelines is a concrete, publishable contribution â relevant to every lab training on synthetic data.</div>
+      <div class="gap-tag">ð§¬ Synthetic Data</div>
     </div>
     <div class="gap-card g4">
       <div class="gap-num">04</div>
       <div class="gap-title">Unified Trustworthiness Framework</div>
-      <div class="gap-body">18 competing definitions with no consensus (per the bibliometric study). A formal, measurable framework unifying hallucination, alignment, explainability, and robustness is a major open problem — and would be a highly-cited foundational contribution.</div>
-      <div class="gap-tag">🛡️ Trustworthy AI</div>
+      <div class="gap-body">18 competing definitions with no consensus (per the bibliometric study). A formal, measurable framework unifying hallucination, alignment, explainability, and robustness is a major open problem â and would be a highly-cited foundational contribution.</div>
+      <div class="gap-tag">ð¡ï¸ Trustworthy AI</div>
     </div>
     <div class="gap-card g5">
       <div class="gap-num">05</div>
       <div class="gap-title">Online Data Quality for Streaming ML</div>
       <div class="gap-body">Most research assumes static datasets. Joint drift + quality monitoring for continuously-deployed models is early-stage. Extensions to federated learning (quality heterogeneity across clients) and LLM serving pipelines are largely open.</div>
-      <div class="gap-tag">✅ Data Quality in ML</div>
+      <div class="gap-tag">â Data Quality in ML</div>
     </div>
     <div class="gap-card g6">
       <div class="gap-num">06</div>
       <div class="gap-title">Foundation Models as Data Auditors</div>
-      <div class="gap-body">CLIPCleaner hints at this for vision. Using LLMs/VLMs to audit, clean, and curate training data across modalities — text, tabular, multimodal — has no dominant approach in 2026. Connects data-centric AI to foundation model research.</div>
-      <div class="gap-tag">🏗️ Data-Centric AI</div>
+      <div class="gap-body">CLIPCleaner hints at this for vision. Using LLMs/VLMs to audit, clean, and curate training data across modalities â text, tabular, multimodal â has no dominant approach in 2026. Connects data-centric AI to foundation model research.</div>
+      <div class="gap-tag">ðï¸ Data-Centric AI</div>
     </div>
   </div>
 </div>
@@ -1007,51 +1022,51 @@ footer a:hover { color: white; }
   <div class="sec-label">Key Researchers to Know &amp; Follow</div>
   <div class="researchers-grid">
     <div class="rcard">
-      <div class="ravatar" style="background:#e8f4fd">👨‍🔬</div>
+      <div class="ravatar" style="background:#e8f4fd">ð¨âð¬</div>
       <div class="rname">Daochen Zha</div>
       <div class="raffil">Rice University, Houston TX</div>
       <div class="rtags"><span class="rtag">Data-Centric AI</span><span class="rtag">AutoML</span></div>
     </div>
     <div class="rcard">
-      <div class="ravatar" style="background:#e8f4fd">👨‍🔬</div>
+      <div class="ravatar" style="background:#e8f4fd">ð¨âð¬</div>
       <div class="rname">Xia Hu</div>
       <div class="raffil">Rice University, Houston TX</div>
       <div class="rtags"><span class="rtag">Data-Centric AI</span><span class="rtag">Trustworthy AI</span></div>
     </div>
     <div class="rcard">
-      <div class="ravatar" style="background:#fef3e8">👨‍🔬</div>
+      <div class="ravatar" style="background:#fef3e8">ð¨âð¬</div>
       <div class="rname">Chen Feng</div>
       <div class="raffil">University College London</div>
       <div class="rtags"><span class="rtag">Label Noise</span><span class="rtag">Vision-Language</span></div>
     </div>
     <div class="rcard">
-      <div class="ravatar" style="background:#fef3e8">👨‍🔬</div>
+      <div class="ravatar" style="background:#fef3e8">ð¨âð¬</div>
       <div class="rname">Ioannis Patras</div>
       <div class="raffil">Queen Mary University London</div>
       <div class="rtags"><span class="rtag">Label Noise</span><span class="rtag">Computer Vision</span></div>
     </div>
     <div class="rcard">
-      <div class="ravatar" style="background:#fdf4ff">👨‍🔬</div>
+      <div class="ravatar" style="background:#fdf4ff">ð¨âð¬</div>
       <div class="rname">Ilia Shumailov</div>
       <div class="raffil">Oxford / Google DeepMind</div>
       <div class="rtags"><span class="rtag">Synthetic Data</span><span class="rtag">Model Collapse</span></div>
     </div>
     <div class="rcard">
-      <div class="ravatar" style="background:#fff1f2">👨‍🔬</div>
+      <div class="ravatar" style="background:#fff1f2">ð¨âð¬</div>
       <div class="rname">Pekka Abrahamsson</div>
       <div class="raffil">Tampere University, Finland</div>
       <div class="rtags"><span class="rtag">Trustworthy AI</span><span class="rtag">SE for AI</span></div>
     </div>
     <div class="rcard">
-      <div class="ravatar" style="background:#f0f9ff">👨‍🔬</div>
+      <div class="ravatar" style="background:#f0f9ff">ð¨âð¬</div>
       <div class="rname">Dimitrios Tsoumakos</div>
       <div class="raffil">Ionian University, Greece</div>
       <div class="rtags"><span class="rtag">Dataset Quality</span><span class="rtag">Data Shapley</span></div>
     </div>
     <div class="rcard">
-      <div class="ravatar" style="background:#f0f9ff">👩‍🔬</div>
+      <div class="ravatar" style="background:#f0f9ff">ð©âð¬</div>
       <div class="rname">Tobias Schaeffter</div>
-      <div class="raffil">Charité Berlin / PTB</div>
+      <div class="raffil">CharitÃ© Berlin / PTB</div>
       <div class="rtags"><span class="rtag">Medical AI</span><span class="rtag">Data Quality</span></div>
     </div>
   </div>
@@ -1060,10 +1075,10 @@ footer a:hover { color: white; }
 </div><!-- /main -->
 
 <footer>
-  ResearchPulse · PhD Research Hub · Updated every Monday &amp; Thursday<br>
-  <a href="https://arxiv.org" target="_blank">arXiv</a> ·
-  <a href="https://scholar.google.com" target="_blank">Google Scholar</a> ·
-  <a href="https://dl.acm.org" target="_blank">ACM Digital Library</a> ·
+  ResearchPulse Â· PhD Research Hub Â· Updated every Monday &amp; Thursday<br>
+  <a href="https://arxiv.org" target="_blank">arXiv</a> Â·
+  <a href="https://scholar.google.com" target="_blank">Google Scholar</a> Â·
+  <a href="https://dl.acm.org" target="_blank">ACM Digital Library</a> Â·
   <a href="https://semanticscholar.org" target="_blank">Semantic Scholar</a>
 </footer>
 
@@ -1133,7 +1148,7 @@ function applySearch(q) {
 function toggleCard(id) {
   const card = document.getElementById(id);
   card.classList.toggle('open');
-  card.querySelector('.toggle-btn').textContent = card.classList.contains('open') ? '▲' : '▼';
+  card.querySelector('.toggle-btn').textContent = card.classList.contains('open') ? 'â²' : 'â¼';
 }
 
 function toggleBmark(id) {
@@ -1152,7 +1167,7 @@ function updateBmarkUI() {
     const m = (btn.getAttribute('onclick') || '').match(/toggleBmark\((\d+)\)/);
     if (m) {
       const id = parseInt(m[1]);
-      btn.textContent = bookmarks.includes(id) ? '★ Saved' : '☆ Save';
+      btn.textContent = bookmarks.includes(id) ? 'â Saved' : 'â Save';
       btn.classList.toggle('saved', bookmarks.includes(id));
     }
   });
@@ -1180,7 +1195,7 @@ function renderDrawer() {
     const div = document.createElement('div');
     div.className = 'saved-item';
     div.innerHTML = '<div class="si-title">' + title + '</div><div class="si-actions">' +
-      (url ? '<a href="' + url + '" target="_blank"><button class="si-btn read">Read →</button></a>' : '') +
+      (url ? '<a href="' + url + '" target="_blank"><button class="si-btn read">Read â</button></a>' : '') +
       '<button class="si-btn remove" onclick="toggleBmark(' + id + ')">Remove</button></div>';
     body.appendChild(div);
   });
