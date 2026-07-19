@@ -393,44 +393,41 @@ line-height: 1.65;
 <div class="paper-card" id="p2">
 <div class="card-head" onclick="toggleCard('p2')">
 <div class="card-main">
-<div class="title-row"><span class="paper-title">CORTEX: High-Quality Cross-Domain Organization of Web-Scale Corpora through Ontological Corpus Graph</span><span class="new-badge">Jun 2026</span></div>
-<div class="venue-row"><span class="venue-badge">arXiv · cs.CL</span><span class="paper-date">📅 June 2026 · arXiv:2606.30175</span></div>
-<div class="paper-authors"><strong>Chengtao Gan</strong>, Xiaoke Guo, Yushan Zhu, Zhaoyan Gong, Zhiqiang Liu, Songze Li, Huajun Chen, Wen Zhang</div>
+<div class="title-row"><span class="paper-title">CurateEvo: Data-Curation Evolving for Agentic Post-Training</span><span class="new-badge">Jul 2026</span></div>
+<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 2026 · arXiv:2607.06140</span></div>
+<div class="paper-authors"><strong>Dingzirui Wang</strong>, Xuanliang Zhang, Keyan Xu, Qingfu Zhu, Wanxiang Che · Harbin Institute of Technology</div>
 </div>
 <div class="toggle-btn">▼</div>
 </div>
 <div class="paper-detail">
 <div class="author-chips">
-<span class="achip">Chengtao Gan</span>
-<span class="achip">Huajun Chen</span>
-<span class="achip">Wen Zhang</span>
+<span class="achip">Dingzirui Wang <small>· Harbin Institute of Technology</small></span>
+<span class="achip">Wanxiang Che <small>· Harbin Institute of Technology</small></span>
 </div>
-<div class="sum-box"><h4>📋 Summary</h4><p>Moves LLM corpus construction beyond flat document filtering by introducing the Ontological Corpus Graph (OCG) — a three-layer structure that organizes web-scale training corpora as structured, cross-domain knowledge rather than an undifferentiated document pile.</p></div>
+<div class="sum-box"><h4>📋 Summary</h4><p>Treats the data-curation strategy itself as executable code that evolves — iteratively rewritten using failed trajectories from a held-out development set — rather than a fixed preprocessing step, directly targeting agentic post-training pipelines that usually only augment data and never adapt to downstream failures.</p></div>
 <div class="detail-grid">
 <div class="dbox">
 <h4>📐 Methodology</h4>
 <ul>
-<li>OCG unifies three layers: a quality-refined <strong>Content Layer</strong>, an LLM-driven, automatically-evolving <strong>Ontology Layer</strong> (hierarchical Concept Chain Sets), and a cross-domain <strong>Alignment Layer</strong></li>
-<li>Alignment layer enables inter-domain association analysis at arbitrary taxonomic resolution</li>
-<li>Directly targets the gap where existing corpus pipelines produce flat, undifferentiated document collections lacking systematic knowledge organization</li>
-<li>Submitted June 29, 2026 · cs.CL (Computation and Language)</li>
+<li>Represents the curation strategy as executable code, iteratively rewritten using failed trajectories from a held-out dev set</li>
+<li>Each epoch's evolved strategy transforms a fixed raw corpus into SFT data, RL data, and an inference-time memory bank</li>
+<li>Two-phase evolution: first improves effectiveness (diagnosing recurring failure modes, augmenting/filtering/refining data), then improves efficiency (pruning redundant or low-utility training)</li>
 </ul>
 </div>
 <div class="dbox">
 <h4>💡 Key Findings</h4>
 <ul>
-<li>Structuring corpora as a knowledge graph — not just filtering documents — improves cross-domain organization for LLM pretraining data</li>
-<li>The framework is model-agnostic, usable as a preprocessing layer ahead of any pretraining pipeline</li>
-<li>Represents a shift from "data-centric AI as filtering" toward "data-centric AI as knowledge architecture"</li>
+<li>Outperforms prior curation methods on ACEBench-Agent, BFCL-V4, and τ²-Bench, improving average scores by 3.2 and 2.7 points across labeled and wild-data settings</li>
+<li>Existing agentic post-training pipelines treat curation as fixed preprocessing, mainly doing augmentation while neglecting filtering, refinement, and failure-adaptation</li>
 </ul>
 </div>
 </div>
 <div class="phd-box">
 <h4>🎓 PhD Research Angle</h4>
-<p>Extends the data-centric AI framework (Zha &amp; Hu's 3-pillar model above) by proposing that "training data development" needs internal structure, not just volume/quality filters. A thesis could explore automatic ontology evolution for domain-specific corpora (scientific literature, clinical text) or study how OCG-style structuring affects downstream hallucination and reasoning — a direct bridge to the Trustworthy AI gap (#4) on this site.</p>
+<p>Extends the "training data development" pillar of Zha &amp; Hu's framework above by making curation itself an evolving, code-represented artifact rather than a static pipeline — directly relevant to Gap #6 (Foundation Models as Data Auditors), since the evolved strategy is effectively an LLM auditing and rewriting its own curation logic. A thesis could formalize when/why curation-as-code converges, or extend the failure-driven evolution loop from agentic post-training to pretraining-scale corpora.</p>
 </div>
 <div class="paper-links">
-<a href="https://arxiv.org/abs/2606.30175" target="_blank" class="link-btn primary">Read on arXiv →</a>
+<a href="https://arxiv.org/abs/2607.06140" target="_blank" class="link-btn primary">Read on arXiv →</a>
 <button class="bmark-btn" onclick="toggleBmark(2);event.stopPropagation()">☆ Save</button>
 </div>
 </div>
@@ -495,49 +492,41 @@ line-height: 1.65;
 <div class="paper-card" id="p4">
 <div class="card-head" onclick="toggleCard('p4')">
 <div class="card-main">
-<div class="title-row"><span class="paper-title">CLIPCleaner: Cleaning Noisy Labels with CLIP</span><span class="new-badge">High Impact</span></div>
-<div class="venue-row"><span class="venue-badge">ACM Multimedia 2024 (ACM MM'24)</span><span class="paper-date">📅 2024 · ACM International Conference on Multimedia</span></div>
-<div class="paper-authors"><strong>Chen Feng</strong>, <strong>Georgios Tzimiropoulos</strong>, <strong>Ioannis Patras</strong> · University College London (UCL) &amp; Queen Mary University of London</div>
+<div class="title-row"><span class="paper-title">When X-ray Features Hurt: Label Noise and Luminosity Overlap in Machine Learning Classification of AGN and Star-forming Galaxies</span><span class="new-badge">Jul 2026</span></div>
+<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 2026 · arXiv:2607.13233</span></div>
+<div class="paper-authors"><strong>Jaymin Ding</strong> · Princeton University</div>
 </div>
 <div class="toggle-btn">▼</div>
 </div>
 <div class="paper-detail">
 <div class="author-chips">
-<span class="achip">Chen Feng <small>· UCL, London</small></span>
-<span class="achip">Georgios Tzimiropoulos <small>· UCL / Samsung AI Centre London</small></span>
-<span class="achip">Ioannis Patras <small>· Queen Mary University of London</small></span>
+<span class="achip">Jaymin Ding <small>· Princeton University</small></span>
 </div>
-<div class="sum-box"><h4>📋 Summary</h4><p>Instead of relying on the model being trained to spot its own noisy labels — which creates circular self-confirmation bias — CLIPCleaner runs OpenAI's CLIP as an offline auditor before training begins. CLIP's rich vision-language understanding catches mislabeled samples that confidence-based methods miss, especially when similar-looking classes get confused, and it plugs in as a pre-filter to any existing label-noise framework.</p></div>
+<div class="sum-box"><h4>📋 Summary</h4><p>A striking real-world case of instance-dependent label noise: adding an X-ray flux feature to a Random Forest classifier of active galactic nuclei (AGN) vs. star-forming galaxies actually <em>decreased</em> accuracy from 97.51% to 89.26%, because the BPT-derived training labels are noisiest exactly where X-ray data would help discriminate most.</p></div>
 <div class="detail-grid">
 <div class="dbox">
 <h4>📐 Methodology</h4>
 <ul>
-<li>Uses CLIP (OpenAI's vision-language model) as an <em>offline</em> zero-shot clean sample selector</li>
-<li>Zero-shot classifier: CLIP image embeddings aligned against text descriptions of each class</li>
-<li>Applied <strong>before</strong> training — eliminates "self-confirmation bias" of in-training confidence methods</li>
-<li>Handles "hard noise" (mislabeling between visually similar classes) via rich semantic CLIP representations</li>
-<li>Plug-in compatible: works as pre-filter for DivideMix, SOP, and other LLN frameworks</li>
+<li>Random Forest classifier of AGN vs. star-forming galaxies (SFGs), trained with and without an added X-ray flux feature</li>
+<li>Investigates the accuracy drop through both astrophysical and machine-learning lenses</li>
+<li>Shows X-ray luminosities of AGN and SFGs substantially overlap across the canonical 10<sup>42</sup> erg/s threshold in an optically-selected SDSS sample</li>
 </ul>
 </div>
 <div class="dbox">
 <h4>💡 Key Findings</h4>
 <ul>
-<li>Outperforms small-loss and GMM-based selection on CIFAR-10N and Clothing1M</li>
-<li>Especially strong on hard noise — CLIP semantic space separates similar-looking classes better than pixel features</li>
-<li>Zero-shot approach removes dependency on in-training model quality entirely</li>
-<li>Efficient: CLIP inference is offline and fast vs. training-time methods</li>
-<li>Published at ACM MM — top venue for multimedia + ML cross-over research</li>
+<li>BPT-derived training labels constitute <strong>instance-dependent label noise</strong>: uncertainty concentrates near the BPT demarcation line — precisely where the new feature would help most</li>
+<li>A genuinely informative feature can hurt accuracy when training labels are noisiest exactly in the region that feature would clarify</li>
+<li>A rare, concrete single-domain demonstration of IDN outside the usual vision/NLP benchmarks</li>
 </ul>
 </div>
 </div>
 <div class="phd-box">
 <h4>🎓 PhD Research Angle</h4>
-<p>This paper demonstrates a key 2025 trend: <strong>foundation models repurposed as data quality tools</strong>. Extensions to explore: (1) applying CLIP-style zero-shot selection to NLP noisy labels using text embedding models, (2) combining CLIPCleaner with active learning to minimally query humans for ambiguous samples, (3) extending to instance-dependent noise detection where noise correlates with CLIP uncertainty scores. The "offline pre-filter" idea also applies to large-scale dataset curation — highly relevant for LLM pretraining data quality.</p>
+<p>Directly validates Gap #1 below — IDN testbeds are almost all vision benchmarks (CIFAR-10N, Clothing1M); this is a real astrophysics case. A thesis could build a general diagnostic for "when does a new feature interact badly with label noise concentrated near a decision boundary" and test it across scientific domains (astronomy, genomics, remote sensing) where labels come from imperfect physical proxies rather than human annotation.</p>
 </div>
 <div class="paper-links">
-<a href="https://arxiv.org/pdf/2408.10012" target="_blank" class="link-btn primary">Read Paper →</a>
-<a href="https://github.com/MrChenFeng/CLIPCleaner_ACMMM2024" target="_blank" class="link-btn secondary">Code on GitHub</a>
-<a href="https://dl.acm.org/doi/10.1145/3664647.3680664" target="_blank" class="link-btn secondary">ACM DL</a>
+<a href="https://arxiv.org/abs/2607.13233" target="_blank" class="link-btn primary">Read on arXiv →</a>
 <button class="bmark-btn" onclick="toggleBmark(4);event.stopPropagation()">☆ Save</button>
 </div>
 </div>
@@ -710,44 +699,42 @@ line-height: 1.65;
 <div class="paper-card" id="p8">
 <div class="card-head" onclick="toggleCard('p8')">
 <div class="card-main">
-<div class="title-row"><span class="paper-title">Collaborative Synthetic Data Generation for Knowledge Transfer in Federated Learning</span><span class="new-badge">Jul 2026</span></div>
-<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 2026 · arXiv:2607.07565</span></div>
-<div class="paper-authors"><strong>Maximilian Andreas Hoefler</strong>, Karsten Mueller, <strong>Wojciech Samek</strong> · Fraunhofer Heinrich Hertz Institute</div>
+<div class="title-row"><span class="paper-title">tidysynthesis: a Meta-Package for Synthetic Data Generation</span><span class="new-badge">Jul 2026</span></div>
+<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 2026 · arXiv:2607.12611</span></div>
+<div class="paper-authors"><strong>Aaron R. Williams</strong>, Jeremy Seeman, Gabriel Morrison</div>
 </div>
 <div class="toggle-btn">▼</div>
 </div>
 <div class="paper-detail">
 <div class="author-chips">
-<span class="achip">Maximilian Andreas Hoefler <small>· Fraunhofer HHI</small></span>
-<span class="achip">Karsten Mueller <small>· Fraunhofer HHI</small></span>
-<span class="achip">Wojciech Samek <small>· Fraunhofer HHI</small></span>
+<span class="achip">Aaron R. Williams</span>
+<span class="achip">Jeremy Seeman</span>
+<span class="achip">Gabriel Morrison</span>
 </div>
-<div class="sum-box"><h4>📋 Summary</h4><p>Proposes FedKT-CSD, a one-shot federated learning framework where clients share only class-conditional latent statistics through a shared pretrained autoencoder — never raw data or full model weights — and the server decodes a differentially-private synthetic dataset that matches or outperforms non-private baselines.</p></div>
+<div class="sum-box"><h4>📋 Summary</h4><p>A composability-focused infrastructure paper: introduces tidysynthesis, a meta-package giving synthetic data generation a common syntax across modeling frameworks and statistical disclosure-control methods, so pipelines can be composed and swapped instead of hand-rolled per project.</p></div>
 <div class="detail-grid">
 <div class="dbox">
 <h4>📐 Methodology</h4>
 <ul>
-<li>One-shot federated learning (OSFL): limits training to a single communication round</li>
-<li>Clients encode private data via a shared pretrained autoencoder in one forward pass, compute class-conditional latent statistics, and transmit only those statistics</li>
-<li>Server aggregates via secure aggregation, adds calibrated differential-privacy noise, then decodes a synthetic dataset to train the global model</li>
-<li>Provides formal (ε, δ)-differential privacy by construction</li>
+<li>Meta-package providing interoperability between existing modeling frameworks and statistical data-privacy (disclosure-control) methods</li>
+<li>Common syntax for specifying and iterating on synthetic data generation pipelines</li>
+<li>Demonstrated end-to-end on American Community Survey data</li>
 </ul>
 </div>
 <div class="dbox">
 <h4>💡 Key Findings</h4>
 <ul>
-<li>Competitive with — and in some settings outperforms — non-private OSFL baselines across diverse datasets and heterogeneity settings</li>
-<li>Keeps client-side computation and communication lightweight (statistics only, not raw data)</li>
-<li>Demonstrates privacy-by-construction synthetic data generation is viable at federated scale</li>
+<li>Synthetic data generation requires navigating many design choices (generator model, privacy method, sequencing); most existing open-source tools don't provide shared infrastructure for this</li>
+<li>tidysynthesis makes pipelines composable and swappable rather than monolithic, enabling apples-to-apples comparisons</li>
 </ul>
 </div>
 </div>
 <div class="phd-box">
 <h4>🎓 PhD Research Angle</h4>
-<p>Connects Synthetic Data Generation directly to federated/privacy-preserving ML — real commercial demand exists in healthcare and finance, where raw data sharing is legally restricted. Extensions: (1) extending latent-statistic sharing to imaging/text modalities, (2) studying model collapse risk when multiple federated rounds recursively train on server-decoded synthetic data — a direct tie to the Shumailov collapse paper above, (3) formal utility-privacy tradeoff bounds specific to class-conditional statistic sharing.</p>
+<p>Less a novel generative method, more a testbed. A thesis could use tidysynthesis's composability to run controlled ablations across generator/privacy-method combinations — something the model-collapse work above would directly benefit from, since most collapse studies currently hand-roll one-off pipelines that are hard to compare against each other.</p>
 </div>
 <div class="paper-links">
-<a href="https://arxiv.org/pdf/2607.07565" target="_blank" class="link-btn primary">Read on arXiv →</a>
+<a href="https://arxiv.org/abs/2607.12611" target="_blank" class="link-btn primary">Read on arXiv →</a>
 <button class="bmark-btn" onclick="toggleBmark(8);event.stopPropagation()">☆ Save</button>
 </div>
 </div>
@@ -979,7 +966,7 @@ line-height: 1.65;
 <div class="gap-card g1">
 <div class="gap-num">01</div>
 <div class="gap-title">Instance-Dependent Label Noise at Scale</div>
-<div class="gap-body">Class-dependent noise is well-studied. IDN — where noise depends on individual sample features — is the realistic unsolved case. Medical imaging, scientific datasets, and LLM annotation are natural application domains. Testbeds: CIFAR-10N, Clothing1M.</div>
+<div class="gap-body">Class-dependent noise is well-studied. IDN — where noise depends on individual sample features — is the realistic unsolved case. A new astrophysics case study confirms this isn't just theoretical: a genuinely informative feature can hurt accuracy when labels are noisiest exactly where that feature would help. Medical imaging, scientific datasets, and LLM annotation are natural application domains. Testbeds: CIFAR-10N, Clothing1M.</div>
 <div class="gap-tag">🏷️ Label Noise</div>
 </div>
 <div class="gap-card g2">
@@ -1087,13 +1074,13 @@ let bookmarks = JSON.parse(localStorage.getItem('rp2_bmarks') || '[]');
 
 const TITLES = {
 1:'Data-centric Artificial Intelligence: A Survey',
-2:'CORTEX: Ontological Corpus Graph for Web-Scale Corpora',
+2:'CurateEvo: Data-Curation Evolving for Agentic Post-Training',
 3:'Survey on Learning from Data with Label Noise via DNNs',
-4:'CLIPCleaner: Cleaning Noisy Labels with CLIP',
+4:'When X-ray Features Hurt: Label Noise in AGN/SFG Classification',
 5:'End-to-End Data Quality-Driven Framework for ML in Production',
 6:'The Effects of Data Quality on ML Performance on Tabular Data',
 7:'AI Models Collapse When Trained on Recursively Generated Data',
-8:'Collaborative Synthetic Data Generation for Federated Learning',
+8:'tidysynthesis: a Meta-Package for Synthetic Data Generation',
 9:'Mapping Trustworthiness in LLMs: A Bibliometric Analysis',
 10:'Trustworthy ML through the Lens of Combinatorial Optimization',
 11:'Chunked Data Shapley: Scalable Dataset Quality Assessment',
@@ -1101,11 +1088,11 @@ const TITLES = {
 };
 const URLS = {
 1:'https://arxiv.org/abs/2303.10158',
-2:'https://arxiv.org/abs/2606.30175',
-4:'https://arxiv.org/pdf/2408.10012',
+2:'https://arxiv.org/abs/2607.06140',
+4:'https://arxiv.org/abs/2607.13233',
 5:'https://arxiv.org/abs/2512.19723',
 7:'https://www.nature.com/articles/s41586-024-07566-y',
-8:'https://arxiv.org/pdf/2607.07565',
+8:'https://arxiv.org/abs/2607.12611',
 9:'https://arxiv.org/pdf/2503.04785',
 10:'https://arxiv.org/pdf/2607.07762',
 11:'https://arxiv.org/abs/2508.16255',
