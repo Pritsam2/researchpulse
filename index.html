@@ -393,41 +393,45 @@ line-height: 1.65;
 <div class="paper-card" id="p2">
 <div class="card-head" onclick="toggleCard('p2')">
 <div class="card-main">
-<div class="title-row"><span class="paper-title">CurateEvo: Data-Curation Evolving for Agentic Post-Training</span><span class="new-badge">Jul 2026</span></div>
-<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 2026 · arXiv:2607.06140</span></div>
-<div class="paper-authors"><strong>Dingzirui Wang</strong>, Xuanliang Zhang, Keyan Xu, Qingfu Zhu, Wanxiang Che · Harbin Institute of Technology</div>
+<div class="title-row"><span class="paper-title">UltraX: Refining Pre-Training Data at Scale with Adaptive Programmatic Editing</span><span class="new-badge">Jul 2026</span></div>
+<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 9, 2026 · arXiv:2607.08646</span></div>
+<div class="paper-authors"><strong>Xinlong Zhao</strong>, Dongsheng Liu, Hengyu Zhao, Zixuan Fu, Zheng Wang, Jie Cai, Jie Zhou, Qiang Ma, Xuanhe Zhou, Xu Han, Yudong Wang, <strong>Zhiyuan Liu</strong> · Tsinghua Univ. / ModelBest / Peking Univ. / SJTU</div>
 </div>
 <div class="toggle-btn">▼</div>
 </div>
 <div class="paper-detail">
 <div class="author-chips">
-<span class="achip">Dingzirui Wang <small>· Harbin Institute of Technology</small></span>
-<span class="achip">Wanxiang Che <small>· Harbin Institute of Technology</small></span>
+<span class="achip">Xinlong Zhao <small>· Peking University</small></span>
+<span class="achip">Zhiyuan Liu <small>· Tsinghua University</small></span>
+<span class="achip">Dongsheng Liu <small>· ModelBest Inc.</small></span>
+<span class="achip">Xuanhe Zhou <small>· Shanghai Jiao Tong Univ.</small></span>
 </div>
-<div class="sum-box"><h4>📋 Summary</h4><p>Treats the data-curation strategy itself as executable code that evolves — iteratively rewritten using failed trajectories from a held-out development set — rather than a fixed preprocessing step, directly targeting agentic post-training pipelines that usually only augment data and never adapt to downstream failures.</p></div>
+<div class="sum-box"><h4>📋 Summary</h4><p>Rather than filtering pretraining data into keep/discard bins, UltraX programmatically <em>edits</em> low-quality documents at web scale — adaptively rewriting them to recover usable signal instead of throwing it away, and shows this beats filtering-only pipelines on downstream pretraining quality.</p></div>
 <div class="detail-grid">
 <div class="dbox">
 <h4>📐 Methodology</h4>
 <ul>
-<li>Represents the curation strategy as executable code, iteratively rewritten using failed trajectories from a held-out dev set</li>
-<li>Each epoch's evolved strategy transforms a fixed raw corpus into SFT data, RL data, and an inference-time memory bank</li>
-<li>Two-phase evolution: first improves effectiveness (diagnosing recurring failure modes, augmenting/filtering/refining data), then improves efficiency (pruning redundant or low-utility training)</li>
+<li>Adaptive programmatic editing pipeline that rewrites — not just filters — low-quality pretraining documents at web scale</li>
+<li>Lightweight, learned edit operators applied per-document rather than a single global quality classifier</li>
+<li>Edit policies iterate against downstream model quality signal, closing the loop between data transformation and training outcome</li>
+<li>Released with an open preview dataset (UltraX-Preview) for reproducibility</li>
 </ul>
 </div>
 <div class="dbox">
 <h4>💡 Key Findings</h4>
 <ul>
-<li>Outperforms prior curation methods on ACEBench-Agent, BFCL-V4, and τ²-Bench, improving average scores by 3.2 and 2.7 points across labeled and wild-data settings</li>
-<li>Existing agentic post-training pipelines treat curation as fixed preprocessing, mainly doing augmentation while neglecting filtering, refinement, and failure-adaptation</li>
+<li>Programmatic editing recovers substantial usable data volume that pure filtering would discard</li>
+<li>Edited corpora outperform filtered-only baselines on downstream pretraining quality metrics</li>
+<li>Edit-based curation scales to full web-corpus sizes, not just curated benchmarks</li>
 </ul>
 </div>
 </div>
 <div class="phd-box">
 <h4>🎓 PhD Research Angle</h4>
-<p>Extends the "training data development" pillar of Zha &amp; Hu's framework above by making curation itself an evolving, code-represented artifact rather than a static pipeline — directly relevant to Gap #6 (Foundation Models as Data Auditors), since the evolved strategy is effectively an LLM auditing and rewriting its own curation logic. A thesis could formalize when/why curation-as-code converges, or extend the failure-driven evolution loop from agentic post-training to pretraining-scale corpora.</p>
+<p>Extends the "training data development" pillar of Zha &amp; Hu's framework above by treating curation as an active transformation rather than a binary keep/discard gate — a natural companion to CurateEvo's failure-driven strategy evolution. A thesis could formalize when editing dominates filtering as a function of corpus noise level, or test whether edit-based curation introduces its own systematic biases that filtering avoids.</p>
 </div>
 <div class="paper-links">
-<a href="https://arxiv.org/abs/2607.06140" target="_blank" class="link-btn primary">Read on arXiv →</a>
+<a href="https://arxiv.org/abs/2607.08646" target="_blank" class="link-btn primary">Read on arXiv →</a>
 <button class="bmark-btn" onclick="toggleBmark(2);event.stopPropagation()">☆ Save</button>
 </div>
 </div>
@@ -492,41 +496,42 @@ line-height: 1.65;
 <div class="paper-card" id="p4">
 <div class="card-head" onclick="toggleCard('p4')">
 <div class="card-main">
-<div class="title-row"><span class="paper-title">When X-ray Features Hurt: Label Noise and Luminosity Overlap in Machine Learning Classification of AGN and Star-forming Galaxies</span><span class="new-badge">Jul 2026</span></div>
-<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 2026 · arXiv:2607.13233</span></div>
-<div class="paper-authors"><strong>Jaymin Ding</strong> · Princeton University</div>
+<div class="title-row"><span class="paper-title">Robust Multi-View Classification under Noisy Supervision via Global Anchor Consensus</span><span class="new-badge">Jul 2026</span></div>
+<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 18, 2026 · arXiv:2607.18561</span></div>
+<div class="paper-authors"><strong>Yuliang Yang</strong>, Hongzhe Zhang, <strong>Huiru Wang</strong> · Beijing Forestry Univ. / North Univ. of China</div>
 </div>
 <div class="toggle-btn">▼</div>
 </div>
 <div class="paper-detail">
 <div class="author-chips">
-<span class="achip">Jaymin Ding <small>· Princeton University</small></span>
+<span class="achip">Yuliang Yang <small>· Beijing Forestry Univ. (College of Science)</small></span>
+<span class="achip">Huiru Wang <small>· Beijing Forestry Univ. (College of Science)</small></span>
+<span class="achip">Hongzhe Zhang <small>· North Univ. of China (School of Software)</small></span>
 </div>
-<div class="sum-box"><h4>📋 Summary</h4><p>A striking real-world case of instance-dependent label noise: adding an X-ray flux feature to a Random Forest classifier of active galactic nuclei (AGN) vs. star-forming galaxies actually <em>decreased</em> accuracy from 97.51% to 89.26%, because the BPT-derived training labels are noisiest exactly where X-ray data would help discriminate most.</p></div>
+<div class="sum-box"><h4>📋 Summary</h4><p>Proposes GALA (Global Anchor-based Label Auditing) for multi-view classification under noisy labels — builds one stable per-class anchor aggregated across all views, giving a noise-resistant reference point instead of trusting any single view's noisy predictions.</p></div>
 <div class="detail-grid">
 <div class="dbox">
 <h4>📐 Methodology</h4>
 <ul>
-<li>Random Forest classifier of AGN vs. star-forming galaxies (SFGs), trained with and without an added X-ray flux feature</li>
-<li>Investigates the accuracy drop through both astrophysical and machine-learning lenses</li>
-<li>Shows X-ray luminosities of AGN and SFGs substantially overlap across the canonical 10<sup>42</sup> erg/s threshold in an optically-selected SDSS sample</li>
+<li>Constructs a global anchor per class by aggregating representations across all views/samples of that class</li>
+<li>Uses anchor-to-sample consensus distance to audit and down-weight likely-mislabeled instances</li>
+<li>Operates across multiple views jointly rather than per-view noise correction, exploiting cross-view redundancy as an implicit denoising signal</li>
 </ul>
 </div>
 <div class="dbox">
 <h4>💡 Key Findings</h4>
 <ul>
-<li>BPT-derived training labels constitute <strong>instance-dependent label noise</strong>: uncertainty concentrates near the BPT demarcation line — precisely where the new feature would help most</li>
-<li>A genuinely informative feature can hurt accuracy when training labels are noisiest exactly in the region that feature would clarify</li>
-<li>A rare, concrete single-domain demonstration of IDN outside the usual vision/NLP benchmarks</li>
+<li>Outperforms prior multi-view and single-view noise-robust baselines under synthetic and realistic noisy-label settings</li>
+<li>Anchor consensus stays stable even as individual-view noise rates rise, because noise is rarely correlated identically across views</li>
 </ul>
 </div>
 </div>
 <div class="phd-box">
 <h4>🎓 PhD Research Angle</h4>
-<p>Directly validates Gap #1 below — IDN testbeds are almost all vision benchmarks (CIFAR-10N, Clothing1M); this is a real astrophysics case. A thesis could build a general diagnostic for "when does a new feature interact badly with label noise concentrated near a decision boundary" and test it across scientific domains (astronomy, genomics, remote sensing) where labels come from imperfect physical proxies rather than human annotation.</p>
+<p>Offers a cross-view consensus alternative to the loss-correction/sample-selection toolbox that dominates single-view label-noise research (per the survey above) — directly relevant to Gap #1 (Instance-Dependent Label Noise), since anchor consensus is implicitly noise-pattern-aware without an explicit instance-dependent noise model. A thesis could formalize when multi-view consensus provably out-denoises single-view correction, or extend GALA to the weakest case: only two views.</p>
 </div>
 <div class="paper-links">
-<a href="https://arxiv.org/abs/2607.13233" target="_blank" class="link-btn primary">Read on arXiv →</a>
+<a href="https://arxiv.org/abs/2607.18561" target="_blank" class="link-btn primary">Read on arXiv →</a>
 <button class="bmark-btn" onclick="toggleBmark(4);event.stopPropagation()">☆ Save</button>
 </div>
 </div>
@@ -546,47 +551,42 @@ line-height: 1.65;
 <div class="paper-card" id="p5">
 <div class="card-head" onclick="toggleCard('p5')">
 <div class="card-main">
-<div class="title-row"><span class="paper-title">End-to-End Data Quality-Driven Framework for Machine Learning in Production</span><span class="new-badge">Dec 2025</span></div>
-<div class="venue-row"><span class="venue-badge">arXiv Preprint</span><span class="paper-date">📅 December 2025 · arXiv:2512.19723</span></div>
-<div class="paper-authors"><strong>Firas Bayram</strong>, <strong>Bestoun S. Ahmed</strong>, <strong>Erik Hallin</strong></div>
+<div class="title-row"><span class="paper-title">SFGA: A Statistics-First Gating Architecture with Adjudicative Escalation for Trustworthy SFT Data Procurement</span><span class="new-badge">Jul 2026</span></div>
+<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 19, 2026 · arXiv:2607.18960</span></div>
+<div class="paper-authors"><strong>Arther Tian</strong>, Alex Ding, Frank Chen, Simon Wu, Aaron Chan · dGrid AI</div>
 </div>
 <div class="toggle-btn">▼</div>
 </div>
 <div class="paper-detail">
 <div class="author-chips">
-<span class="achip">Firas Bayram</span>
-<span class="achip">Bestoun S. Ahmed</span>
-<span class="achip">Erik Hallin</span>
+<span class="achip">Arther Tian <small>· dGrid AI</small></span>
+<span class="achip">Alex Ding <small>· dGrid AI</small></span>
+<span class="achip">Aaron Chan <small>· dGrid AI</small></span>
 </div>
-<div class="sum-box"><h4>📋 Summary</h4><p>A December 2025 paper that takes data quality beyond the training set and into live production. It builds a three-component pipeline that detects data drift in real-time, adapts quality thresholds dynamically as distributions shift, and routes quality signals back into deployed model decisions — catching degradation before accuracy drops rather than after the damage is done.</p></div>
+<div class="sum-box"><h4>📋 Summary</h4><p>A production-oriented data-quality gating pipeline for SFT data procurement — cheap statistical filters handle the bulk of incoming samples, with an "adjudicative escalation" path routing only ambiguous cases to a costlier, more careful review.</p></div>
 <div class="detail-grid">
 <div class="dbox">
 <h4>📐 Methodology</h4>
 <ul>
-<li><strong>3-component framework:</strong> (1) dynamic drift detection, (2) adaptive data quality metrics, (3) MLOps feedback loop</li>
-<li>Real-time quality signals integrated into deployed ML model decision-making</li>
-<li>Adaptive thresholds: quality gates adjust dynamically based on live data statistics</li>
-<li>Designed for minimal overhead — sub-millisecond quality checks in the serving path</li>
-<li>Validated on production-scale streaming datasets</li>
+<li>Statistics-first gate: fast, cheap distributional checks screen the large majority of candidate SFT samples</li>
+<li>Adjudicative escalation: samples that fail to clear the statistical gate confidently are escalated to a costlier adjudication step rather than auto-accepted/rejected</li>
+<li>Designed explicitly for SFT data procurement at production scale, where full manual/LLM-judge review of every sample is cost-prohibitive</li>
 </ul>
 </div>
 <div class="dbox">
 <h4>💡 Key Findings</h4>
 <ul>
-<li>Quality-driven decision gates reduce model degradation by catching drift before accuracy drops</li>
-<li>Adaptive metrics outperform static thresholds significantly on non-stationary data streams</li>
-<li>LLMs are emerging as data quality auditors — validated for text data quality checking</li>
-<li>Bridges gap between offline data quality research and online ML deployment reality</li>
+<li>Tiered gating substantially cuts the cost of maintaining SFT data quality versus reviewing every sample at the same expensive tier</li>
+<li>Escalating only ambiguous cases preserves most of the quality benefit of full adjudication at a fraction of the cost</li>
 </ul>
 </div>
 </div>
 <div class="phd-box">
 <h4>🎓 PhD Research Angle</h4>
-<p><strong>MLOps + data quality is a severely underexplored intersection.</strong> Most academic data quality research assumes static, offline datasets — but production models see shifting data every day. Research extensions: (1) federated learning quality monitoring (data quality across heterogeneous clients), (2) LLM fine-tuning data quality signals (can we detect quality issues before they harm fine-tuned models?), (3) causal approaches to identifying which quality dimensions caused a specific model failure. All are publishable at top ML/data venues (VLDB, SIGMOD, NeurIPS).</p>
+<p>A concrete instance of Gap #5 (Online Data Quality for Streaming ML) applied specifically to SFT-data procurement — a thesis could formalize the cost/quality Pareto frontier of tiered gating architectures, or study how escalation thresholds should adapt as the underlying data distribution (and adversarial gaming of the cheap filters) shifts over time.</p>
 </div>
 <div class="paper-links">
-<a href="https://arxiv.org/abs/2512.19723" target="_blank" class="link-btn primary">Read on arXiv →</a>
-<a href="https://arxiv.org/html/2512.19723v1" target="_blank" class="link-btn secondary">HTML Version</a>
+<a href="https://arxiv.org/abs/2607.18960" target="_blank" class="link-btn primary">Read on arXiv →</a>
 <button class="bmark-btn" onclick="toggleBmark(5);event.stopPropagation()">☆ Save</button>
 </div>
 </div>
@@ -699,42 +699,43 @@ line-height: 1.65;
 <div class="paper-card" id="p8">
 <div class="card-head" onclick="toggleCard('p8')">
 <div class="card-main">
-<div class="title-row"><span class="paper-title">tidysynthesis: a Meta-Package for Synthetic Data Generation</span><span class="new-badge">Jul 2026</span></div>
-<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 2026 · arXiv:2607.12611</span></div>
-<div class="paper-authors"><strong>Aaron R. Williams</strong>, Jeremy Seeman, Gabriel Morrison</div>
+<div class="title-row"><span class="paper-title">Learning from Synthetic Data without Model Collapse in Iterative Instruction Tuning</span><span class="new-badge">Jul 2026</span></div>
+<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 19, 2026 · arXiv:2607.17043</span></div>
+<div class="paper-authors"><strong>Xiaonan Luo</strong>, Yue Huang, Kehan Guo, Ting Hua · Notre Dame; Ping He · Vanderbilt; Chuan Zou · UPenn</div>
 </div>
 <div class="toggle-btn">▼</div>
 </div>
 <div class="paper-detail">
 <div class="author-chips">
-<span class="achip">Aaron R. Williams</span>
-<span class="achip">Jeremy Seeman</span>
-<span class="achip">Gabriel Morrison</span>
+<span class="achip">Xiaonan Luo <small>· University of Notre Dame</small></span>
+<span class="achip">Ting Hua <small>· University of Notre Dame</small></span>
+<span class="achip">Ping He <small>· Vanderbilt University</small></span>
+<span class="achip">Chuan Zou <small>· University of Pennsylvania</small></span>
 </div>
-<div class="sum-box"><h4>📋 Summary</h4><p>A composability-focused infrastructure paper: introduces tidysynthesis, a meta-package giving synthetic data generation a common syntax across modeling frameworks and statistical disclosure-control methods, so pipelines can be composed and swapped instead of hand-rolled per project.</p></div>
+<div class="sum-box"><h4>📋 Summary</h4><p>Shows that model collapse under iterative synthetic-data training isn't uniform degradation but a "polarization of competence" — already-strong skills get reinforced while weak ones erode further. Proposes KITE (Knowledge-boundary Instruction Tuning via Exploration), a two-stage failure-guided generation + uncertainty-aware curation framework to counter it.</p></div>
 <div class="detail-grid">
 <div class="dbox">
 <h4>📐 Methodology</h4>
 <ul>
-<li>Meta-package providing interoperability between existing modeling frameworks and statistical data-privacy (disclosure-control) methods</li>
-<li>Common syntax for specifying and iterating on synthetic data generation pipelines</li>
-<li>Demonstrated end-to-end on American Community Survey data</li>
+<li>Iterative instruction-tuning setup where later generations train on an increasing proportion of model-generated (synthetic) data</li>
+<li>Diagnoses collapse as skill-specific polarization, measured per-capability rather than in aggregate</li>
+<li>KITE: (1) failure-guided data generation targeting the model's own knowledge boundary, (2) boundary-aware uncertainty curation to avoid reinforcing already-strong skills at the expense of weak ones</li>
 </ul>
 </div>
 <div class="dbox">
 <h4>💡 Key Findings</h4>
 <ul>
-<li>Synthetic data generation requires navigating many design choices (generator model, privacy method, sequencing); most existing open-source tools don't provide shared infrastructure for this</li>
-<li>tidysynthesis makes pipelines composable and swappable rather than monolithic, enabling apples-to-apples comparisons</li>
+<li>Standard iterative synthetic-data training reinforces strong skills while further degrading weak ones — a polarization pattern invisible to aggregate accuracy metrics</li>
+<li>KITE mitigates this polarization more effectively than uniform synthetic-data mixing baselines</li>
 </ul>
 </div>
 </div>
 <div class="phd-box">
 <h4>🎓 PhD Research Angle</h4>
-<p>Less a novel generative method, more a testbed. A thesis could use tidysynthesis's composability to run controlled ablations across generator/privacy-method combinations — something the model-collapse work above would directly benefit from, since most collapse studies currently hand-roll one-off pipelines that are hard to compare against each other.</p>
+<p>Directly advances Gap #3 (Automatic Model Collapse Detection) by reframing what "collapse" means at the skill level rather than the aggregate level — implying aggregate accuracy is an inadequate collapse-detection metric. A thesis could build fine-grained, per-skill collapse-detection metrics as an early-warning system, extending KITE's diagnostic lens into a general-purpose monitor for any lab training on synthetic/model-generated data.</p>
 </div>
 <div class="paper-links">
-<a href="https://arxiv.org/abs/2607.12611" target="_blank" class="link-btn primary">Read on arXiv →</a>
+<a href="https://arxiv.org/abs/2607.17043" target="_blank" class="link-btn primary">Read on arXiv →</a>
 <button class="bmark-btn" onclick="toggleBmark(8);event.stopPropagation()">☆ Save</button>
 </div>
 </div>
@@ -805,42 +806,44 @@ line-height: 1.65;
 <div class="paper-card" id="p10">
 <div class="card-head" onclick="toggleCard('p10')">
 <div class="card-main">
-<div class="title-row"><span class="paper-title">Trustworthy Machine Learning through the Lens of Combinatorial Optimization: Survey and Research Perspectives</span><span class="new-badge">Jul 2026</span></div>
-<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 2026 · arXiv:2607.07762</span></div>
-<div class="paper-authors"><strong>Thibaut Vidal</strong>, <strong>Julien Ferry</strong> · CIRRELT &amp; SCALE-AI Chair in Data-Driven Supply Chains, Polytechnique Montréal</div>
+<div class="title-row"><span class="paper-title">A Critical Analysis of Trustworthy AI Tools, Mark Frameworks, and the Implementation Chasms</span><span class="new-badge">Jul 2026</span></div>
+<div class="venue-row"><span class="venue-badge">arXiv</span><span class="paper-date">📅 July 16, 2026 · arXiv:2607.15480</span></div>
+<div class="paper-authors"><strong>Michael Papademas</strong>, Xenia Ziouvelou, Kostas Karpouzis, Vangelis Karkaletsis · NCSR Demokritos / Panteion Univ. (Greece)</div>
 </div>
 <div class="toggle-btn">▼</div>
 </div>
 <div class="paper-detail">
 <div class="author-chips">
-<span class="achip">Thibaut Vidal <small>· Polytechnique Montréal</small></span>
-<span class="achip">Julien Ferry <small>· CIRRELT / Polytechnique Montréal</small></span>
+<span class="achip">Michael Papademas <small>· NCSR "Demokritos", Greece</small></span>
+<span class="achip">Xenia Ziouvelou <small>· NCSR "Demokritos", Greece</small></span>
+<span class="achip">Kostas Karpouzis <small>· Panteion University, Athens</small></span>
+<span class="achip">Vangelis Karkaletsis <small>· NCSR "Demokritos", Greece</small></span>
 </div>
-<div class="sum-box"><h4>📋 Summary</h4><p>Surveys how combinatorial-optimization (CO) formulations bring formal certificates and global guarantees to trustworthy ML tasks — interpretable model learning, explanation generation, robustness analysis, fairness auditing, model compression, and privacy protection — where purely heuristic methods only offer empirical, non-provable assurances.</p></div>
+<div class="sum-box"><h4>📋 Summary</h4><p>Audits 938 OECD-catalogued tools and trust-mark frameworks meant to operationalize "trustworthy AI" and finds only 24 qualify as genuine trust/quality marks — arguing high-level ethical guidelines still lack concrete, auditable implementation mechanisms, leaving a wide "implementation chasm" between AI ethics policy and engineering practice.</p></div>
 <div class="detail-grid">
 <div class="dbox">
 <h4>📐 Methodology</h4>
 <ul>
-<li>Synthesizes recent advances at the CO × trustworthy-ML intersection across both training-time and post-training tasks</li>
-<li>Covers interpretable model learning (optimal decision trees/rules), explanation generation, robustness certification, fairness auditing, model compression, and privacy attacks/protections</li>
-<li>Frames CO's core value-add as global optimality guarantees, formal certificates, and explicit trade-off accounting — vs. purely heuristic search</li>
+<li>Draws on the OECD's comprehensive catalogue of AI tools and trust/quality-mark frameworks (938 entries as of July 2025)</li>
+<li>Critically classifies tools by whether they provide genuine, auditable trust/quality certification versus branding or checklist-style guidance</li>
+<li>Maps gaps between abstract ethical principles (fairness, transparency, accountability) and concrete, implementable/auditable mechanisms</li>
 </ul>
 </div>
 <div class="dbox">
 <h4>💡 Key Findings</h4>
 <ul>
-<li>Models with similar empirical accuracy can differ sharply in transparency, robustness, fairness, and privacy — CO methods make these properties formally verifiable rather than just empirically observed</li>
-<li>CO-based certification is maturing fastest for interpretability (optimal sparse trees/rules) and robustness verification</li>
-<li>Identifies open research perspectives connecting solver scalability to real-world trustworthy-ML deployment</li>
+<li>Of 938 catalogued tools, only 24 (~2.6%) function as genuine trust/quality marks with real certification substance</li>
+<li>Most "trustworthy AI" tooling remains abstract guidance rather than concrete, auditable implementation</li>
+<li>Identifies specific "implementation chasms" where policy intent fails to translate into engineering practice</li>
 </ul>
 </div>
 </div>
 <div class="phd-box">
 <h4>🎓 PhD Research Angle</h4>
-<p>A strong citation anchor for framing trustworthy AI research around <strong>provable guarantees rather than benchmark scores</strong> — directly relevant to Gap #4 below (Unified Trustworthiness Framework). A thesis could pick one CO-certified sub-area (e.g. certifiable fairness auditing) and push it to LLM scale, where exact CO methods currently don't scale.</p>
+<p>Directly extends Gap #4 (Unified Trustworthiness Framework) with an empirical, large-scale audit showing why the field's 18 competing definitions (per the bibliometric study above) haven't converged into workable certification — the "implementation chasm" framing gives a thesis a concrete gap to fill: designing a trust-mark framework that is both principled and genuinely auditable, tested against this paper's audit criteria.</p>
 </div>
 <div class="paper-links">
-<a href="https://arxiv.org/pdf/2607.07762" target="_blank" class="link-btn primary">Read on arXiv →</a>
+<a href="https://arxiv.org/abs/2607.15480" target="_blank" class="link-btn primary">Read on arXiv →</a>
 <button class="bmark-btn" onclick="toggleBmark(10);event.stopPropagation()">☆ Save</button>
 </div>
 </div>
@@ -1061,62 +1064,51 @@ line-height: 1.65;
 
 <footer>
 ResearchPulse · PhD Research Hub · Updated every Monday &amp; Thursday<br>
-<a href="https://arxiv.org" target="_blank">arXiv</a> ·
-<a href="https://scholar.google.com" target="_blank">Google Scholar</a> ·
-<a href="https://dl.acm.org" target="_blank">ACM Digital Library</a> ·
-<a href="https://semanticscholar.org" target="_blank">Semantic Scholar</a>
+<a href="https://arxiv.org" target="_blank">arXiv</a> · <a href="https://scholar.google.com" target="_blank">Google Scholar</a> · <a href="https://dl.acm.org" target="_blank">ACM Digital Library</a> · <a href="https://semanticscholar.org" target="_blank">Semantic Scholar</a>
 </footer>
 
 <script>
 const TOPICS = ['dca','ln','dq','sd','tai','dsq'];
 let activeFilter = 'all';
 let bookmarks = JSON.parse(localStorage.getItem('rp2_bmarks') || '[]');
-
 const TITLES = {
 1:'Data-centric Artificial Intelligence: A Survey',
-2:'CurateEvo: Data-Curation Evolving for Agentic Post-Training',
+2:'UltraX: Refining Pre-Training Data at Scale with Adaptive Programmatic Editing',
 3:'Survey on Learning from Data with Label Noise via DNNs',
-4:'When X-ray Features Hurt: Label Noise in AGN/SFG Classification',
-5:'End-to-End Data Quality-Driven Framework for ML in Production',
+4:'Robust Multi-View Classification under Noisy Supervision via Global Anchor Consensus',
+5:'SFGA: Statistics-First Gating Architecture for Trustworthy SFT Data Procurement',
 6:'The Effects of Data Quality on ML Performance on Tabular Data',
 7:'AI Models Collapse When Trained on Recursively Generated Data',
-8:'tidysynthesis: a Meta-Package for Synthetic Data Generation',
+8:'Learning from Synthetic Data without Model Collapse in Iterative Instruction Tuning',
 9:'Mapping Trustworthiness in LLMs: A Bibliometric Analysis',
-10:'Trustworthy ML through the Lens of Combinatorial Optimization',
+10:'A Critical Analysis of Trustworthy AI Tools, Mark Frameworks, and the Implementation Chasms',
 11:'Chunked Data Shapley: Scalable Dataset Quality Assessment',
 12:'An Asymptotic Analysis of the Shapley Value for Dataset Valuation'
 };
 const URLS = {
 1:'https://arxiv.org/abs/2303.10158',
-2:'https://arxiv.org/abs/2607.06140',
-4:'https://arxiv.org/abs/2607.13233',
-5:'https://arxiv.org/abs/2512.19723',
+2:'https://arxiv.org/abs/2607.08646',
+4:'https://arxiv.org/abs/2607.18561',
+5:'https://arxiv.org/abs/2607.18960',
 7:'https://www.nature.com/articles/s41586-024-07566-y',
-8:'https://arxiv.org/abs/2607.12611',
+8:'https://arxiv.org/abs/2607.17043',
 9:'https://arxiv.org/pdf/2503.04785',
-10:'https://arxiv.org/pdf/2607.07762',
+10:'https://arxiv.org/abs/2607.15480',
 11:'https://arxiv.org/abs/2508.16255',
 12:'https://arxiv.org/pdf/2607.03374'
 };
-
 function setFilter(topic, btn) {
 activeFilter = topic;
 document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
 btn.classList.add('active');
 document.querySelectorAll('.topic-section').forEach(sec => {
-if (topic === 'all' || sec.dataset.topic === topic) {
-sec.style.display = '';
-} else {
-sec.style.display = 'none';
-}
+if (topic === 'all' || sec.dataset.topic === topic) { sec.style.display = ''; } else { sec.style.display = 'none'; }
 });
 applySearch();
 }
-
 document.getElementById('search-input').addEventListener('input', e => {
 applySearch(e.target.value.toLowerCase());
 });
-
 function applySearch(q) {
 q = q || document.getElementById('search-input').value.toLowerCase();
 let count = 0;
@@ -1124,19 +1116,16 @@ document.querySelectorAll('.paper-card').forEach(card => {
 const sec = card.closest('.topic-section');
 const secVisible = !sec || sec.style.display !== 'none';
 const matches = !q || card.innerText.toLowerCase().includes(q);
-if (secVisible && matches) { card.style.display = ''; count++; }
-else card.style.display = 'none';
+if (secVisible && matches) { card.style.display = ''; count++; } else card.style.display = 'none';
 });
 document.getElementById('empty-state').style.display = count === 0 ? 'block' : 'none';
 document.getElementById('results-note').textContent = 'Showing ' + count + ' paper' + (count !== 1 ? 's' : '');
 }
-
 function toggleCard(id) {
 const card = document.getElementById(id);
 card.classList.toggle('open');
 card.querySelector('.toggle-btn').textContent = card.classList.contains('open') ? '▲' : '▼';
 }
-
 function toggleBmark(id) {
 if (bookmarks.includes(id)) bookmarks = bookmarks.filter(b => b !== id);
 else bookmarks.push(id);
@@ -1144,21 +1133,15 @@ localStorage.setItem('rp2_bmarks', JSON.stringify(bookmarks));
 updateBmarkUI();
 renderDrawer();
 }
-
 function updateBmarkUI() {
 const el = document.getElementById('bmark-count');
 el.textContent = bookmarks.length;
 el.style.display = bookmarks.length > 0 ? 'inline-flex' : 'none';
 document.querySelectorAll('.bmark-btn').forEach(btn => {
 const m = (btn.getAttribute('onclick') || '').match(/toggleBmark\((\d+)\)/);
-if (m) {
-const id = parseInt(m[1]);
-btn.textContent = bookmarks.includes(id) ? '★ Saved' : '☆ Save';
-btn.classList.toggle('saved', bookmarks.includes(id));
-}
+if (m) { const id = parseInt(m[1]); btn.textContent = bookmarks.includes(id) ? '★ Saved' : '☆ Save'; btn.classList.toggle('saved', bookmarks.includes(id)); }
 });
 }
-
 function openDrawer() {
 document.getElementById('drawer').classList.add('open');
 document.getElementById('overlay').classList.add('open');
@@ -1180,13 +1163,10 @@ if (!title) return;
 const url = URLS[id];
 const div = document.createElement('div');
 div.className = 'saved-item';
-div.innerHTML = '<div class="si-title">' + title + '</div><div class="si-actions">' +
-(url ? '<a href="' + url + '" target="_blank"><button class="si-btn read">Read →</button></a>' : '') +
-'<button class="si-btn remove" onclick="toggleBmark(' + id + ')">Remove</button></div>';
+div.innerHTML = '<div class="si-title">' + title + '</div><div class="si-actions">' + (url ? '<a href="' + url + '" target="_blank"><button class="si-btn read">Read →</button></a>' : '') + '<button class="si-btn remove" onclick="toggleBmark(' + id + ')">Remove</button></div>';
 body.appendChild(div);
 });
 }
-
 (function init() {
 document.querySelectorAll('.topic-section').forEach(s => s.style.display = '');
 updateBmarkUI();
